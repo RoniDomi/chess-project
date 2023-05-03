@@ -123,8 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &120793972
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +154,6 @@ Transform:
   m_Father: {fileID: 1805824077}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &177031945
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,11 +592,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 99ffb771a3f54824dac8fcebccd18554, type: 3}
-<<<<<<< Updated upstream
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
   m_Color: {r: 1, g: 1, b: 1, a: 0}
->>>>>>> Stashed changes
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -621,15 +614,9 @@ Transform:
   m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-<<<<<<< Updated upstream
-  - {fileID: 1010536856}
-  - {fileID: 1672179041}
-  - {fileID: 1345498237}
-=======
   - {fileID: 1805824077}
   - {fileID: 1010536856}
   - {fileID: 1672179041}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1215,11 +1202,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 354657613}
-<<<<<<< Updated upstream
-  m_RootOrder: 0
-=======
   m_RootOrder: 1
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1010649004
 GameObject:
@@ -1293,11 +1276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1130609519}
   - component: {fileID: 1130609520}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 1130609522}
   - component: {fileID: 1130609521}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: A-Pawn
   m_TagString: Untagged
@@ -1372,8 +1352,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1130609521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1380,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.08}
   serializedVersion: 2
   m_Radius: 0.1
->>>>>>> Stashed changes
 --- !u!1 &1225917748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,11 +1602,7 @@ Transform:
   m_Father: {fileID: 996229918}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
---- !u!1 &1345498236
-=======
 --- !u!1 &1403952529
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1637,35 +1610,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< Updated upstream
-  - component: {fileID: 1345498237}
-  - component: {fileID: 1345498238}
-  m_Layer: 0
-  m_Name: GameObject
-=======
   - component: {fileID: 1403952530}
   m_Layer: 0
   m_Name: A-file
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< Updated upstream
---- !u!224 &1345498237
-RectTransform:
-=======
 --- !u!4 &1403952530
 Transform:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 1345498236}
-=======
   m_GameObject: {fileID: 1403952529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1700,53 +1658,20 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409163966}
->>>>>>> Stashed changes
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-<<<<<<< Updated upstream
-  m_Father: {fileID: 354657613}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1345498238
-=======
   m_Father: {fileID: 1935585491}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1409163968
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
-  m_GameObject: {fileID: 1345498236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
-=======
   m_GameObject: {fileID: 1409163966}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1755,7 +1680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 8
   _height: 8
-  Tile: {fileID: 5924824489654992311, guid: 7ea66778d0c655840a49b60a3661b666, type: 3}
+  Tile: {fileID: 8539012770180448831, guid: 44fa5fe6240eef441805f85d8de474d0, type: 3}
 --- !u!1 &1458291310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,7 +1712,6 @@ Transform:
   m_Father: {fileID: 1805824077}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1464925714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,9 +1918,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 354657613}
-<<<<<<< Updated upstream
-  m_RootOrder: 1
-=======
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682958480
@@ -2029,7 +1950,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1805824077}
   m_RootOrder: 6
->>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1685001837
 GameObject:
@@ -2062,8 +1982,6 @@ Transform:
   m_Father: {fileID: 2075398159}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1777939820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2052,6 @@ Transform:
   m_Father: {fileID: 354657613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1830223332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,8 +2220,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1927895979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,7 +2354,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1953390785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,8 +2482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &2005915746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2544,6 @@ Transform:
   m_Father: {fileID: 1805824077}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &2075398158
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test_Tile : MonoBehaviour
 {
-    public Color _baseColor, _offsetColor;
+    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor;
     public SpriteRenderer _renderer;
 
 
@@ -20,5 +20,22 @@ public class Test_Tile : MonoBehaviour
         {
             _renderer.color = _baseColor ;
         }
+        _SavedColor = _renderer.color;
     }
+
+        void OnMouseEnter()
+        {
+            _renderer.color = Hovercolor;
+            Debug.Log("Enter " + gameObject.name);
+        }
+         void OnMouseOver()
+        {
+            _renderer.color = Hovercolor;
+            Debug.Log("Over " + gameObject.name);
+        }
+    void OnMouseExit()
+    {
+        _renderer.color = _SavedColor;
+    }
+    
 }
