@@ -8,7 +8,7 @@ public class Test_GridManage : MonoBehaviour
 
      public GameObject Tile;
 
-    private char Letters='A';
+    //private char Letters='A';
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class Test_GridManage : MonoBehaviour
             for (int y = 0; y < _height; y++)
             {
                 var spawnedTile = Instantiate(Tile, new Vector3(x, y,1)- (new Vector3((3.5f),(3.5f))), Quaternion.identity);
-                spawnedTile.name = $"Tile {(char)(Letters+x)} {y+1}"; 
+                spawnedTile.name = $"Tile {(x+1)} {y+1}"; 
                 
 
             }
