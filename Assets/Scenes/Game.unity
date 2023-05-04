@@ -459,9 +459,11 @@ GameObject:
   m_Component:
   - component: {fileID: 273654147}
   - component: {fileID: 273654148}
+  - component: {fileID: 273654150}
+  - component: {fileID: 273654149}
   m_Layer: 0
   m_Name: F-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,6 +535,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &273654149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273654146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 273654147}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &273654150
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273654146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &354657611
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,9 +664,11 @@ GameObject:
   m_Component:
   - component: {fileID: 423660672}
   - component: {fileID: 423660673}
+  - component: {fileID: 423660675}
+  - component: {fileID: 423660674}
   m_Layer: 0
   m_Name: B-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,6 +740,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &423660674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423660671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 423660672}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &423660675
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423660671}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &506705910
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,9 +936,11 @@ GameObject:
   m_Component:
   - component: {fileID: 755433091}
   - component: {fileID: 755433092}
+  - component: {fileID: 755433094}
+  - component: {fileID: 755433093}
   m_Layer: 0
   m_Name: G-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -942,6 +1012,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &755433093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755433090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 755433091}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &755433094
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755433090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &762032786
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,9 +1085,11 @@ GameObject:
   m_Component:
   - component: {fileID: 826690234}
   - component: {fileID: 826690235}
+  - component: {fileID: 826690237}
+  - component: {fileID: 826690236}
   m_Layer: 0
   m_Name: H-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1057,6 +1161,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &826690236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826690233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 826690234}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &826690237
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826690233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &965201693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,7 +1416,7 @@ GameObject:
   - component: {fileID: 1130609521}
   m_Layer: 0
   m_Name: A-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1364,6 +1500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position_: {fileID: 1130609519}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
 --- !u!58 &1130609522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2062,9 +2202,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1830223333}
   - component: {fileID: 1830223334}
+  - component: {fileID: 1830223336}
+  - component: {fileID: 1830223335}
   m_Layer: 0
   m_Name: E-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2136,6 +2278,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1830223335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830223332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 1830223333}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &1830223336
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830223332}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1854300541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,9 +2320,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1854300542}
   - component: {fileID: 1854300543}
+  - component: {fileID: 1854300545}
+  - component: {fileID: 1854300544}
   m_Layer: 0
   m_Name: D-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2220,6 +2396,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1854300544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854300541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 1854300542}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &1854300545
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854300541}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1927895979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,9 +2545,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1953390786}
   - component: {fileID: 1953390787}
+  - component: {fileID: 1953390789}
+  - component: {fileID: 1953390788}
   m_Layer: 0
   m_Name: C-Pawn
-  m_TagString: Untagged
+  m_TagString: Pawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2411,6 +2621,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1953390788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953390785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position_: {fileID: 1953390786}
+  tile_to_go_to: {fileID: 0}
+  NrOfThisPawn: 0
+  FirstMove: 1
+--- !u!58 &1953390789
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953390785}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.08}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1987451240
 GameObject:
   m_ObjectHideFlags: 0
