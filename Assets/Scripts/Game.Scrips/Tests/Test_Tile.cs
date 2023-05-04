@@ -31,7 +31,7 @@ public class Test_Tile : MonoBehaviour
          void OnMouseOver()
         {
             _renderer.color = Hovercolor;
-            Debug.Log("Over " + gameObject.name);
+            Debug.Log("Over " + gameObject.name );
         }
     void OnMouseExit()
     {
