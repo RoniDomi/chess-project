@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5267484545912473450}
   - component: {fileID: 8650034069143675183}
   - component: {fileID: 4356680849012941849}
-  - component: {fileID: 3538673022755152414}
+  - component: {fileID: 8614477756664844487}
   m_Layer: 0
   m_Name: TIle
   m_TagString: Tag_Tile
@@ -106,7 +106,12 @@ MonoBehaviour:
   Selected: 1
   NrOfPawnThatCalledThisTile: 0
   Called: 0
---- !u!61 &3538673022755152414
+  AllPawns: []
+  position_: {fileID: 5267484545912473450}
+  AllTiles: []
+  xTile: {fileID: 0}
+  PawnScript: {fileID: 0}
+--- !u!61 &8614477756664844487
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
