@@ -48,7 +48,19 @@ public class Testing_Movement : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (OnlyOnePressed())
+
+        Tile_To_Go_To = FindTile(0);
+
+
+        tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+
+        if (tile_to_go_to.Occupied)
+        {
+            Stuck = true;
+        }
+
+        if (OnlyOnePressed() && !Stuck)
         {
             Tile_To_Go_To= FindTile(-1);
             
