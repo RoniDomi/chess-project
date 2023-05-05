@@ -6,6 +6,8 @@ public class Testing_Movement : MonoBehaviour
 {
     public bool Pressed = false;
 
+    public bool Stuck = false;
+
     public int NrOfThisPawn_x;
     public int NrOfThisPawn_y;
 
@@ -36,6 +38,12 @@ public class Testing_Movement : MonoBehaviour
 
         NrOfThisPawn_x = tile_to_go_to.NrOfThisTile_x;
         NrOfThisPawn_y = tile_to_go_to.NrOfThisTile_y;
+
+        Tile_To_Go_To = FindTile(-1);
+
+        Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+        Tile_Im_On.Occupied = true;
     }
 
     void OnMouseDown()
@@ -45,6 +53,8 @@ public class Testing_Movement : MonoBehaviour
             Tile_To_Go_To= FindTile(-1);
             
             Tile_Im_On=Tile_To_Go_To.GetComponent<Test_Tile>();
+
+            Tile_Im_On.Occupied = true;
 
 
 
