@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tag_Tile
   - Pawns
+  - WhitePawns
+  - BlackPawn
   layers:
   - Default
   - TransparentFX

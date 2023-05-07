@@ -17,6 +17,8 @@ public class Testing_Movement : MonoBehaviour
 
     public Transform position_;
 
+    public GameObject Tile_Im_On_x;
+
     public Test_Tile tile_to_go_to;
 
     public int NrOfThisPawn;
@@ -39,11 +41,21 @@ public class Testing_Movement : MonoBehaviour
         NrOfThisPawn_x = tile_to_go_to.NrOfThisTile_x;
         NrOfThisPawn_y = tile_to_go_to.NrOfThisTile_y;
 
+
+    }
+
+    public void OccupyFirstTile()
+    {
+        FindTileImOn();
+        Tile_Im_On.Occupied = true;
+    }
+
+    public void FindTileImOn()
+    {
         Tile_To_Go_To = FindTile(-1);
 
         Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-        Tile_Im_On.Occupied = true;
     }
 
     void OnMouseDown()
@@ -58,20 +70,18 @@ public class Testing_Movement : MonoBehaviour
         if (tile_to_go_to.Occupied)
         {
             Stuck = true;
+ 
         }
 
         if (OnlyOnePressed() && !Stuck)
         {
-            Tile_To_Go_To= FindTile(-1);
-            
-            Tile_Im_On=Tile_To_Go_To.GetComponent<Test_Tile>();
+            FindTileImOn();
 
-            Tile_Im_On.Occupied = true;
+   
 
 
 
             Pressed = true;
-            Debug.Log("Pressed A-Pawn");
 
 
             Tile_To_Go_To = FindTile(0);
@@ -159,9 +169,5 @@ public class Testing_Movement : MonoBehaviour
         return true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
