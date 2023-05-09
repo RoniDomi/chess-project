@@ -98,13 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193aac2d76d4adf40b9600c211f412b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _baseColor: {r: 0.6886037, g: 1, b: 0.6179246, a: 1}
   _offsetColor: {r: 0.21466713, g: 0.6792453, b: 0.26954573, a: 1}
-  Hovercolor: {r: 0.92416406, g: 0.9528302, b: 0.31011927, a: 1}
+  Hovercolor: {r: 0.9198113, g: 1, b: 0.92611027, a: 1}
   _SavedColor: {r: 0, g: 0, b: 0, a: 0}
   _renderer: {fileID: 8650034069143675183}
-  NrOfThisTile_x: 0
-  NrOfThisTile_y: 0
   Selected: 1
   NrOfPawnThatCalledThisTile: 0
   Called: 0
@@ -112,9 +110,7 @@ MonoBehaviour:
   position_: {fileID: 5267484545912473450}
   AllTiles: []
   xTile: {fileID: 0}
-  Occupied: 0
   PawnScript: {fileID: 0}
-  BlackPawnScript: {fileID: 0}
 --- !u!61 &8614477756664844487
 BoxCollider2D:
   m_ObjectHideFlags: 0

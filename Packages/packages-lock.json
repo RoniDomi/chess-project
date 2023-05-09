@@ -1,12 +1,20 @@
 {
   "dependencies": {
     "com.unity.2d.animation": {
+<<<<<<< HEAD
       "version": "5.1.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "4.1.0",
         "com.unity.mathematics": "1.1.0",
+=======
+      "version": "7.0.10",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.common": "6.0.6",
+>>>>>>> Thanas_Branch
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
@@ -14,47 +22,82 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
+<<<<<<< HEAD
       "version": "4.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
+=======
+      "version": "6.0.6",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.mathematics": "1.1.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.burst": "1.5.1"
+>>>>>>> Thanas_Branch
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.path": {
+<<<<<<< HEAD
       "version": "4.0.2",
       "depth": 1,
+=======
+      "version": "5.0.2",
+      "depth": 2,
+>>>>>>> Thanas_Branch
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.pixel-perfect": {
+<<<<<<< HEAD
       "version": "4.0.1",
       "depth": 0,
+=======
+      "version": "5.0.3",
+      "depth": 1,
+>>>>>>> Thanas_Branch
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
+<<<<<<< HEAD
       "version": "4.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "4.1.0",
         "com.unity.2d.animation": "5.1.0",
+=======
+      "version": "6.0.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.animation": "7.0.9",
+        "com.unity.2d.common": "6.0.6",
+>>>>>>> Thanas_Branch
         "com.unity.2d.sprite": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
+<<<<<<< HEAD
       "depth": 0,
+=======
+      "depth": 1,
+>>>>>>> Thanas_Branch
       "source": "builtin",
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
+<<<<<<< HEAD
       "version": "5.2.0",
       "depth": 0,
       "source": "registry",
@@ -62,12 +105,22 @@
         "com.unity.mathematics": "1.1.0",
         "com.unity.2d.common": "4.1.0",
         "com.unity.2d.path": "4.0.2",
+=======
+      "version": "7.0.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.1.0",
+        "com.unity.2d.common": "6.0.6",
+        "com.unity.2d.path": "5.0.2",
+>>>>>>> Thanas_Branch
         "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.tilemap": {
       "version": "1.0.0",
+<<<<<<< HEAD
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
@@ -81,6 +134,40 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.2d.tilemap.extras": {
+      "version": "2.2.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.2d.tilemap": "1.0.0",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.burst": {
+      "version": "1.6.6",
+      "depth": 3,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.collab-proxy": {
+      "version": "2.0.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+>>>>>>> Thanas_Branch
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -88,17 +175,44 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.ide.rider": {
       "version": "2.0.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.1"
+=======
+    "com.unity.feature.2d": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.2d.animation": "7.0.10",
+        "com.unity.2d.pixel-perfect": "5.0.3",
+        "com.unity.2d.psdimporter": "6.0.7",
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.2d.spriteshape": "7.0.7",
+        "com.unity.2d.tilemap": "1.0.0",
+        "com.unity.2d.tilemap.extras": "2.2.5"
+      }
+    },
+    "com.unity.ide.rider": {
+      "version": "3.0.18",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6"
+>>>>>>> Thanas_Branch
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
+<<<<<<< HEAD
       "version": "2.0.14",
+=======
+      "version": "2.0.17",
+>>>>>>> Thanas_Branch
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -107,19 +221,29 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.vscode": {
+<<<<<<< HEAD
       "version": "1.2.4",
+=======
+      "version": "1.2.5",
+>>>>>>> Thanas_Branch
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
+<<<<<<< HEAD
       "version": "1.1.0",
       "depth": 1,
+=======
+      "version": "1.2.6",
+      "depth": 2,
+>>>>>>> Thanas_Branch
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.services.core": {
       "version": "1.0.1",
       "depth": 1,
@@ -131,6 +255,10 @@
     },
     "com.unity.test-framework": {
       "version": "1.1.29",
+=======
+    "com.unity.test-framework": {
+      "version": "1.1.31",
+>>>>>>> Thanas_Branch
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -150,7 +278,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
+<<<<<<< HEAD
       "version": "1.4.8",
+=======
+      "version": "1.6.4",
+>>>>>>> Thanas_Branch
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -170,6 +302,19 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+<<<<<<< HEAD
+=======
+    "com.unity.visualscripting": {
+      "version": "1.8.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+>>>>>>> Thanas_Branch
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
