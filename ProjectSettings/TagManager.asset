@@ -3,24 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-  - Tag_Tile
-  - Pawns
-  - WhitePawns
-  - BlackPawn
->>>>>>> Thanas_Branch
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-<<<<<<< HEAD
   - 
-=======
-  - Pawn
->>>>>>> Thanas_Branch
   - Water
   - UI
   - 
