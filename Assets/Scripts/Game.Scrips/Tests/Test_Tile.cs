@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Test_Tile : MonoBehaviour
 {
-    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor;
+    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor,_TakeColor;
     public SpriteRenderer _renderer;
     public int NrOfThisTile_x;
     public int NrOfThisTile_y;
@@ -19,12 +19,14 @@ public class Test_Tile : MonoBehaviour
     public bool Occupied = false;
     public Testing_Movement PawnScript;
     public Black_Pawn_Movement BlackPawnScript;
+    public bool Occupy_White=false;
+    public bool Occupy_Black=false;
+    public int NrOfPieceThatsOnMe;
 
-    
 
     public void Start()
     {
-        
+        NrOfPieceThatsOnMe = 100;
 
         Debug.Log("Color Changed");
 
@@ -48,24 +50,92 @@ public class Test_Tile : MonoBehaviour
 
         NrOfThisTile_y = (int)(transform.position.y + 3.5f);
 
-        GameObject PawnThatsOnMe;
+        if ((transform.position.y >= -3.5 && transform.position.y <= -2.5))
+        {
+            Occupy_White = true;
+            Occupied = true;
+        }
+        else if ((transform.position.y <= 3.5 && transform.position.y >= 2.5))
+        {
+            Occupied = true;
+            Occupy_Black = true;
+        }
+             
+        AllTiles= GameObject.FindGameObjectsWithTag("Tag_Tile");
 
-        PawnThatsOnMe = AllPawns[NrOfThisTile_x];
-
-        PawnScript= PawnThatsOnMe.GetComponent<Testing_Movement>();
-
-        PawnScript.OccupyFirstTile();
-
-
-       
+        if(position_.position.y == -2.5)
+        {
+            NrOfPieceThatsOnMe = NrOfThisTile_x;
+        }
+        else if (position_.position.y == 2.5)
+        {
+            NrOfPieceThatsOnMe = (int)(NrOfThisTile_x + 8);
+        }
+    }
+    public void UncallTiles()
+    {
+        for (int x = 0; x < 64; x++)
+        {
+            Test_Tile Tiles_In_This_loop;
+            Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
+            if (Tiles_In_This_loop.Called)
+            {
+                Tiles_In_This_loop.Called = false;
+                Tiles_In_This_loop.Selected = true;
+                Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
+            }
+        }
     }
 
-
-
-    void OnMouseDown()
+    void Check_Which_Pieces_Are_Stuck()
     {
-        if (Called && !Occupied)
+        int x = 0;
+
+        for (; x < 8; x++)
         {
+            Testing_Movement whitepawns;
+            whitepawns= AllPawns[x].GetComponent<Testing_Movement>();
+
+            whitepawns.CheckIfStuckForReal();
+            
+        }
+
+        for(; x < 16; x++)
+        {
+            Black_Pawn_Movement blackpawns;
+
+            blackpawns= AllPawns[x].GetComponent<Black_Pawn_Movement>();
+
+            blackpawns.CheckIfStuckForReal();
+        }
+
+
+        
+    }
+
+    public void DeletePiece()
+    {
+
+        AllPawns[NrOfPieceThatsOnMe].transform.position += new Vector3(0, 0, 5);
+        if(NrOfPieceThatsOnMe>7)
+        {
+
+            BlackPawnScript = AllPawns[NrOfPieceThatsOnMe].GetComponent<Black_Pawn_Movement>();
+            BlackPawnScript.Tile_Im_On.Occupy_Black = false;
+        }else if (NrOfPieceThatsOnMe < 7)
+        {
+
+            PawnScript = AllPawns[NrOfPieceThatsOnMe].GetComponent<Testing_Movement>();
+            PawnScript.Tile_Im_On.Occupy_White = false;
+        }
+
+    }
+   public  void OnMouseDown()
+    {
+        AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
+        if (Called && !(Occupy_Black || Occupy_White))
+        {
+            AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
             Debug.Log("Tile onmousedown called");
             GameObject Pawn = AllPawns[(int)(NrOfPawnThatCalledThisTile)];
 
@@ -73,6 +143,7 @@ public class Test_Tile : MonoBehaviour
 
             if(NrOfPawnThatCalledThisTile>7)
             {
+                
                 BlackPawnScript = Pawn.GetComponent<Black_Pawn_Movement>();
                 BlackPawnMove(Pawn);
             }
@@ -81,88 +152,71 @@ public class Test_Tile : MonoBehaviour
                 PawnScript= Pawn.GetComponent<Testing_Movement>();
                 WhitePawnMove(Pawn);
             }
-
+            UncallTiles();
+            if(NrOfPieceThatsOnMe!=100)
+           DeletePiece();
             
+            
+            NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
+            
+            
+            
+            Check_Which_Pieces_Are_Stuck();
+
         }
 
 
     }
 
-   
+
     void WhitePawnMove(GameObject Pawn)
     {
-
+        PawnScript.IfNotOnlyPressed();
         Pawn.transform.position = new Vector3((float)(position_.position.x), (float)(position_.position.y + 0.4));
         PawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         PawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         PawnScript.Pressed = false;
         PawnScript.FirstMove = false;
-        GameObject previousTile = FindTile(1);
-        xTile = previousTile.GetComponent<Test_Tile>();
-
-        if (!PawnScript.FirstMove)
-        {
-            xTile.Called = false;
-            xTile.Selected = true;
-            xTile._renderer.color = xTile._SavedColor;
-            previousTile = FindTile(-1);
-            xTile = previousTile.GetComponent<Test_Tile>();
-            xTile.Called = false;
-            xTile.Selected = true;
-            xTile._renderer.color = xTile._SavedColor;
-        }
-
-        Called = false;
-
-        Selected = true;
+       
 
         Occupied = true;
-
+        Occupy_White = true;
         PawnScript.Tile_Im_On.Occupied = false;
+        PawnScript.Tile_Im_On.Occupy_White = false;
+        PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        PawnScript.Take_Function_Called_Left = false;
+        PawnScript.Take_Function_Called_Right = false;
+        
 
-
-        _renderer.color = _SavedColor;
     }
 
     void BlackPawnMove(GameObject Pawn)
     {
+       
+        BlackPawnScript.IfNotOnlyPressed();
         Pawn.transform.position = new Vector3((float)(position_.position.x), (float)(position_.position.y + 0.4));
+
+        
         BlackPawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         BlackPawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         BlackPawnScript.Pressed = false;
         BlackPawnScript.FirstMove = false;
-        GameObject previousTile = FindTile(-1);
-        xTile = previousTile.GetComponent<Test_Tile>();
+      
 
-        if (!BlackPawnScript.FirstMove)
-        {
-            xTile.Called = false;
-            xTile.Selected = true;
-            xTile._renderer.color = xTile._SavedColor;
-            previousTile = FindTile(1);
-            xTile = previousTile.GetComponent<Test_Tile>();
-            xTile.Called = false;
-            xTile.Selected = true;
-            xTile._renderer.color = xTile._SavedColor;
-        }
-
-        Called = false;
-
-        Selected = true;
-
-        BlackPawnScript.Tile_Im_On.Occupied = false;
-
+       BlackPawnScript.Tile_Im_On.Occupied = false;
+        BlackPawnScript.Tile_Im_On.Occupy_Black = false;
+        BlackPawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         Occupied = true;
-
+        Occupy_Black = true;
+        BlackPawnScript.Take_Function_Called_Left = false;
+        BlackPawnScript.Take_Function_Called_Right = false;
         
 
-        _renderer.color = _SavedColor;
+
     }
     
     public GameObject FindTile(int x)
     {
-        AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
-
         return AllTiles[(int)((position_.position.x + 3.5)*8+position_.position.y+3.5 - x)];
     }
     void OnMouseEnter()
@@ -172,6 +226,7 @@ public class Test_Tile : MonoBehaviour
     }
     void OnMouseOver()
     {
+
             _renderer.color = Hovercolor;
     }
     void OnMouseExit()
@@ -184,11 +239,18 @@ public class Test_Tile : MonoBehaviour
 
     public void TestFunction()
     {
-        if (!Occupied)
+        if (!Occupy_Black || !Occupy_White)
         {
             Called = true;
             _renderer.color = Hovercolor;
         }
     }
 
+    public void RedTakeColor()
+    {
+        
+            Called = true;
+            _renderer.color = _TakeColor;
+        
+    }
 }
