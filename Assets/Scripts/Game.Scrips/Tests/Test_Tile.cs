@@ -22,6 +22,7 @@ public class Test_Tile : MonoBehaviour
     public bool Occupy_White=false;
     public bool Occupy_Black=false;
     public int NrOfPieceThatsOnMe;
+    public bool En_passant_Active = false;
 
 
     public void Start()
@@ -73,17 +74,37 @@ public class Test_Tile : MonoBehaviour
         }
     }
     public void UncallTiles()
-    {
+    {   
+        Test_Tile Tiles_In_This_loop;
         for (int x = 0; x < 64; x++)
         {
-            Test_Tile Tiles_In_This_loop;
+            
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
             if (Tiles_In_This_loop.Called)
             {
                 Tiles_In_This_loop.Called = false;
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
+                
             }
+        }
+    }
+
+    public void Undo_En_Passant()
+    {
+        Test_Tile Tiles_In_This_loop;
+        for (int x = 0; x < 64; x++)
+        {
+            Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
+            if (Tiles_In_This_loop.En_passant_Active)
+            {
+                Tiles_In_This_loop.En_passant_Active = false;
+                Tiles_In_This_loop.Occupied = false;
+                Tiles_In_This_loop.Occupy_Black = false;
+                Tiles_In_This_loop.Occupy_White = false;
+                Tiles_In_This_loop.NrOfPieceThatsOnMe = 100;
+            }
+
         }
     }
 
@@ -132,7 +153,14 @@ public class Test_Tile : MonoBehaviour
     }
    public  void OnMouseDown()
     {
+     
         AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
+
+        int saved_number = NrOfPieceThatsOnMe;
+            Undo_En_Passant();
+
+        NrOfPieceThatsOnMe = saved_number;
+
         if (Called && !(Occupy_Black || Occupy_White))
         {
             AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
@@ -152,13 +180,16 @@ public class Test_Tile : MonoBehaviour
                 PawnScript= Pawn.GetComponent<Testing_Movement>();
                 WhitePawnMove(Pawn);
             }
-            UncallTiles();
+            
+            
+
             if(NrOfPieceThatsOnMe!=100)
-           DeletePiece();
+            DeletePiece();
+
             
             
             NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
-            
+            UncallTiles();
             
             
             Check_Which_Pieces_Are_Stuck();
@@ -176,11 +207,21 @@ public class Test_Tile : MonoBehaviour
         PawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         PawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         PawnScript.Pressed = false;
+        if(PawnScript.FirstMove )
+        {
+            Test_Tile Previous_Tile;
+            Previous_Tile = PawnScript.FindTile(-2).GetComponent<Test_Tile>();
+            Previous_Tile.Occupy_White = true;
+            Previous_Tile.NrOfPieceThatsOnMe=PawnScript.NrOfThisPawn;
+            Previous_Tile.En_passant_Active = true;
+
+        }
         PawnScript.FirstMove = false;
        
 
         Occupied = true;
         Occupy_White = true;
+        Occupy_Black = false;
         PawnScript.Tile_Im_On.Occupied = false;
         PawnScript.Tile_Im_On.Occupy_White = false;
         PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
@@ -200,6 +241,14 @@ public class Test_Tile : MonoBehaviour
         BlackPawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         BlackPawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         BlackPawnScript.Pressed = false;
+        if (BlackPawnScript.FirstMove)
+        {
+            Test_Tile Previous_Tile;
+            Previous_Tile = BlackPawnScript.FindTile(0).GetComponent<Test_Tile>();
+            Previous_Tile.Occupy_Black = true;
+            Previous_Tile.NrOfPieceThatsOnMe = BlackPawnScript.NrOfThisPawn;
+            Previous_Tile.En_passant_Active = true;
+        }
         BlackPawnScript.FirstMove = false;
       
 
@@ -208,6 +257,7 @@ public class Test_Tile : MonoBehaviour
         BlackPawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         Occupied = true;
         Occupy_Black = true;
+        Occupy_White = false;
         BlackPawnScript.Take_Function_Called_Left = false;
         BlackPawnScript.Take_Function_Called_Right = false;
         
