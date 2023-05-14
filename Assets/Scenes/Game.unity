@@ -467,6 +467,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &273654150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -542,6 +546,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &287261666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -808,6 +816,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &423660675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1006,6 +1018,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &627494850
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1216,6 +1232,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &755433094
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1291,6 +1311,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &762032789
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1418,6 +1442,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &780607878
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1597,6 +1625,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &826690237
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1672,6 +1704,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &853710785
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1799,6 +1835,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &882511678
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1867,6 +1907,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &919485443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 919485445}
+  - component: {fileID: 919485444}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &919485444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919485443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e64d2c19be35d4e8e4f941e2bd7ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PieceTake
+    clip: {fileID: 8300000, guid: 104c64a779f19ff43b973314607f02e7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: PieceMove
+    clip: {fileID: 8300000, guid: 0f2650331a95114408ad281137201fce, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+--- !u!4 &919485445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919485443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996229917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,6 +2220,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1130609522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2282,6 +2381,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1241521202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2659,6 +2762,10 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On_x: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1493711753
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2975,6 +3082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805824077}
+  - component: {fileID: 1805824078}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -3005,6 +3113,102 @@ Transform:
   m_Father: {fileID: 354657613}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1805824078
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805824076}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 54f21781a0a0697429ef5890fb953b81, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1830223332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3320,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1830223336
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3243,6 +3451,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1854300545
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3477,6 +3689,10 @@ MonoBehaviour:
   FirstMove: 1
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Stuck_For_Real: 0
+  Take_Function_Called_Left: 0
+  Take_Function_Called_Right: 0
+  Taken: 0
 --- !u!58 &1953390789
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -222,7 +222,13 @@ public class Testing_Movement : MonoBehaviour
 
                 Take_Function_Called_Left = false;
                 tile_to_go_to.Occupy_Black = true;
+                FindObjectOfType<AudioManager>().Play("PieceTake");
             }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("PieceMove");
+            }
+
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
         }
         if (Tile_Im_On.position_.position.x > -3.5 && OnlyOnePressed())
@@ -235,6 +241,11 @@ public class Testing_Movement : MonoBehaviour
             {
                 Take_Function_Called_Right = false;
                 tile_to_go_to.Occupy_Black = true;
+                FindObjectOfType<AudioManager>().Play("PieceTake");
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("PieceMove");
             }
 
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
