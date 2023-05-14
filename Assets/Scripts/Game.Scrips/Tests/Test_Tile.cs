@@ -136,7 +136,7 @@ public class Test_Tile : MonoBehaviour
 
     public void DeletePiece()
     {
-
+        FindObjectOfType<AudioManager>().Play("PieceTake");
         AllPawns[NrOfPieceThatsOnMe].transform.position += new Vector3(0, 0, 5);
         if(NrOfPieceThatsOnMe>7)
         {
@@ -185,9 +185,11 @@ public class Test_Tile : MonoBehaviour
 
             if(NrOfPieceThatsOnMe!=100)
             DeletePiece();
+            else
+                FindObjectOfType<AudioManager>().Play("PieceMove");
 
-            
-            
+
+
             NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
             UncallTiles();
             
