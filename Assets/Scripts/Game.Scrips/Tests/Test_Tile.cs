@@ -12,7 +12,7 @@ public class Test_Tile : MonoBehaviour
     public bool Selected = true;
     public int NrOfPawnThatCalledThisTile;
     public bool Called = false;
-    public GameObject[] AllPawns;
+    public GameObject[] AllPieces;
     public Transform position_;
     public GameObject[] AllTiles;
     public Test_Tile xTile;
@@ -42,10 +42,14 @@ public class Test_Tile : MonoBehaviour
         _SavedColor = _renderer.color;
 
         GameObject[] BlackPawns= GameObject.FindGameObjectsWithTag("BlackPawn");
+        GameObject[] WhiteRooks= GameObject.FindGameObjectsWithTag("White_Rook");
+        GameObject[] BlackRooks = GameObject.FindGameObjectsWithTag("Black_Rook");
 
-        AllPawns = GameObject.FindGameObjectsWithTag("Pawns");
+        AllPieces = GameObject.FindGameObjectsWithTag("Pawns");
 
-        AllPawns = AllPawns.Concat(BlackPawns).ToArray();
+        AllPieces = AllPieces.Concat(BlackPawns).ToArray();
+        AllPieces = AllPieces.Concat(WhiteRooks).ToArray();
+        AllPieces = AllPieces.Concat(BlackRooks).ToArray();
 
         NrOfThisTile_x = (int)(transform.position.x + 3.5f);
 
@@ -115,7 +119,7 @@ public class Test_Tile : MonoBehaviour
         for (; x < 8; x++)
         {
             Testing_Movement whitepawns;
-            whitepawns= AllPawns[x].GetComponent<Testing_Movement>();
+            whitepawns= AllPieces[x].GetComponent<Testing_Movement>();
 
             whitepawns.CheckIfStuckForReal();
             
@@ -125,7 +129,7 @@ public class Test_Tile : MonoBehaviour
         {
             Black_Pawn_Movement blackpawns;
 
-            blackpawns= AllPawns[x].GetComponent<Black_Pawn_Movement>();
+            blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
 
             blackpawns.CheckIfStuckForReal();
         }
@@ -137,17 +141,20 @@ public class Test_Tile : MonoBehaviour
     public void DeletePiece()
     {
         FindObjectOfType<AudioManager>().Play("PieceTake");
-        AllPawns[NrOfPieceThatsOnMe].transform.position += new Vector3(0, 0, 5);
-        if(NrOfPieceThatsOnMe>7)
+        AllPieces[NrOfPieceThatsOnMe].transform.position += new Vector3(0, 0, 5);
+        if(NrOfPieceThatsOnMe>=8 && NrOfPieceThatsOnMe<16)
         {
 
-            BlackPawnScript = AllPawns[NrOfPieceThatsOnMe].GetComponent<Black_Pawn_Movement>();
+            BlackPawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Black_Pawn_Movement>();
             BlackPawnScript.Tile_Im_On.Occupy_Black = false;
-        }else if (NrOfPieceThatsOnMe < 7)
+            BlackPawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        }
+        else if (NrOfPieceThatsOnMe < 8 )
         {
 
-            PawnScript = AllPawns[NrOfPieceThatsOnMe].GetComponent<Testing_Movement>();
+            PawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Testing_Movement>();
             PawnScript.Tile_Im_On.Occupy_White = false;
+            PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
 
     }
@@ -165,17 +172,17 @@ public class Test_Tile : MonoBehaviour
         {
             AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
             Debug.Log("Tile onmousedown called");
-            GameObject Pawn = AllPawns[(int)(NrOfPawnThatCalledThisTile)];
+            GameObject Pawn = AllPieces[(int)(NrOfPawnThatCalledThisTile)];
 
 
 
-            if(NrOfPawnThatCalledThisTile>7)
-            {
+            if(NrOfPawnThatCalledThisTile>=8 && NrOfPawnThatCalledThisTile < 16)
+                {
                 
                 BlackPawnScript = Pawn.GetComponent<Black_Pawn_Movement>();
                 BlackPawnMove(Pawn);
             }
-            else
+            else if (NrOfPawnThatCalledThisTile < 8)
             {
                 PawnScript= Pawn.GetComponent<Testing_Movement>();
                 WhitePawnMove(Pawn);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Black_Pawn_Movement : MonoBehaviour
 {
@@ -12,8 +13,14 @@ public class Black_Pawn_Movement : MonoBehaviour
     public int NrOfThisPawn_y;
 
     public Black_Pawn_Movement Pawnscript;
+    public Rook_Script RookScript;
 
-    public GameObject[] AllPawns;
+    public GameObject Logic_Manager;
+
+    public Logic_Management_Script logic_Manager_;
+
+
+    public GameObject[] AllBlackPieces;
 
     public Transform position_;
 
@@ -47,8 +54,13 @@ public class Black_Pawn_Movement : MonoBehaviour
         NrOfThisPawn_x = tile_to_go_to.NrOfThisTile_x;
         NrOfThisPawn_y = tile_to_go_to.NrOfThisTile_y;
 
- 
+        
 
+    }
+
+    void Awake()
+    {
+      logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
     }
 
     public bool CheckIfStuckForReal()
@@ -137,10 +149,12 @@ public class Black_Pawn_Movement : MonoBehaviour
 
         
 
-        if (OnlyOnePressed() && !CheckIfStuckForReal() && !Taken)
+        if (!CheckIfStuckForReal() && !Taken && !logic_Manager_.Black_Pressed)
         {
             CheckIfCanTake();
             Pressed = true;
+
+           logic_Manager_.Black_Pressed = true;
 
             if (!Stuck)
             {
@@ -177,7 +191,7 @@ public class Black_Pawn_Movement : MonoBehaviour
 
             }
         }
-        else
+        else if(Pressed && (logic_Manager_.Black_Pressed))
         {
             IfNotOnlyPressed();
         }
@@ -185,8 +199,8 @@ public class Black_Pawn_Movement : MonoBehaviour
 
     public void IfNotOnlyPressed()
     {
-        if (!Stuck)
-        {
+        logic_Manager_.Black_Pressed = false;
+       
             Tile_To_Go_To = FindTile(-2);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
             tile_to_go_to.Selected = true;
@@ -197,10 +211,10 @@ public class Black_Pawn_Movement : MonoBehaviour
             tile_to_go_to.Selected = true;
             tile_to_go_to.Called = false;
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
-        }
+        
 
         Pressed = false;
-        if (Tile_Im_On.position_.position.x < 3.5 && OnlyOnePressed())
+        if (Tile_Im_On.position_.position.x < 3.5 && !logic_Manager_.Black_Pressed)
         {
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
@@ -214,7 +228,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             }
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
         }
-        if (Tile_Im_On.position_.position.x > -3.5 && OnlyOnePressed())
+        if (Tile_Im_On.position_.position.x > -3.5 && !logic_Manager_.Black_Pressed)
         {
             Tile_To_Go_To = FindTile(-10);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
@@ -224,7 +238,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             {
                 Take_Function_Called_Right = false;
                 tile_to_go_to.Occupy_White = true;
-            }
+             }
 
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
         }
@@ -240,23 +254,9 @@ public class Black_Pawn_Movement : MonoBehaviour
         return Tiles_To_Be_Selected[(int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + x];
     }
 
-    public bool OnlyOnePressed()
-    {
+    
 
-        AllPawns = GameObject.FindGameObjectsWithTag("BlackPawn");
 
-        for (int x = 0; x < 8; x++)
-        {
-            GameObject xPawn = AllPawns[x];
-            Pawnscript = xPawn.GetComponent<Black_Pawn_Movement>();
-            if (Pawnscript.Pressed)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     void CheckIfCanTake()
     {

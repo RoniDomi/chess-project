@@ -8,6 +8,9 @@ TagManager:
   - Pawns
   - WhitePawns
   - BlackPawn
+  - White_Rook
+  - Black_Rook
+  - Logic_Manager
   layers:
   - Default
   - TransparentFX

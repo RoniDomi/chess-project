@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Logic_Management_Script : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool White_Pressed;
+    public bool Black_Pressed;
+
     void Start()
     {
-        
+        White_Pressed=false;
+        Black_Pressed=false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
