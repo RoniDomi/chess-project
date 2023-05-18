@@ -121,6 +121,7 @@ public class Test_Tile : MonoBehaviour
     }
     public void UncallTiles()
     {   
+        
         Test_Tile Tiles_In_This_loop;
         for (int x = 0; x < 64; x++)
         {
@@ -131,14 +132,29 @@ public class Test_Tile : MonoBehaviour
                 Tiles_In_This_loop.Called = false;
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
-                Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 0;
-                if (En_passant_Active_White == true && En_passant_Active_Black == true)
-                {
-                    if (Tiles_In_This_loop.NrOfPieceThatsOnMe < 8 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 16 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 17)
-                        Tiles_In_This_loop.Occupy_White = true;
-                    else if ((Tiles_In_This_loop.NrOfPieceThatsOnMe > 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19)
-                        Tiles_In_This_loop.Occupy_Black = true;
-                }
+
+               if ((Tiles_In_This_loop.NrOfPieceThatsOnMe < 8 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 16 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 17))
+                    {
+                     if(!(Tiles_In_This_loop.NrOfPawnThatCalledThisTile < 8 || Tiles_In_This_loop.NrOfPawnThatCalledThisTile == 16 || Tiles_In_This_loop.NrOfPawnThatCalledThisTile == 17))
+                       {
+                       
+                           Tiles_In_This_loop.Occupy_White = true; 
+
+                        }
+                        
+                    }
+                else if (((Tiles_In_This_loop.NrOfPieceThatsOnMe > 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19) && !En_passant_Active_Black)
+                    {
+                       
+                            Tiles_In_This_loop.Occupy_Black = true;
+                        
+                    }
+                
+
+                Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
+
+
+               
             }
         }
     }
@@ -149,7 +165,7 @@ public class Test_Tile : MonoBehaviour
         for (int x = 0; x < 64; x++)
         {
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
-            if (Tiles_In_This_loop.En_passant_Active_White || En_passant_Active_Black)
+            if (Tiles_In_This_loop.En_passant_Active_White || Tiles_In_This_loop.En_passant_Active_Black)
             {
                 Tiles_In_This_loop.En_passant_Active_White = false;
                 Tiles_In_This_loop.En_passant_Active_Black = false;
@@ -234,8 +250,13 @@ public class Test_Tile : MonoBehaviour
 
         if (Called && !(Occupy_Black || Occupy_White))
         {
+            bool v=false;
+            bool m = false;
 
-
+            if(En_passant_Active_Black || En_passant_Active_White)
+            {
+                v = true;
+            }
         int saved_number = NrOfPieceThatsOnMe;
             Undo_En_Passant();
 
@@ -252,24 +273,36 @@ public class Test_Tile : MonoBehaviour
                 
                 BlackPawnScript = Piece.GetComponent<Black_Pawn_Movement>();
                 BlackPawnMove(Piece);
+                if (NrOfPieceThatsOnMe != 100)
+                {
+                    DeletePiece();
+                    m = true;
+                }
+                
             }
             else if (NrOfPawnThatCalledThisTile < 8)
             {
                 PawnScript= Piece.GetComponent<Testing_Movement>();
                 WhitePawnMove(Piece);
+                if (NrOfPieceThatsOnMe != 100)
+                {
+                    DeletePiece();
+                    m = true;
+                }
+          
+                
             }
-            else if(NrOfPawnThatCalledThisTile >=16 && NrOfPawnThatCalledThisTile < 20)
+            else if(NrOfPawnThatCalledThisTile >=16 && NrOfPawnThatCalledThisTile < 20 )
             {
                 RookScript= Piece.GetComponent<Rook_Script>();
                 RookMove(Piece);
             }
-            
-            
 
-            if(NrOfPieceThatsOnMe!=100)
-            DeletePiece();
-            else
-                FindObjectOfType<AudioManager>().Play("PieceMove");
+            if (!v && NrOfPieceThatsOnMe != 100)
+                    DeletePiece();
+             else if(!m)
+               FindObjectOfType<AudioManager>().Play("PieceMove");
+
 
 
 
