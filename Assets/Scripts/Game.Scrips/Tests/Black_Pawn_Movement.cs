@@ -271,7 +271,7 @@ public class Black_Pawn_Movement : MonoBehaviour
 
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (tile_to_go_to.Occupy_White)
+            if (tile_to_go_to.Occupy_White || tile_to_go_to.En_passant_Active_White)
             {
 
               
@@ -296,7 +296,7 @@ public class Black_Pawn_Movement : MonoBehaviour
 
 
 
-            if (tile_to_go_to.Occupy_White)
+            if (tile_to_go_to.Occupy_White || tile_to_go_to.En_passant_Active_White)
             {
 
               

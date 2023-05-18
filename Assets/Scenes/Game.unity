@@ -1115,10 +1115,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2619bd2b282144c857370425adab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NrOfThisPiece: 0
+  black: 1
+  white: 0
+  position_: {fileID: 538432638}
+  NrOfThisPiece: 19
   Pressed: 0
+  Taken: 0
   Stuck: 0
   Tiles_To_Be_Selected: []
+  Logic_Manager: {fileID: 1935585489}
+  logic_Manager_: {fileID: 0}
+  position_x: 0
+  position_y: 0
+  Tile_To_Go_To: {fileID: 0}
+  Tile_Im_On: {fileID: 0}
 --- !u!1 &627494847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,10 +1377,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2619bd2b282144c857370425adab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NrOfThisPiece: 0
+  black: 0
+  white: 1
+  position_: {fileID: 668249957}
+  NrOfThisPiece: 16
   Pressed: 0
+  Taken: 0
   Stuck: 0
   Tiles_To_Be_Selected: []
+  Logic_Manager: {fileID: 1935585489}
+  logic_Manager_: {fileID: 0}
+  position_x: 0
+  position_y: 0
+  Tile_To_Go_To: {fileID: 0}
+  Tile_Im_On: {fileID: 0}
 --- !u!1 &705289008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,10 +3487,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2619bd2b282144c857370425adab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NrOfThisPiece: 0
+  black: 1
+  white: 0
+  position_: {fileID: 1772194618}
+  NrOfThisPiece: 18
   Pressed: 0
+  Taken: 0
   Stuck: 0
   Tiles_To_Be_Selected: []
+  Logic_Manager: {fileID: 1935585489}
+  logic_Manager_: {fileID: 0}
+  position_x: 0
+  position_y: 0
+  Tile_To_Go_To: {fileID: 0}
+  Tile_Im_On: {fileID: 0}
 --- !u!1 &1777939820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,10 +3646,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2619bd2b282144c857370425adab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NrOfThisPiece: 0
+  black: 0
+  white: 1
+  position_: {fileID: 1790079613}
+  NrOfThisPiece: 17
   Pressed: 0
+  Taken: 0
   Stuck: 0
   Tiles_To_Be_Selected: []
+  Logic_Manager: {fileID: 1935585489}
+  logic_Manager_: {fileID: 0}
+  position_x: 0
+  position_y: 0
+  Tile_To_Go_To: {fileID: 0}
+  Tile_Im_On: {fileID: 0}
 --- !u!1 &1805824076
 GameObject:
   m_ObjectHideFlags: 0

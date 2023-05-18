@@ -22,11 +22,23 @@ public class Test_Tile : MonoBehaviour
     public bool Occupy_White=false;
     public bool Occupy_Black=false;
     public int NrOfPieceThatsOnMe;
-    public bool En_passant_Active = false;
+    public bool En_passant_Active_White = false;
+    public bool En_passant_Active_Black = false;
+    public bool Vertical_Edge_Up = false;
+    public bool Vertical_Edge_Down = false;
+    public bool Horizontal_Edge_Left = false;
+    public bool Horizontal_Edge_Right = false;
+    public Rook_Script RookScript;
+    public GameObject Logic;
+    public Logic_Management_Script logic_Manager_;
 
 
     public void Start()
     {
+        Logic= GameObject.FindGameObjectWithTag("Logic_Manager");
+
+        logic_Manager_ = Logic.GetComponent<Logic_Management_Script>();
+
         NrOfPieceThatsOnMe = 100;
 
         Debug.Log("Color Changed");
@@ -76,6 +88,36 @@ public class Test_Tile : MonoBehaviour
         {
             NrOfPieceThatsOnMe = (int)(NrOfThisTile_x + 8);
         }
+
+        if (position_.position.x == -3.5)
+            Horizontal_Edge_Left = true;
+        if (position_.position.x == 3.5)
+            Horizontal_Edge_Right = true;
+
+        if (position_.position.y == 3.5)
+            Vertical_Edge_Up = true;
+        if (position_.position.y == -3.5)
+            Vertical_Edge_Down = true;
+
+        if (Vertical_Edge_Up )
+        {
+            if (Horizontal_Edge_Right)
+            {
+                NrOfPieceThatsOnMe = 19;
+            }
+            else if (Horizontal_Edge_Left)
+                NrOfPieceThatsOnMe = 18;
+        }else if (Vertical_Edge_Down)
+        {
+            if (Horizontal_Edge_Right)
+            {
+                NrOfPieceThatsOnMe = 17;
+            }
+            else if (Horizontal_Edge_Left)
+                NrOfPieceThatsOnMe = 16;
+        }
+        
+
     }
     public void UncallTiles()
     {   
@@ -89,7 +131,14 @@ public class Test_Tile : MonoBehaviour
                 Tiles_In_This_loop.Called = false;
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
-                
+                Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 0;
+                if (En_passant_Active_White == true && En_passant_Active_Black == true)
+                {
+                    if (Tiles_In_This_loop.NrOfPieceThatsOnMe < 8 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 16 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 17)
+                        Tiles_In_This_loop.Occupy_White = true;
+                    else if ((Tiles_In_This_loop.NrOfPieceThatsOnMe > 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19)
+                        Tiles_In_This_loop.Occupy_Black = true;
+                }
             }
         }
     }
@@ -100,9 +149,10 @@ public class Test_Tile : MonoBehaviour
         for (int x = 0; x < 64; x++)
         {
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
-            if (Tiles_In_This_loop.En_passant_Active)
+            if (Tiles_In_This_loop.En_passant_Active_White || En_passant_Active_Black)
             {
-                Tiles_In_This_loop.En_passant_Active = false;
+                Tiles_In_This_loop.En_passant_Active_White = false;
+                Tiles_In_This_loop.En_passant_Active_Black = false;
                 Tiles_In_This_loop.Occupied = false;
                 Tiles_In_This_loop.Occupy_Black = false;
                 Tiles_In_This_loop.Occupy_White = false;
@@ -134,6 +184,13 @@ public class Test_Tile : MonoBehaviour
             blackpawns.CheckIfStuckForReal();
         }
 
+        for(; x<20; x++)
+        {
+            Rook_Script rooks;
+            rooks = AllPieces[x].GetComponent<Rook_Script>();
+            rooks.CheckIfStuck();
+        }
+
 
         
     }
@@ -147,6 +204,7 @@ public class Test_Tile : MonoBehaviour
 
             BlackPawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Black_Pawn_Movement>();
             BlackPawnScript.Tile_Im_On.Occupy_Black = false;
+            BlackPawnScript.Tile_Im_On.En_passant_Active_Black = false;
             BlackPawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe < 8 )
@@ -154,7 +212,17 @@ public class Test_Tile : MonoBehaviour
 
             PawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Testing_Movement>();
             PawnScript.Tile_Im_On.Occupy_White = false;
+            PawnScript.Tile_Im_On.En_passant_Active_White = false;
             PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        }
+        else if(NrOfPieceThatsOnMe >=16 && NrOfPieceThatsOnMe <20 )
+        {
+            RookScript=AllPieces[NrOfPieceThatsOnMe].GetComponent<Rook_Script>();
+            if(RookScript.white)
+                RookScript.Tile_Im_On.Occupy_White = false;
+            else
+                RookScript.Tile_Im_On.Occupy_Black = false;
+            RookScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
 
     }
@@ -163,29 +231,37 @@ public class Test_Tile : MonoBehaviour
      
         AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
 
+
+        if (Called && !(Occupy_Black || Occupy_White))
+        {
+
+
         int saved_number = NrOfPieceThatsOnMe;
             Undo_En_Passant();
 
         NrOfPieceThatsOnMe = saved_number;
 
-        if (Called && !(Occupy_Black || Occupy_White))
-        {
             AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
             Debug.Log("Tile onmousedown called");
-            GameObject Pawn = AllPieces[(int)(NrOfPawnThatCalledThisTile)];
+            GameObject Piece = AllPieces[(int)(NrOfPawnThatCalledThisTile)];
 
 
 
             if(NrOfPawnThatCalledThisTile>=8 && NrOfPawnThatCalledThisTile < 16)
                 {
                 
-                BlackPawnScript = Pawn.GetComponent<Black_Pawn_Movement>();
-                BlackPawnMove(Pawn);
+                BlackPawnScript = Piece.GetComponent<Black_Pawn_Movement>();
+                BlackPawnMove(Piece);
             }
             else if (NrOfPawnThatCalledThisTile < 8)
             {
-                PawnScript= Pawn.GetComponent<Testing_Movement>();
-                WhitePawnMove(Pawn);
+                PawnScript= Piece.GetComponent<Testing_Movement>();
+                WhitePawnMove(Piece);
+            }
+            else if(NrOfPawnThatCalledThisTile >=16 && NrOfPawnThatCalledThisTile < 20)
+            {
+                RookScript= Piece.GetComponent<Rook_Script>();
+                RookMove(Piece);
             }
             
             
@@ -220,9 +296,8 @@ public class Test_Tile : MonoBehaviour
         {
             Test_Tile Previous_Tile;
             Previous_Tile = PawnScript.FindTile(-2).GetComponent<Test_Tile>();
-            Previous_Tile.Occupy_White = true;
             Previous_Tile.NrOfPieceThatsOnMe=PawnScript.NrOfThisPawn;
-            Previous_Tile.En_passant_Active = true;
+            Previous_Tile.En_passant_Active_White = true;
 
         }
         PawnScript.FirstMove = false;
@@ -254,9 +329,8 @@ public class Test_Tile : MonoBehaviour
         {
             Test_Tile Previous_Tile;
             Previous_Tile = BlackPawnScript.FindTile(0).GetComponent<Test_Tile>();
-            Previous_Tile.Occupy_Black = true;
             Previous_Tile.NrOfPieceThatsOnMe = BlackPawnScript.NrOfThisPawn;
-            Previous_Tile.En_passant_Active = true;
+            Previous_Tile.En_passant_Active_Black = true;
         }
         BlackPawnScript.FirstMove = false;
       
@@ -271,6 +345,31 @@ public class Test_Tile : MonoBehaviour
         BlackPawnScript.Take_Function_Called_Right = false;
         
 
+
+    }
+    void RookMove(GameObject Piece)
+    {
+        Piece.transform.position = new Vector3((float)(position_.position.x ), (float)(position_.position.y +0.3),0);
+        RookScript.position_x = position_.position.x;
+        RookScript.position_y = position_.position.y + 0.3;
+        RookScript.Pressed = false;
+        RookScript.Tile_Im_On.Occupied = false;
+        RookScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        Occupied = true;
+        if(RookScript.black)
+        {
+            Occupy_Black = true;
+            Occupy_White = false;
+            logic_Manager_.Black_Pressed = false;
+            RookScript.Tile_Im_On.Occupy_Black = false;
+        }
+        else
+        {
+            Occupy_White = true;
+            Occupy_Black = false;
+            logic_Manager_.White_Pressed = false;
+            RookScript.Tile_Im_On.Occupy_White = false;
+        }
 
     }
     

@@ -236,6 +236,7 @@ public class Testing_Movement : MonoBehaviour
 
                 Take_Function_Called_Left = false;
                 tile_to_go_to.Occupy_Black = true;
+
             }
 
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
@@ -280,7 +281,7 @@ public class Testing_Movement : MonoBehaviour
 
         tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-        if (tile_to_go_to.Occupy_Black )       
+        if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)       
             {
                 tile_to_go_to.Selected = false;
          
@@ -302,7 +303,7 @@ public class Testing_Movement : MonoBehaviour
 
 
 
-            if (tile_to_go_to.Occupy_Black)
+            if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)
             {
 
               
