@@ -11,6 +11,8 @@ TagManager:
   - White_Rook
   - Black_Rook
   - Logic_Manager
+  - White_Bishop
+  - Black_Bishop
   layers:
   - Default
   - TransparentFX

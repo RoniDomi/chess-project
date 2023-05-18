@@ -1,0 +1,286 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bishop_Script : MonoBehaviour
+{
+    public bool black;
+    public bool white;
+    public Transform position_;
+    public int NrOfThisPiece;
+    public bool Pressed = false;
+    public bool Taken = false;
+    public bool Stuck = false;
+
+    public GameObject[] Tiles_To_Be_Selected;
+
+    public GameObject Logic_Manager;
+
+    public Logic_Management_Script logic_Manager_;
+
+    public double position_x;
+    public double position_y;
+    public GameObject Tile_To_Go_To;
+    public Test_Tile Tile_Im_On;
+
+    void Awake()
+    {
+        logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Stuck = false;
+        position_x = position_.position.x;
+        position_y = position_.position.y;
+    }
+
+
+    public void OnMouseDown()
+    {
+
+        FindTileImOn();
+
+        if (Tile_Im_On.Called)
+        {
+            Tile_Im_On.OnMouseDown();
+            Pressed = false;
+            Taken = true;
+        }
+        CheckIfStuck();
+        if ((!logic_Manager_.White_Pressed || !logic_Manager_.Black_Pressed) && !Taken && !Pressed && !Stuck)
+        {
+            Pressed = true;
+            if (white)
+                logic_Manager_.White_Pressed = true;
+            else
+                logic_Manager_.Black_Pressed = true;
+            int x = 8;
+            RookCallTiles(9, x);
+            x = -8;
+            RookCallTiles(-7, x);
+            x = 6;
+            RookCallTiles(7, x);
+            x = -10;
+            RookCallTiles(-9, x);
+
+        }
+        else if (Pressed && (logic_Manager_.White_Pressed || logic_Manager_.Black_Pressed))
+        {
+            Pressed = false;
+            if (white)
+                logic_Manager_.White_Pressed = false;
+            else
+                logic_Manager_.Black_Pressed = false;
+            Tile_Im_On.UncallTiles();
+
+
+
+
+        }
+    }
+
+    public void RookCallTiles(int i, int j)
+    {
+        Test_Tile TIle_Script;
+
+        while (true)
+        {
+            if (i == 9)
+            {
+                if (Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right)
+                    break;
+            }
+            else if (i == -7)
+            {
+
+                if (Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left)
+                    break;
+            }
+            else if (i == 7)
+            {
+
+                if (Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down)
+                    break;
+            }
+            else
+            {
+
+                if (Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down)
+                    break;
+            }
+            GameObject xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                break;
+            TIle_Script.TestFunction();
+            TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+            TIle_Script.Selected = false;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (white)
+                    TIle_Script.Occupy_Black = false;
+                else
+                    TIle_Script.Occupy_White = false;
+                break;
+
+            }
+            if (i == 9)
+            {
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else if (i == -7)
+            {
+
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            else if (i == 7)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            j += i;
+
+
+        }
+    }
+
+    public void CheckIfStuck()
+    {
+        int conditions = 0;
+
+        FindTileImOn();
+
+        Test_Tile tile_to_go_to;
+
+        if (Tile_Im_On.Vertical_Edge_Up)
+        {
+            conditions += 2;
+            if (Tile_Im_On.Horizontal_Edge_Left)
+            {
+                conditions++;
+
+                Tile_To_Go_To = FindTile(6);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
+            else if(Tile_Im_On.Horizontal_Edge_Right)
+            {
+                conditions++;
+                Tile_To_Go_To = FindTile(-10);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
+
+            Tile_To_Go_To = FindTile(6);
+             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+            Tile_To_Go_To = FindTile(-10);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+
+        }
+
+        if (Tile_Im_On.Vertical_Edge_Down)
+        {
+            conditions += 2;
+            if (Tile_Im_On.Horizontal_Edge_Left)
+            {
+                conditions++;
+
+                Tile_To_Go_To = FindTile(8);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
+            else if (Tile_Im_On.Horizontal_Edge_Right)
+            {
+                conditions++;
+                Tile_To_Go_To = FindTile(-8);
+               tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
+
+            Tile_To_Go_To = FindTile(8);
+             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+            Tile_To_Go_To = FindTile(-8);
+             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+
+
+
+        }
+        if (Tile_Im_On.Horizontal_Edge_Right)
+        {
+            conditions += 2;
+            Tile_To_Go_To = FindTile(-8);
+           tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+            Tile_To_Go_To = FindTile(-10);
+           tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+
+        }
+        if (Tile_Im_On.Horizontal_Edge_Left)
+        {
+            conditions += 2;
+            Tile_To_Go_To = FindTile(6);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+
+            Tile_To_Go_To = FindTile(6);
+              tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                conditions++;
+        }
+        
+        if (conditions == 4)
+        {
+            Stuck = true;
+        }
+        else
+            Stuck = false;
+    }
+
+    public GameObject FindTile(int x)
+    {
+
+        GameObject[] Tiles_To_Be_Selected;
+        Tiles_To_Be_Selected = GameObject.FindGameObjectsWithTag("Tag_Tile");
+
+        return Tiles_To_Be_Selected[(int)(position_y + 4.2 + 0.1275f + ((position_x + 5.2f) * 8) - 13) + x];
+    }
+    public void FindTileImOn()
+    {
+
+        Tile_To_Go_To = FindTile(-1);
+
+        Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+
+
+    }
+}
