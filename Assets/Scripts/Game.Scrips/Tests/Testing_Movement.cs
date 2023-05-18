@@ -210,8 +210,9 @@ public class Testing_Movement : MonoBehaviour
     public void IfNotOnlyPressed()
     {
         logic_Manager_.White_Pressed = false;
-      
-            Tile_To_Go_To = FindTile(0);
+        logic_Manager_.NoHovering = false;
+
+        Tile_To_Go_To = FindTile(0);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
             tile_to_go_to.Selected = true;
             tile_to_go_to.Called = false;

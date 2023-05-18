@@ -58,121 +58,14 @@ public class Rook_Script : MonoBehaviour
             logic_Manager_.White_Pressed = true;
             else
                 logic_Manager_.Black_Pressed = true;
-            Test_Tile TIle_Script;
             int x = 0;
-            while (true)
-            {
-                if (Tile_Im_On.Vertical_Edge_Up)
-                    break;
-                GameObject xTile = FindTile(x);
-                TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                    break;
-                TIle_Script.TestFunction();
-                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-                TIle_Script.Selected = false;
-
-                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-                {
-                    if (white)
-                        TIle_Script.Occupy_Black = false;
-                    else
-                        TIle_Script.Occupy_White = false; 
-                    break;
-                    
-                }
-                if (TIle_Script.Vertical_Edge_Up)
-                    break;
-                x++;
-
-            }
+            RookCallTiles(1,x);
             x = -2;
-            while (true)
-            {
-                if (Tile_Im_On.Vertical_Edge_Down)
-                    break;
-                GameObject xTile = FindTile(x);
-                TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                    break;
-                TIle_Script.TestFunction();
-                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-                TIle_Script.Selected = false;
-
-                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-                {
-                    if (white)
-                        TIle_Script.Occupy_Black = false;
-                    else
-                        TIle_Script.Occupy_White = false;
-
-                    break;
-                    
-                }
-                if (TIle_Script.Vertical_Edge_Down)
-                    break;
-                x--;
-
-            }
+            RookCallTiles(-1, x);
             x = 7;
-
-            while (true)
-            {
-                
-                if (Tile_Im_On.Horizontal_Edge_Right)
-                    break;
-                GameObject xTile = FindTile(x);
-                TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                    break;
-                TIle_Script.TestFunction();
-                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-                TIle_Script.Selected = false;
-
-                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-                {
-                    if (white)
-                        TIle_Script.Occupy_Black = false;
-                    else
-                        TIle_Script.Occupy_White = false;
-
-                    break;
-                    
-                }
-                if (TIle_Script.Horizontal_Edge_Right)
-                    break;
-                x +=8;
-
-            }
+            RookCallTiles(8, x);
             x = -9;
-                while (true)
-                {
-                if (Tile_Im_On.Horizontal_Edge_Left)
-                    break;
-                GameObject xTile = FindTile(x);
-                TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                  break;
-                TIle_Script.TestFunction();
-                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-                TIle_Script.Selected = false;
-                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-                {
-                    if (white)
-                        TIle_Script.Occupy_Black = false;
-                    else
-                        TIle_Script.Occupy_White = false;
-                   
-                    break;
-                   
-                }
-               if ( TIle_Script.Horizontal_Edge_Left)
-                {
-                    break;
-                }
-                x -= 8;
-
-                } 
+            RookCallTiles(-8, x);
             
         }
         else if(Pressed && (logic_Manager_.White_Pressed  || logic_Manager_.Black_Pressed))
@@ -190,7 +83,81 @@ public class Rook_Script : MonoBehaviour
         }
     }
 
-    public void CheckIfStuck()
+    public void RookCallTiles(int i, int j)
+    {
+        Test_Tile TIle_Script;
+
+        while (true)
+        {
+            if (i == 1)
+            {
+                if (Tile_Im_On.Vertical_Edge_Up)
+                    break;
+            }
+            else if (i == -1)
+            {
+
+                if (Tile_Im_On.Vertical_Edge_Down)
+                    break;
+            }
+            else if (i == 8)
+            {
+
+                if (Tile_Im_On.Horizontal_Edge_Right)
+                    break;
+            }
+            else
+            {
+
+                if (Tile_Im_On.Horizontal_Edge_Left)
+                    break;
+            }
+            GameObject xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                break;
+            TIle_Script.TestFunction();
+            TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+            TIle_Script.Selected = false;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (white)
+                    TIle_Script.Occupy_Black = false;
+                else
+                    TIle_Script.Occupy_White = false;
+                break;
+
+            }
+            if (i == 1)
+            {
+                if (TIle_Script.Vertical_Edge_Up)
+                    break;
+            }else if(i==-1)
+            {
+
+                if (TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else if(i==8)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            j += i;
+
+
+        }
+    }
+
+        public void CheckIfStuck()
     {
         int conditions = 0;
         

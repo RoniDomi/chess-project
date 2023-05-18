@@ -6,6 +6,7 @@ public class Logic_Management_Script : MonoBehaviour
 {
     public bool White_Pressed;
     public bool Black_Pressed;
+    public bool NoHovering;
 
     void Start()
     {

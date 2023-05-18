@@ -5,7 +5,8 @@ using System.Linq;
 
 public class Test_Tile : MonoBehaviour
 {
-    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor,_TakeColor;
+    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor,_TakeColor,_DarkCalledColor,_LightCalledColor;
+    public bool NoHovering = false;
     public SpriteRenderer _renderer;
     public int NrOfThisTile_x;
     public int NrOfThisTile_y;
@@ -120,8 +121,8 @@ public class Test_Tile : MonoBehaviour
 
     }
     public void UncallTiles()
-    {   
-        
+    {
+        logic_Manager_.NoHovering = false;
         Test_Tile Tiles_In_This_loop;
         for (int x = 0; x < 64; x++)
         {
@@ -143,7 +144,7 @@ public class Test_Tile : MonoBehaviour
                         }
                         
                     }
-                else if (((Tiles_In_This_loop.NrOfPieceThatsOnMe > 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19) && !En_passant_Active_Black)
+                else if (((Tiles_In_This_loop.NrOfPieceThatsOnMe >= 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19) && !En_passant_Active_Black)
                     {
                        
                             Tiles_In_This_loop.Occupy_Black = true;
@@ -412,12 +413,13 @@ public class Test_Tile : MonoBehaviour
     }
     void OnMouseEnter()
     {
+        if(!logic_Manager_.NoHovering)
             _renderer.color = Hovercolor;
-            Debug.Log("Enter " + gameObject.name);
+            
     }
     void OnMouseOver()
     {
-
+        if(!logic_Manager_.NoHovering)
             _renderer.color = Hovercolor;
     }
     void OnMouseExit()
@@ -433,15 +435,13 @@ public class Test_Tile : MonoBehaviour
         if (!Occupy_Black || !Occupy_White)
         {
             Called = true;
-            _renderer.color = Hovercolor;
+            if (_renderer.color == _offsetColor)
+                _renderer.color = _DarkCalledColor;
+            else
+                _renderer.color = _LightCalledColor;
+            logic_Manager_.NoHovering = true;
         }
     }
 
-    public void RedTakeColor()
-    {
-        
-            Called = true;
-            _renderer.color = _TakeColor;
-        
-    }
+
 }

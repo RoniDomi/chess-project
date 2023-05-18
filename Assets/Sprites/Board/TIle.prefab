@@ -103,13 +103,15 @@ MonoBehaviour:
   Hovercolor: {r: 0.92933345, g: 1, b: 0, a: 1}
   _SavedColor: {r: 0, g: 0, b: 0, a: 0}
   _TakeColor: {r: 1, g: 0.3160377, b: 0.3160377, a: 0}
+  _DarkCalledColor: {r: 0.31764707, g: 0.4155653, b: 0.7254902, a: 1}
+  _LightCalledColor: {r: 0.72828406, g: 0.7444686, b: 0.9245283, a: 1}
   _renderer: {fileID: 8650034069143675183}
   NrOfThisTile_x: 0
   NrOfThisTile_y: 0
   Selected: 1
   NrOfPawnThatCalledThisTile: 0
   Called: 0
-  AllPawns: []
+  AllPieces: []
   position_: {fileID: 5267484545912473450}
   AllTiles: []
   xTile: {fileID: 0}
@@ -118,6 +120,16 @@ MonoBehaviour:
   BlackPawnScript: {fileID: 0}
   Occupy_White: 0
   Occupy_Black: 0
+  NrOfPieceThatsOnMe: 0
+  En_passant_Active_White: 0
+  En_passant_Active_Black: 0
+  Vertical_Edge_Up: 0
+  Vertical_Edge_Down: 0
+  Horizontal_Edge_Left: 0
+  Horizontal_Edge_Right: 0
+  RookScript: {fileID: 0}
+  Logic: {fileID: 0}
+  logic_Manager_: {fileID: 0}
 --- !u!61 &8614477756664844487
 BoxCollider2D:
   m_ObjectHideFlags: 0

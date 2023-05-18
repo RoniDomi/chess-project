@@ -155,6 +155,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             Pressed = true;
 
            logic_Manager_.Black_Pressed = true;
+           
 
             if (!Stuck)
             {
@@ -200,6 +201,7 @@ public class Black_Pawn_Movement : MonoBehaviour
     public void IfNotOnlyPressed()
     {
         logic_Manager_.Black_Pressed = false;
+        logic_Manager_.NoHovering = false;
        
             Tile_To_Go_To = FindTile(-2);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
