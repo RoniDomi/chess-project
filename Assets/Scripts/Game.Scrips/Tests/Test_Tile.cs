@@ -21,6 +21,7 @@ public class Test_Tile : MonoBehaviour
     public Testing_Movement PawnScript;
     public Black_Pawn_Movement BlackPawnScript;
     public Bishop_Script BishopScript;
+    public Queen_Script QueenScript;
     public bool Occupy_White=false;
     public bool Occupy_Black=false;
     public int NrOfPieceThatsOnMe;
@@ -34,6 +35,20 @@ public class Test_Tile : MonoBehaviour
     public GameObject Logic;
     public Logic_Management_Script logic_Manager_;
 
+    bool WhitePiece(Test_Tile tile)
+    {
+        if (tile.NrOfPieceThatsOnMe < 8 || tile.NrOfPieceThatsOnMe == 16 || tile.NrOfPieceThatsOnMe == 17 || tile.NrOfPieceThatsOnMe == 20 || tile.NrOfPieceThatsOnMe == 21 || tile.NrOfPieceThatsOnMe == 24)
+            return true;
+        return false;
+    }
+    bool BlackPiece(Test_Tile tile)
+    {
+        {
+            if ((tile.NrOfPieceThatsOnMe > 8 && tile.NrOfPieceThatsOnMe < 16) || tile.NrOfPieceThatsOnMe == 18 || tile.NrOfPieceThatsOnMe == 19 || tile.NrOfPieceThatsOnMe == 22 || tile.NrOfPieceThatsOnMe == 23 || tile.NrOfPieceThatsOnMe == 25)
+                return true;
+            return false;
+        }
+    }
 
     public void Start()
     {
@@ -60,6 +75,8 @@ public class Test_Tile : MonoBehaviour
         GameObject[] BlackRooks = GameObject.FindGameObjectsWithTag("Black_Rook");
         GameObject[] WhiteBishops = GameObject.FindGameObjectsWithTag("White_Bishop");
         GameObject[] BlackBishops = GameObject.FindGameObjectsWithTag("Black_Bishop");
+        GameObject[] WhiteQueen = GameObject.FindGameObjectsWithTag("White_Queen");
+        GameObject[] BlackQueen = GameObject.FindGameObjectsWithTag("Black_Queen");
 
         AllPieces = GameObject.FindGameObjectsWithTag("Pawns");
 
@@ -68,6 +85,8 @@ public class Test_Tile : MonoBehaviour
         AllPieces = AllPieces.Concat(BlackRooks).ToArray();
         AllPieces = AllPieces.Concat(WhiteBishops).ToArray();
         AllPieces = AllPieces.Concat(BlackBishops).ToArray();
+        AllPieces = AllPieces.Concat(WhiteQueen).ToArray();
+        AllPieces = AllPieces.Concat(BlackQueen).ToArray();
 
         NrOfThisTile_x = (int)(transform.position.x + 3.5f);
 
@@ -139,9 +158,9 @@ public class Test_Tile : MonoBehaviour
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
 
-               if ((Tiles_In_This_loop.NrOfPieceThatsOnMe < 8 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 16 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 17))
+               if (WhitePiece(Tiles_In_This_loop))
                     {
-                     if(!(Tiles_In_This_loop.NrOfPawnThatCalledThisTile < 8 || Tiles_In_This_loop.NrOfPawnThatCalledThisTile == 16 || Tiles_In_This_loop.NrOfPawnThatCalledThisTile == 17))
+                     if(!(WhitePiece(Tiles_In_This_loop)))
                        {
                        
                            Tiles_In_This_loop.Occupy_White = true; 
@@ -149,7 +168,7 @@ public class Test_Tile : MonoBehaviour
                         }
                         
                     }
-                else if (((Tiles_In_This_loop.NrOfPieceThatsOnMe >= 8 && Tiles_In_This_loop.NrOfPieceThatsOnMe < 16) || Tiles_In_This_loop.NrOfPieceThatsOnMe == 18 || Tiles_In_This_loop.NrOfPieceThatsOnMe == 19) && !En_passant_Active_Black)
+                else if (BlackPiece(Tiles_In_This_loop) && !En_passant_Active_Black)
                     {
                        
                             Tiles_In_This_loop.Occupy_Black = true;
@@ -218,6 +237,12 @@ public class Test_Tile : MonoBehaviour
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
             bishops.CheckIfStuck();
         }
+        for(;x<26;x++)
+        {
+            Queen_Script queens;
+            queens = AllPieces[x].GetComponent<Queen_Script>();
+            queens.CheckIfStuck();
+        }
 
 
         
@@ -260,6 +285,15 @@ public class Test_Tile : MonoBehaviour
             else
                 BishopScript.Tile_Im_On.Occupy_Black = false;
             BishopScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        }
+        else if(NrOfPieceThatsOnMe >= 24 && NrOfPieceThatsOnMe < 26)
+            {
+            QueenScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Queen_Script>();
+            if (QueenScript.white)
+                QueenScript.Tile_Im_On.Occupy_White = false;
+            else
+                QueenScript.Tile_Im_On.Occupy_Black = false;
+            QueenScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
 
     }
@@ -323,6 +357,11 @@ public class Test_Tile : MonoBehaviour
                 BishopScript = Piece.GetComponent<Bishop_Script>();
                 BishopMove(Piece);
             }
+            else if(NrOfPawnThatCalledThisTile >= 24 && NrOfPawnThatCalledThisTile < 26)
+            {
+                QueenScript= Piece.GetComponent<Queen_Script>();
+                QueenMove(Piece);
+            }
 
             if (!v && NrOfPieceThatsOnMe != 100)
                     DeletePiece();
@@ -333,6 +372,7 @@ public class Test_Tile : MonoBehaviour
 
 
             NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
+
             UncallTiles();
             
             
@@ -351,14 +391,8 @@ public class Test_Tile : MonoBehaviour
         PawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         PawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         PawnScript.Pressed = false;
-        if(PawnScript.FirstMove )
-        {
-            Test_Tile Previous_Tile;
-            Previous_Tile = PawnScript.FindTile(-2).GetComponent<Test_Tile>();
-            Previous_Tile.NrOfPieceThatsOnMe=PawnScript.NrOfThisPawn;
-            Previous_Tile.En_passant_Active_White = true;
+       
 
-        }
         PawnScript.FirstMove = false;
        
 
@@ -370,7 +404,7 @@ public class Test_Tile : MonoBehaviour
         PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         PawnScript.Take_Function_Called_Left = false;
         PawnScript.Take_Function_Called_Right = false;
-        
+        NrOfPawnThatCalledThisTile = PawnScript.NrOfThisPawn;
 
     }
 
@@ -384,13 +418,8 @@ public class Test_Tile : MonoBehaviour
         BlackPawnScript.NrOfThisPawn_x = NrOfThisTile_x;
         BlackPawnScript.NrOfThisPawn_y = NrOfThisTile_y;
         BlackPawnScript.Pressed = false;
-        if (BlackPawnScript.FirstMove)
-        {
-            Test_Tile Previous_Tile;
-            Previous_Tile = BlackPawnScript.FindTile(0).GetComponent<Test_Tile>();
-            Previous_Tile.NrOfPieceThatsOnMe = BlackPawnScript.NrOfThisPawn;
-            Previous_Tile.En_passant_Active_Black = true;
-        }
+   
+        
         BlackPawnScript.FirstMove = false;
       
 
@@ -402,7 +431,8 @@ public class Test_Tile : MonoBehaviour
         Occupy_White = false;
         BlackPawnScript.Take_Function_Called_Left = false;
         BlackPawnScript.Take_Function_Called_Right = false;
-        
+        NrOfPawnThatCalledThisTile = BlackPawnScript.NrOfThisPawn;
+
 
 
     }
@@ -429,6 +459,7 @@ public class Test_Tile : MonoBehaviour
             logic_Manager_.White_Pressed = false;
             RookScript.Tile_Im_On.Occupy_White = false;
         }
+        NrOfPawnThatCalledThisTile = RookScript.NrOfThisPiece;
 
     }
     void BishopMove(GameObject Piece)
@@ -454,8 +485,35 @@ public class Test_Tile : MonoBehaviour
             logic_Manager_.White_Pressed = false;
             BishopScript.Tile_Im_On.Occupy_White = false;
         }
+        NrOfPawnThatCalledThisTile = BishopScript.NrOfThisPiece;
     }
     
+    void QueenMove(GameObject Piece)
+    {
+        Piece.transform.position = new Vector3((float)(position_.position.x), (float)(position_.position.y + 0.2), 0);
+        QueenScript.position_x = position_.position.x;
+        QueenScript.position_y = position_.position.y + 0.4;
+        QueenScript.Pressed = false;
+        QueenScript.Tile_Im_On.Occupied = false;
+        QueenScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
+        Occupied = true;
+        if (QueenScript.black)
+        {
+            Occupy_Black = true;
+            Occupy_White = false;
+            logic_Manager_.Black_Pressed = false;
+            QueenScript.Tile_Im_On.Occupy_Black = false;
+        }
+        else
+        {
+            Occupy_White = true;
+            Occupy_Black = false;
+            logic_Manager_.White_Pressed = false;
+            QueenScript.Tile_Im_On.Occupy_White = false;
+        }
+        NrOfPawnThatCalledThisTile = QueenScript.NrOfThisPiece;
+    }
+
     public GameObject FindTile(int x)
     {
         return AllTiles[(int)((position_.position.x + 3.5)*8+position_.position.y+3.5 - x)];

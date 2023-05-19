@@ -13,6 +13,8 @@ TagManager:
   - Logic_Manager
   - White_Bishop
   - Black_Bishop
+  - White_Queen
+  - Black_Queen
   layers:
   - Default
   - TransparentFX

@@ -51,7 +51,7 @@ public class Rook_Script : MonoBehaviour
             Taken = true;
         }
         CheckIfStuck();
-        if ((!logic_Manager_.White_Pressed || !logic_Manager_.Black_Pressed) && !Taken && !Pressed && !Stuck)
+        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck)
         {
             Pressed = true;
             if (white)

@@ -212,16 +212,7 @@ public class Testing_Movement : MonoBehaviour
         logic_Manager_.White_Pressed = false;
         logic_Manager_.NoHovering = false;
 
-        Tile_To_Go_To = FindTile(0);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
-            Tile_To_Go_To = FindTile(1);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
+        Tile_Im_On.UncallTiles();
         
 
 

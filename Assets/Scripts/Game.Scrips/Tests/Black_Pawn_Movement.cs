@@ -202,18 +202,8 @@ public class Black_Pawn_Movement : MonoBehaviour
     {
         logic_Manager_.Black_Pressed = false;
         logic_Manager_.NoHovering = false;
-       
-            Tile_To_Go_To = FindTile(-2);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
-            Tile_To_Go_To = FindTile(-3);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
-        
+
+        Tile_Im_On.UncallTiles();
 
         Pressed = false;
         if (Tile_Im_On.position_.position.x < 3.5 && !logic_Manager_.Black_Pressed)

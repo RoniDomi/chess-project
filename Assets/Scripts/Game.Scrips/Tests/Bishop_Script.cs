@@ -45,12 +45,14 @@ public class Bishop_Script : MonoBehaviour
 
         if (Tile_Im_On.Called)
         {
-            Tile_Im_On.OnMouseDown();
-            Pressed = false;
-            Taken = true;
+           Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
+          Tile_Im_On.OnMouseDown();
+          Pressed = false;
+          Taken = true;
         }
+
         CheckIfStuck();
-        if ((!logic_Manager_.White_Pressed || !logic_Manager_.Black_Pressed) && !Taken && !Pressed && !Stuck)
+        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck)
         {
             Pressed = true;
             if (white)
@@ -58,13 +60,13 @@ public class Bishop_Script : MonoBehaviour
             else
                 logic_Manager_.Black_Pressed = true;
             int x = 8;
-            RookCallTiles(9, x);
+            BishopCallTiles(9, x);
             x = -8;
-            RookCallTiles(-7, x);
+            BishopCallTiles(-7, x);
             x = 6;
-            RookCallTiles(7, x);
+            BishopCallTiles(7, x);
             x = -10;
-            RookCallTiles(-9, x);
+            BishopCallTiles(-9, x);
 
         }
         else if (Pressed && (logic_Manager_.White_Pressed || logic_Manager_.Black_Pressed))
@@ -82,7 +84,7 @@ public class Bishop_Script : MonoBehaviour
         }
     }
 
-    public void RookCallTiles(int i, int j)
+    public void BishopCallTiles(int i, int j)
     {
         Test_Tile TIle_Script;
 
@@ -177,7 +179,7 @@ public class Bishop_Script : MonoBehaviour
                 if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
                     conditions++;
             }
-            else if(Tile_Im_On.Horizontal_Edge_Right)
+            else if (Tile_Im_On.Horizontal_Edge_Right)
             {
                 conditions++;
                 Tile_To_Go_To = FindTile(-10);
@@ -185,15 +187,18 @@ public class Bishop_Script : MonoBehaviour
                 if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
                     conditions++;
             }
+            else
+            {
 
-            Tile_To_Go_To = FindTile(6);
-             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
-                conditions++;
-            Tile_To_Go_To = FindTile(-10);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
-                conditions++;
+                Tile_To_Go_To = FindTile(6);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+                Tile_To_Go_To = FindTile(-10);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
 
         }
 
@@ -213,19 +218,22 @@ public class Bishop_Script : MonoBehaviour
             {
                 conditions++;
                 Tile_To_Go_To = FindTile(-8);
-               tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
                 if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
                     conditions++;
             }
+            else
+            {
 
-            Tile_To_Go_To = FindTile(8);
-             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
-                conditions++;
-            Tile_To_Go_To = FindTile(-8);
-             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
-                conditions++;
+                Tile_To_Go_To = FindTile(8);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+                Tile_To_Go_To = FindTile(-8);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                    conditions++;
+            }
 
 
 
@@ -251,7 +259,7 @@ public class Bishop_Script : MonoBehaviour
             if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
                 conditions++;
 
-            Tile_To_Go_To = FindTile(6);
+            Tile_To_Go_To = FindTile(8);
               tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
             if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
                 conditions++;
