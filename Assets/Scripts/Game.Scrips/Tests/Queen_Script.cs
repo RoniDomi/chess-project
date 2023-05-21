@@ -27,6 +27,7 @@ public class Queen_Script : MonoBehaviour
     void Awake()
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
+
     }
 
 
@@ -38,12 +39,15 @@ public class Queen_Script : MonoBehaviour
         position_y = position_.position.y;
     }
 
+    public void SetGame()
+    {
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
+    }
 
     public void OnMouseDown()
     {
 
         FindTileImOn();
-
         if (Tile_Im_On.Called)
         {
             Tile_Im_On.OnMouseDown();

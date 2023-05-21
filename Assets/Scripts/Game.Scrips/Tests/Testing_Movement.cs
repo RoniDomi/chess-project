@@ -60,6 +60,11 @@ public class Testing_Movement : MonoBehaviour
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
     }
+    public void SetGame()
+    {
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPawn;
+    }
+
 
     public bool CheckIfStuckForReal()
     {

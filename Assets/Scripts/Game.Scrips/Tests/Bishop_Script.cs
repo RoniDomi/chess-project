@@ -26,6 +26,7 @@ public class Bishop_Script : MonoBehaviour
     void Awake()
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
+
     }
 
 
@@ -36,6 +37,11 @@ public class Bishop_Script : MonoBehaviour
         position_x = position_.position.x;
         position_y = position_.position.y;
     }
+   public  void SetGame()
+    {
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
+    }
+
 
 
     public void OnMouseDown()

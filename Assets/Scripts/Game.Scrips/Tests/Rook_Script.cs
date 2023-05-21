@@ -28,6 +28,10 @@ public class Rook_Script : MonoBehaviour
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
     }
+   public void SetGame()
+    {
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
+    }
 
 
     // Start is called before the first frame update

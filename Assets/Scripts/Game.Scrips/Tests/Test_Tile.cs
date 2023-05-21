@@ -158,14 +158,13 @@ public class Test_Tile : MonoBehaviour
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
 
-               if (WhitePiece(Tiles_In_This_loop))
+               if (WhitePiece(Tiles_In_This_loop) && !En_passant_Active_White)
                     {
-                     if(!(WhitePiece(Tiles_In_This_loop)))
-                       {
+                       
                        
                            Tiles_In_This_loop.Occupy_White = true; 
 
-                        }
+                        
                         
                     }
                 else if (BlackPiece(Tiles_In_This_loop) && !En_passant_Active_Black)
@@ -211,9 +210,12 @@ public class Test_Tile : MonoBehaviour
         {
             Testing_Movement whitepawns;
             whitepawns= AllPieces[x].GetComponent<Testing_Movement>();
-
             whitepawns.CheckIfStuckForReal();
-            
+            if (!whitepawns.Taken)
+            {
+                whitepawns.SetGame();
+            }
+
         }
 
         for(; x < 16; x++)
@@ -223,6 +225,8 @@ public class Test_Tile : MonoBehaviour
             blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
 
             blackpawns.CheckIfStuckForReal();
+            if(!blackpawns.Taken)
+            blackpawns.SetGame();
         }
 
         for(; x<20; x++)
@@ -230,18 +234,24 @@ public class Test_Tile : MonoBehaviour
             Rook_Script rooks;
             rooks = AllPieces[x].GetComponent<Rook_Script>();
             rooks.CheckIfStuck();
+            if(!rooks.Taken)
+            rooks.SetGame();
         }
         for(;x<24; x++)
         {
             Bishop_Script bishops;
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
             bishops.CheckIfStuck();
+            if(!bishops.Taken)
+            bishops.SetGame();
         }
         for(;x<26;x++)
         {
             Queen_Script queens;
             queens = AllPieces[x].GetComponent<Queen_Script>();
             queens.CheckIfStuck();
+            if(!queens.Taken)
+                queens.SetGame();
         }
 
 

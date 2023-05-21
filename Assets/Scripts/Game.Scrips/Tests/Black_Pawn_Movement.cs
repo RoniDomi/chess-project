@@ -197,6 +197,11 @@ public class Black_Pawn_Movement : MonoBehaviour
             IfNotOnlyPressed();
         }
     }
+    public void SetGame()
+    {
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPawn;
+    }
+
 
     public void IfNotOnlyPressed()
     {
