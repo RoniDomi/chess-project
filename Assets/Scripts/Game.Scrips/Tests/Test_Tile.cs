@@ -44,7 +44,7 @@ public class Test_Tile : MonoBehaviour
     bool BlackPiece(Test_Tile tile)
     {
         {
-            if ((tile.NrOfPieceThatsOnMe > 8 && tile.NrOfPieceThatsOnMe < 16) || tile.NrOfPieceThatsOnMe == 18 || tile.NrOfPieceThatsOnMe == 19 || tile.NrOfPieceThatsOnMe == 22 || tile.NrOfPieceThatsOnMe == 23 || tile.NrOfPieceThatsOnMe == 25)
+            if ((tile.NrOfPieceThatsOnMe >= 8 && tile.NrOfPieceThatsOnMe < 16) || tile.NrOfPieceThatsOnMe == 18 || tile.NrOfPieceThatsOnMe == 19 || tile.NrOfPieceThatsOnMe == 22 || tile.NrOfPieceThatsOnMe == 23 || tile.NrOfPieceThatsOnMe == 25)
                 return true;
             return false;
         }
