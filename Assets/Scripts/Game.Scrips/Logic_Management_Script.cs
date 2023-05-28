@@ -8,6 +8,8 @@ public class Logic_Management_Script : MonoBehaviour
     public bool White_Pressed;
     public bool Black_Pressed;
     public bool NoHovering;
+    public bool White_Turn;
+    public bool Black_Turn;
     public GameObject[] AllPieces;
 
 
@@ -15,33 +17,89 @@ public class Logic_Management_Script : MonoBehaviour
     {
         White_Pressed=false;
         Black_Pressed=false;
+        White_Turn = true;
 
     }
 
     void Awake()
     {
-        GetPieces();
+       
     }
 
-    void GetPieces()
+
+    public void TurnChange()
     {
-        GameObject[] BlackPawns = GameObject.FindGameObjectsWithTag("BlackPawn");
-        GameObject[] WhiteRooks = GameObject.FindGameObjectsWithTag("White_Rook");
-        GameObject[] BlackRooks = GameObject.FindGameObjectsWithTag("Black_Rook");
-        GameObject[] WhiteBishops = GameObject.FindGameObjectsWithTag("White_Bishop");
-        GameObject[] BlackBishops = GameObject.FindGameObjectsWithTag("Black_Bishop");
-        GameObject[] WhiteQueen = GameObject.FindGameObjectsWithTag("White_Queen");
-        GameObject[] BlackQueen = GameObject.FindGameObjectsWithTag("Black_Queen");
+        //if (White_Turn)
+        //{
+          //  White_Turn = false;
+            //Black_Turn = true;
+        //}
+        //else
+        //{
+          //  White_Turn = true;
+            //Black_Turn = false;
+        //}
 
-        AllPieces = GameObject.FindGameObjectsWithTag("Pawns");
+        int x = 0;
 
-        AllPieces = AllPieces.Concat(BlackPawns).ToArray();
-        AllPieces = AllPieces.Concat(WhiteRooks).ToArray();
-        AllPieces = AllPieces.Concat(BlackRooks).ToArray();
-        AllPieces = AllPieces.Concat(WhiteBishops).ToArray();
-        AllPieces = AllPieces.Concat(BlackBishops).ToArray();
-        AllPieces = AllPieces.Concat(WhiteQueen).ToArray();
-        AllPieces = AllPieces.Concat(BlackQueen).ToArray();
+        for (; x < 8; x++)
+        {
+            Testing_Movement whitepawns;
+            whitepawns= AllPieces[x].GetComponent<Testing_Movement>();
+
+            if (!whitepawns.Taken && !whitepawns.Stuck_For_Real)
+            {
+                whitepawns.attack();
+            }
+
+        }
+
+        for(; x < 16; x++)
+        {
+            Black_Pawn_Movement blackpawns;
+
+            blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
+
+      
+            if(!blackpawns.Taken && !blackpawns.Stuck_For_Real)
+            blackpawns.attack();
+        }
+
+        for(; x<20; x++)
+        {
+            Rook_Script rooks;
+            rooks = AllPieces[x].GetComponent<Rook_Script>();
+            
+            if(!rooks.Taken && !rooks.Stuck)
+            rooks.attack();
+        }
+        for(;x<24; x++)
+        {
+            Bishop_Script bishops;
+            bishops = AllPieces[x].GetComponent<Bishop_Script>();
+
+            if(!bishops.Taken && !bishops.Stuck)
+            bishops.attack();
+        }
+        for(;x<26;x++)
+        {
+            Queen_Script queens;
+            queens = AllPieces[x].GetComponent<Queen_Script>();
+   
+            if(!queens.Taken && !queens.Stuck)
+                queens.attack();
+        }
+        for (; x < 30; x++)
+        {
+            Knight_Script knights;
+            knights = AllPieces[x].GetComponent<Knight_Script>();
+     
+            if (!knights.Taken && !knights.Stuck)
+                knights.attack();
+        }
+
+
+
     }
 
 

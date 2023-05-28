@@ -17,6 +17,7 @@ TagManager:
   - Black_Queen
   - White_Knight
   - Black_Knight
+  - Kings
   layers:
   - Default
   - TransparentFX

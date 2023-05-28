@@ -41,19 +41,10 @@ public class Testing_Movement : MonoBehaviour
     public bool Take_Function_Called_Right = false;
     public bool Taken = false;
 
+  
+
     public void Start()
     {
-        NrOfThisPawn = (int)(position_.position.x + 4.2);
-
-        Tile_To_Go_To = FindTile(0);
-
-
-        tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-
-        NrOfThisPawn_x = tile_to_go_to.NrOfThisTile_x;
-        NrOfThisPawn_y = tile_to_go_to.NrOfThisTile_y;
-
-
     }
 
     void Awake()
@@ -158,7 +149,7 @@ public class Testing_Movement : MonoBehaviour
  
         }
 
-        if (!CheckIfStuckForReal() && !Taken && !logic_Manager_.White_Pressed)
+        if (!CheckIfStuckForReal() && !Taken && !logic_Manager_.White_Pressed && logic_Manager_.White_Turn)
         {
 
 
@@ -212,6 +203,7 @@ public class Testing_Movement : MonoBehaviour
         
     }
 
+
     public void IfNotOnlyPressed()
     {
         logic_Manager_.White_Pressed = false;
@@ -251,6 +243,26 @@ public class Testing_Movement : MonoBehaviour
             }
 
             tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
+        }
+    }
+
+    public void attack()
+    {
+        Test_Tile TIle_Script;
+
+        FindTileImOn();
+
+        if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + 8) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + 8) <= 64)
+        {
+            GameObject xTile = FindTile(8);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            TIle_Script.Attacked_White = true;
+        }
+        if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 6) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 6) <= 64)
+        {
+            GameObject xTile = FindTile(-6);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            TIle_Script.Attacked_White = true;
         }
     }
 

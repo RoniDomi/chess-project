@@ -43,18 +43,7 @@ public class Black_Pawn_Movement : MonoBehaviour
     public bool Taken = false;
 
     public void Start()
-    {
-        NrOfThisPawn = (int)(position_.position.x + 4.2 +8);
-
-        Tile_To_Go_To = FindTile(-2);
-
-
-        tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-
-        NrOfThisPawn_x = tile_to_go_to.NrOfThisTile_x;
-        NrOfThisPawn_y = tile_to_go_to.NrOfThisTile_y;
-
-        
+    {   
 
     }
 
@@ -149,7 +138,7 @@ public class Black_Pawn_Movement : MonoBehaviour
 
         
 
-        if (!CheckIfStuckForReal() && !Taken && !logic_Manager_.Black_Pressed)
+        if (!CheckIfStuckForReal() && !Taken && !logic_Manager_.Black_Pressed && logic_Manager_.Black_Turn)
         {
             CheckIfCanTake();
             Pressed = true;
@@ -251,8 +240,25 @@ public class Black_Pawn_Movement : MonoBehaviour
         return Tiles_To_Be_Selected[(int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + x];
     }
 
-    
 
+    public void attack()
+    {
+        Test_Tile TIle_Script;
+
+        FindTileImOn();
+        if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + 6) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + 6) <= 64)
+        {
+            GameObject xTile = FindTile(6);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            TIle_Script.Attacked_Black = true;
+        }
+        if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + - 10 ) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 10) <= 64)
+        {
+            GameObject xTile = FindTile(-10);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            TIle_Script.Attacked_Black = true;
+        }
+    }
 
 
     void CheckIfCanTake()

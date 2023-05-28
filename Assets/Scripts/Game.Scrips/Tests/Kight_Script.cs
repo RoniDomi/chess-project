@@ -55,7 +55,7 @@ public class Knight_Script : MonoBehaviour
             Taken = true;
         }
         CheckIfStuck();
-        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck)
+        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck && ((white && logic_Manager_.White_Turn) || (black && logic_Manager_.Black_Turn)))
         {
             Pressed = true;
             if (white)
@@ -266,7 +266,129 @@ public class Knight_Script : MonoBehaviour
 
         
     }
+    public void attack()
+    {
+        Test_Tile Tile_Script;
 
+        int x = 9;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x <= 2.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (!((white && Tile_Script.Occupy_White) || (black && Tile_Script.Occupy_Black)))
+            {
+                if (white)
+                    Tile_Script.Attacked_White = true;
+                else
+                    Tile_Script.Attacked_Black = true;
+            }
+
+        }
+        x = -7;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x >= -2.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+          
+                if (white)
+                    Tile_Script.Attacked_White = true;
+                else
+                    Tile_Script.Attacked_Black = true;
+            
+
+        }
+        x = 14;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -2.5 && Tile_Im_On.position_.position.x <= 1.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (white)
+                Tile_Script.Attacked_White = true;
+            else
+                Tile_Script.Attacked_Black = true;
+
+        }
+        x = 16;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 2.5 && Tile_Im_On.position_.position.x <= 1.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+           
+                if (white)
+                    Tile_Script.Attacked_White = true;
+                else
+                    Tile_Script.Attacked_Black = true;
+           
+
+        }
+        x = -16;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 2.5 && Tile_Im_On.position_.position.x >= -1.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (white)
+                Tile_Script.Attacked_White = true;
+            else
+                Tile_Script.Attacked_Black = true;
+        }
+        x = -18;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -2.5 && Tile_Im_On.position_.position.x >= -1.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (white)
+                Tile_Script.Attacked_White = true;
+            else
+                Tile_Script.Attacked_Black = true;
+
+        }
+        x = 5;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -1.5 && Tile_Im_On.position_.position.x <= 2.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (white)
+                Tile_Script.Attacked_White = true;
+            else
+                Tile_Script.Attacked_Black = true;
+
+        }
+        x = -11;
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -1.5 && Tile_Im_On.position_.position.x >= -2.5)
+        {
+
+            GameObject xTile = FindTile(x);
+
+            Tile_Script = xTile.GetComponent<Test_Tile>();
+
+            if (white)
+                Tile_Script.Attacked_White = true;
+            else
+                Tile_Script.Attacked_Black = true;
+        }
+
+    }
     public GameObject FindTile(int x)
     {
 

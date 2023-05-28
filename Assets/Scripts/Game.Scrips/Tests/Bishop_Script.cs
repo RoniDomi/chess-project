@@ -58,7 +58,7 @@ public class Bishop_Script : MonoBehaviour
         }
 
         CheckIfStuck();
-        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck)
+        if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck && ((white && logic_Manager_.White_Turn) || (black && logic_Manager_.Black_Turn)))
         {
             Pressed = true;
             if (white)
@@ -66,13 +66,17 @@ public class Bishop_Script : MonoBehaviour
             else
                 logic_Manager_.Black_Pressed = true;
             int x = 8;
-            BishopCallTiles(9, x);
+            if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+                BishopCallTiles(9, x);
             x = -8;
-            BishopCallTiles(-7, x);
+            if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+                BishopCallTiles(-7, x);
             x = 6;
-            BishopCallTiles(7, x);
+            if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+                BishopCallTiles(7, x);
             x = -10;
-            BishopCallTiles(-9, x);
+            if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+                BishopCallTiles(-9, x);
 
         }
         else if (Pressed && (logic_Manager_.White_Pressed || logic_Manager_.Black_Pressed))
@@ -96,29 +100,6 @@ public class Bishop_Script : MonoBehaviour
 
         while (true)
         {
-            if (i == 9)
-            {
-                if (Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right)
-                    break;
-            }
-            else if (i == -7)
-            {
-
-                if (Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left)
-                    break;
-            }
-            else if (i == 7)
-            {
-
-                if (Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down)
-                    break;
-            }
-            else
-            {
-
-                if (Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down)
-                    break;
-            }
             GameObject xTile = FindTile(j);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
@@ -277,6 +258,89 @@ public class Bishop_Script : MonoBehaviour
         }
         else
             Stuck = false;
+    }
+   public void attack()
+    {
+        Test_Tile TIle_Script;
+        int x;
+
+        FindTileImOn();
+        x = 8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+        {
+
+            while (true)
+            {
+                GameObject xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (white)
+                    TIle_Script.Attacked_White = true;
+                else
+                    TIle_Script.Attacked_Black = true;
+                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                    break;
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
+                    break;
+                x += 9;
+            }
+        }
+        x = -8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+        {
+
+            while (true)
+            {
+                GameObject xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (white)
+                    TIle_Script.Attacked_White = true;
+                else
+                    TIle_Script.Attacked_Black = true;
+                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                    break;
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
+                    break;
+                x += -7;
+            }
+        }
+        x = 6;
+        if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+        {
+
+            while (true)
+            {
+                GameObject xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (white)
+                    TIle_Script.Attacked_White = true;
+                else
+                    TIle_Script.Attacked_Black = true;
+                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                    break;
+                if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
+                    break;
+                x += 7;
+            }
+        }
+        x = -10;
+        if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+        {
+
+            while (true)
+            {
+                GameObject xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (white)
+                    TIle_Script.Attacked_White = true;
+                else
+                    TIle_Script.Attacked_Black = true;
+                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                    break;
+                if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
+                    break;
+                x += -9;
+            }
+        }
     }
 
     public GameObject FindTile(int x)

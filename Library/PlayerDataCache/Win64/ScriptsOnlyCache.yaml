@@ -1,9 +1,16 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
+    - Bishop_Script
+    - Black_Pawn_Movement
     - Go_To_MainMenu
+    - King_Script
+    - Knight_Script
     - Logic_Management_Script
     - NewBehaviourScript
+    - Queen_Script
+    - Rook_Script
     - ScenesManager
     - Test_GridManage
     - Test_Tile
@@ -31,6 +38,9 @@ ScriptsOnlyBuild:
     - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    Unity.Timeline.Editor.dll:
+    - TimelinePreferences
+    - TimelineProjectSettings
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -44,6 +54,8 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   serializedClasses:
+    Assembly-CSharp:
+    - Sound
     UnityEngine.CoreModule:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
@@ -61,9 +73,66 @@ ScriptsOnlyBuild:
     fullTypeName: ScenesManager
     methodName: Gamestart
   - assembly: Assembly-CSharp
+    fullTypeName: ScenesManager
+    methodName: loadCustomize
+  - assembly: Assembly-CSharp
     fullTypeName: Go_To_MainMenu
     methodName: GoMainMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: ScenesManager
+    methodName: Menu
   sceneClasses:
+    Assets/Scenes/Customize.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1584}
+    - Class: 114
+      Script: {instanceID: 2746}
+    - Class: 114
+      Script: {instanceID: 2978}
+    - Class: 114
+      Script: {instanceID: 3312}
+    - Class: 114
+      Script: {instanceID: 5944}
+    - Class: 114
+      Script: {instanceID: 6298}
+    - Class: 114
+      Script: {instanceID: 6874}
+    - Class: 114
+      Script: {instanceID: 7524}
+    - Class: 114
+      Script: {instanceID: 8490}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/Game.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -83,6 +152,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -90,25 +163,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 2582}
+      Script: {instanceID: 2540}
     - Class: 114
-      Script: {instanceID: 2742}
+      Script: {instanceID: 2586}
     - Class: 114
-      Script: {instanceID: 2972}
+      Script: {instanceID: 2746}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 2858}
     - Class: 114
-      Script: {instanceID: 5278}
+      Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 5450}
+      Script: {instanceID: 3312}
     - Class: 114
-      Script: {instanceID: 5932}
+      Script: {instanceID: 3344}
     - Class: 114
-      Script: {instanceID: 6286}
+      Script: {instanceID: 4966}
     - Class: 114
-      Script: {instanceID: 6860}
+      Script: {instanceID: 5288}
     - Class: 114
-      Script: {instanceID: 8038}
+      Script: {instanceID: 5460}
+    - Class: 114
+      Script: {instanceID: 5722}
+    - Class: 114
+      Script: {instanceID: 5944}
+    - Class: 114
+      Script: {instanceID: 6298}
+    - Class: 114
+      Script: {instanceID: 6874}
+    - Class: 114
+      Script: {instanceID: 6920}
+    - Class: 114
+      Script: {instanceID: 8018}
+    - Class: 114
+      Script: {instanceID: 8056}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -147,21 +234,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 2742}
+      Script: {instanceID: 2746}
     - Class: 114
-      Script: {instanceID: 2972}
+      Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 3312}
     - Class: 114
-      Script: {instanceID: 5932}
+      Script: {instanceID: 5944}
     - Class: 114
-      Script: {instanceID: 6286}
+      Script: {instanceID: 6298}
     - Class: 114
-      Script: {instanceID: 6860}
+      Script: {instanceID: 6874}
     - Class: 114
-      Script: {instanceID: 7508}
+      Script: {instanceID: 7524}
     - Class: 114
-      Script: {instanceID: 8472}
+      Script: {instanceID: 8490}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -307,6 +394,12 @@ ScriptsOnlyBuild:
     className: SkeletonAsset
   - hash:
       serializedVersion: 2
+      Hash: b041ec0d5e3d530d08e278a06b9e3fb5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Black_Pawn_Movement
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -353,6 +446,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 7d71c6ac3b1db75f3799f45080e12660
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: ba62abe34655d7e7cd27c0bf1fa1b39d
@@ -443,6 +542,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Bishop_Script
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -649,6 +754,12 @@ ScriptsOnlyBuild:
     className: AnimatedTile
   - hash:
       serializedVersion: 2
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Knight_Script
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -685,7 +796,7 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 77997595c41ed8a979bd09f42b948884
+      Hash: 22298ac5789b0ed585221fa8614702c5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Test_Tile
@@ -715,7 +826,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: f3e1dde9044ab302ae613f6391696b78
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Testing_Movement
@@ -767,6 +878,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: King_Script
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -829,6 +946,12 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Kight_Script
+  - hash:
+      serializedVersion: 2
       Hash: 760787567e1b60d64a3e421ab83ee14a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -863,6 +986,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Queen_Script
   - hash:
       serializedVersion: 2
       Hash: 8e6ceabfd38a184413d69b7db56c89cc
@@ -1027,7 +1156,13 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rook_Script
+  - hash:
+      serializedVersion: 2
+      Hash: 997f88b5308dd32c9fe985255cb3e5cb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Logic_Management_Script
@@ -1149,4 +1284,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Main Menu.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/Perdorues/Desktop/Epoka FInal Assignment/Chess.exe
+  - Assets/Scenes/Customize.unity
+  playerPath: C:/Users/Perdorues/Desktop/chess test/Chess.exe
