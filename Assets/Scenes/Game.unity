@@ -1692,7 +1692,7 @@ MonoBehaviour:
   black: 0
   white: 1
   position_: {fileID: 563796121}
-  NrOfThisPiece: 31
+  NrOfThisPiece: 30
   Pressed: 0
   Taken: 0
   Stuck: 0
@@ -5671,8 +5671,8 @@ MonoBehaviour:
   - {fileID: 1449664109}
   - {fileID: 211588016}
   - {fileID: 553741621}
-  - {fileID: 1957222494}
   - {fileID: 563796120}
+  - {fileID: 1957222494}
 --- !u!4 &1935585491
 Transform:
   m_ObjectHideFlags: 0
@@ -5949,7 +5949,7 @@ MonoBehaviour:
   black: 1
   white: 0
   position_: {fileID: 1957222495}
-  NrOfThisPiece: 30
+  NrOfThisPiece: 31
   Pressed: 0
   Taken: 0
   Stuck: 0

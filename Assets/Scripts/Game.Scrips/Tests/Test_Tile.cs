@@ -146,6 +146,7 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
             Tiles_In_This_loop.Attacked_White = false;
             Tiles_In_This_loop.Attacked_Black = false;
+            Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
         }
 
     }
@@ -182,7 +183,6 @@ public class Test_Tile : MonoBehaviour
                     }
                 
 
-                Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
 
 
                
@@ -320,7 +320,7 @@ public class Test_Tile : MonoBehaviour
                 QueenScript.Tile_Im_On.Occupy_Black = false;
             QueenScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
-        else if (NrOfPawnThatCalledThisTile >= 26 && NrOfPawnThatCalledThisTile < 30)
+        else if (NrOfPieceThatsOnMe >= 26 && NrOfPieceThatsOnMe < 30)
         {
             KnightScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Knight_Script>();
             if (KnightScript.white)
@@ -415,7 +415,7 @@ public class Test_Tile : MonoBehaviour
 
 
 
-            NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
+            
 
             UncallTiles();
 
@@ -424,7 +424,10 @@ public class Test_Tile : MonoBehaviour
             
             Check_Which_Pieces_Are_Stuck();
 
-        undoattacks();
+NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
+            undoattacks();
+
+            
 
             logic_Manager_.TurnChange();
 
