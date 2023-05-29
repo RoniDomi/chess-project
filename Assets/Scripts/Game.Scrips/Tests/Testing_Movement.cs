@@ -260,7 +260,7 @@ public class Testing_Movement : MonoBehaviour
         }
         if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 6) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 6) <= 64)
         {
-            GameObject xTile = FindTile(-6);
+            GameObject xTile = FindTile(-8);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_White = true;
         }

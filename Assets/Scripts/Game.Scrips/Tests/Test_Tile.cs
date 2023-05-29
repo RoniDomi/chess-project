@@ -65,7 +65,6 @@ public class Test_Tile : MonoBehaviour
 
         NrOfPieceThatsOnMe = 100;
 
-        Debug.Log("Color Changed");
 
         if (((transform.position.x + 3.5f) % 2 == 0 && (transform.position.y + 3.5f) % 2 != 0) || ((transform.position.x + 3.5f) % 2 != 0 && (transform.position.y + 3.5f) % 2 == 0))
         {
@@ -363,7 +362,6 @@ public class Test_Tile : MonoBehaviour
         NrOfPieceThatsOnMe = saved_number;
 
             AllTiles = GameObject.FindGameObjectsWithTag("Tag_Tile");
-            Debug.Log("Tile onmousedown called");
             GameObject Piece = AllPieces[(int)(NrOfPawnThatCalledThisTile)];
 
 
@@ -684,21 +682,21 @@ public class Test_Tile : MonoBehaviour
 
     void Update()
     {
-        if(Attacked_Black && !logic_Manager_.NoHovering)
-        {
-            if(_renderer.color==_offsetColor)
-            {
-                _renderer.color = _TakeColorDark;
-            }else if (_renderer.color==_baseColor)
-            {
-                _renderer.color = _TakeColorLight;
-            }
+       // if(Attacked_Black && !logic_Manager_.NoHovering)
+        //{
+          //  if(_renderer.color==_offsetColor)
+            //{
+              //  _renderer.color = _TakeColorDark;
+            //}else if (_renderer.color==_baseColor)
+            //{
+              //  _renderer.color = _TakeColorLight;
+            //}
                
-        }
-        else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
-        {
-            _renderer.color = _SavedColor;
-        }
+        //}
+        //else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
+        //{
+            //_renderer.color = _SavedColor;
+        //}
     }
 
 }

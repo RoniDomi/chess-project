@@ -10,6 +10,9 @@ public class Logic_Management_Script : MonoBehaviour
     public bool NoHovering;
     public bool White_Turn;
     public bool Black_Turn;
+    public bool check_white;
+    public bool check_black;
+
     public GameObject[] AllPieces;
 
 
@@ -29,17 +32,8 @@ public class Logic_Management_Script : MonoBehaviour
 
     public void TurnChange()
     {
-        //if (White_Turn)
-        //{
-          //  White_Turn = false;
-            //Black_Turn = true;
-        //}
-        //else
-        //{
-          //  White_Turn = true;
-            //Black_Turn = false;
-        //}
-
+        King_Script king;
+        
         int x = 0;
 
         for (; x < 8; x++)
@@ -97,7 +91,32 @@ public class Logic_Management_Script : MonoBehaviour
             if (!knights.Taken)
                 knights.attack();
         }
+        for(; x < 32; x++)
+        {
+            king = AllPieces[x].GetComponent<King_Script>();
 
+        }
+
+          if (White_Turn)
+        {
+            king = AllPieces[31].GetComponent<King_Script>();
+                king.FindTileImOn();
+            if (king.Tile_Im_On.Attacked_White) {
+                check_black = true;
+                Debug.Log("check black king"); }
+          White_Turn = false;
+          Black_Turn = true;
+        }
+        else
+        {
+            king = AllPieces[30].GetComponent<King_Script>();
+                king.FindTileImOn();
+            if (king.Tile_Im_On.Attacked_Black) {
+                check_white = true;
+                Debug.Log("check white king"); }
+            White_Turn = true;
+          Black_Turn = false;
+        }
 
 
     }

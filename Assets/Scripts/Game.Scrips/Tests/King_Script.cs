@@ -27,6 +27,7 @@ public class King_Script : MonoBehaviour
     void Awake()
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
+        
 
     }
 
@@ -41,7 +42,7 @@ public class King_Script : MonoBehaviour
 
     public void SetGame()
     {
-        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
+      
     }
 
     public void OnMouseDown()
@@ -393,7 +394,10 @@ public class King_Script : MonoBehaviour
 
         Tile_To_Go_To = FindTile(-1);
 
+
         Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+        Tile_Im_On.NrOfPieceThatsOnMe = NrOfThisPiece;
 
 
 
