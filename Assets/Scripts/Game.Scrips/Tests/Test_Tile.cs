@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Test_Tile : MonoBehaviour
 {
-    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor,_TakeColor,_DarkCalledColor,_LightCalledColor;
+    public Color _baseColor, _offsetColor, Hovercolor, _SavedColor,_TakeColorLight,_TakeColorDark,_DarkCalledColor,_LightCalledColor;
     public bool NoHovering = false;
     public SpriteRenderer _renderer;
     public int NrOfThisTile_x;
@@ -26,8 +26,11 @@ public class Test_Tile : MonoBehaviour
     public King_Script KingScript;
     public bool Attacked_White = false;
     public bool Attacked_Black = false;
+    public bool Attacked_White_Secondary = false;
+    public bool Attacked_Black_Secondary = false;
     public bool Occupy_White=false;
     public bool Occupy_Black=false;
+    public bool king=false;
     public int NrOfPieceThatsOnMe;
     public bool En_passant_Active_White = false;
     public bool En_passant_Active_Black = false;
@@ -146,6 +149,8 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
             Tiles_In_This_loop.Attacked_White = false;
             Tiles_In_This_loop.Attacked_Black = false;
+            Tiles_In_This_loop.Attacked_White_Secondary = false;
+            Tiles_In_This_loop.Attacked_Black_Secondary = false;
             Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
         }
 
@@ -283,6 +288,7 @@ public class Test_Tile : MonoBehaviour
             BlackPawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Black_Pawn_Movement>();
             BlackPawnScript.Tile_Im_On.Occupy_Black = false;
             BlackPawnScript.Tile_Im_On.En_passant_Active_Black = false;
+            BlackPawnScript.Taken = true;
             BlackPawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe < 8)
@@ -291,6 +297,7 @@ public class Test_Tile : MonoBehaviour
             PawnScript = AllPieces[NrOfPieceThatsOnMe].GetComponent<Testing_Movement>();
             PawnScript.Tile_Im_On.Occupy_White = false;
             PawnScript.Tile_Im_On.En_passant_Active_White = false;
+            PawnScript.Taken = true;
             PawnScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe >= 16 && NrOfPieceThatsOnMe < 20)
@@ -300,6 +307,7 @@ public class Test_Tile : MonoBehaviour
                 RookScript.Tile_Im_On.Occupy_White = false;
             else
                 RookScript.Tile_Im_On.Occupy_Black = false;
+            RookScript.Taken = true;
             RookScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe >= 20 && NrOfPieceThatsOnMe < 24)
@@ -309,6 +317,7 @@ public class Test_Tile : MonoBehaviour
                 BishopScript.Tile_Im_On.Occupy_White = false;
             else
                 BishopScript.Tile_Im_On.Occupy_Black = false;
+            BishopScript.Taken = true;
             BishopScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe >= 24 && NrOfPieceThatsOnMe < 26)
@@ -318,6 +327,7 @@ public class Test_Tile : MonoBehaviour
                 QueenScript.Tile_Im_On.Occupy_White = false;
             else
                 QueenScript.Tile_Im_On.Occupy_Black = false;
+            QueenScript.Taken = true;
             QueenScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
         else if (NrOfPieceThatsOnMe >= 26 && NrOfPieceThatsOnMe < 30)
@@ -327,6 +337,7 @@ public class Test_Tile : MonoBehaviour
                 KnightScript.Tile_Im_On.Occupy_White = false;
             else
                 KnightScript.Tile_Im_On.Occupy_Black = false;
+            KnightScript.Taken = true;
             KnightScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         }
 
@@ -424,10 +435,10 @@ public class Test_Tile : MonoBehaviour
             
             Check_Which_Pieces_Are_Stuck();
 
-NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
-            undoattacks();
-
+            NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
             
+
+            undoattacks();
 
             logic_Manager_.TurnChange();
 
@@ -614,12 +625,14 @@ NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
         KingScript.Tile_Im_On.Occupied = false;
         KingScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         Occupied = true;
+        king = true;
         if (KingScript.black)
         {
             Occupy_Black = true;
             Occupy_White = false;
             logic_Manager_.Black_Pressed = false;
             KingScript.Tile_Im_On.Occupy_Black = false;
+            
         }
         else
         {
@@ -628,6 +641,7 @@ NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
             logic_Manager_.White_Pressed = false;
             KingScript.Tile_Im_On.Occupy_White = false;
         }
+        KingScript.Tile_Im_On.king = false;
         NrOfPawnThatCalledThisTile = KingScript.NrOfThisPiece;
     }
 
@@ -668,5 +682,23 @@ NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
         }
     }
 
+    void Update()
+    {
+        if(Attacked_Black && !logic_Manager_.NoHovering)
+        {
+            if(_renderer.color==_offsetColor)
+            {
+                _renderer.color = _TakeColorDark;
+            }else if (_renderer.color==_baseColor)
+            {
+                _renderer.color = _TakeColorLight;
+            }
+               
+        }
+        else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
+        {
+            _renderer.color = _SavedColor;
+        }
+    }
 
 }

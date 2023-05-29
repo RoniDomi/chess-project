@@ -447,6 +447,7 @@ public class Queen_Script : MonoBehaviour
 
     public void attack()
     {
+        bool secondary = false;
         Test_Tile TIle_Script;
         int x;
 
@@ -459,18 +460,37 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Vertical_Edge_Up)
                     break;
                 x++;
             }
         }
-
+        secondary = false;
             x = -2;
         if (!(Tile_Im_On.Vertical_Edge_Down))
         {
@@ -479,17 +499,38 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if ((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black))
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Vertical_Edge_Down)
                     break;
                 x--;
             }
         }
+        secondary = false;
         x = 7;
         if (!(Tile_Im_On.Horizontal_Edge_Right))
         {
@@ -498,17 +539,37 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king) 
                     break;
                 if (TIle_Script.Horizontal_Edge_Right)
                     break;
                 x+=8;
             }
         }
+        secondary = false;
         x = -9;
         if (!(Tile_Im_On.Horizontal_Edge_Left))
         {
@@ -517,17 +578,37 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Horizontal_Edge_Left)
                     break;
                 x-=8;
             }
         }
+        secondary = false;
         x = 8;
         if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
         {
@@ -536,17 +617,37 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
                     break;
                 x+=9;
             }
         }
+        secondary = false;
         x = -8;
         if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
         {
@@ -555,18 +656,38 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-               
-                if (white)
-                    TIle_Script.Attacked_White = true;
+
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
                     break;
                 x+=-7;
             }
         }
+        secondary = false;
         x = 6;
         if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
         {
@@ -575,17 +696,37 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if (white)
-                    TIle_Script.Attacked_White = true;
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) ||( black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
                     break;
                 x+=7;
             }
         }
+        secondary = false;
         x = -10;
         if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
         {
@@ -594,12 +735,31 @@ public class Queen_Script : MonoBehaviour
             {
                 GameObject xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                
-                if (white)
-                    TIle_Script.Attacked_White = true;
+
+                if (secondary)
+                {
+                    if (white)
+                        TIle_Script.Attacked_White_Secondary = true;
+                    else
+                        TIle_Script.Attacked_Black_Secondary = true;
+                    if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
+                    {
+                        break;
+                    }
+                }
                 else
-                    TIle_Script.Attacked_Black = true;
-              if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)
+                {
+
+                    if (white)
+                        TIle_Script.Attacked_White = true;
+                    else
+                        TIle_Script.Attacked_Black = true;
+                }
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                {
+                    secondary = true;
+                }
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                     break;
                 if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
                     break;

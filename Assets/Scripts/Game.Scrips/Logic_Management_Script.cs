@@ -47,7 +47,7 @@ public class Logic_Management_Script : MonoBehaviour
             Testing_Movement whitepawns;
             whitepawns= AllPieces[x].GetComponent<Testing_Movement>();
 
-            if (!whitepawns.Taken && !whitepawns.Stuck_For_Real)
+            if (!whitepawns.Taken)
             {
                 whitepawns.attack();
             }
@@ -61,7 +61,7 @@ public class Logic_Management_Script : MonoBehaviour
             blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
 
       
-            if(!blackpawns.Taken && !blackpawns.Stuck_For_Real)
+            if(!blackpawns.Taken)
             blackpawns.attack();
         }
 
@@ -70,7 +70,7 @@ public class Logic_Management_Script : MonoBehaviour
             Rook_Script rooks;
             rooks = AllPieces[x].GetComponent<Rook_Script>();
             
-            if(!rooks.Taken && !rooks.Stuck)
+            if(!rooks.Taken)
             rooks.attack();
         }
         for(;x<24; x++)
@@ -78,7 +78,7 @@ public class Logic_Management_Script : MonoBehaviour
             Bishop_Script bishops;
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
 
-            if(!bishops.Taken && !bishops.Stuck)
+            if(!bishops.Taken)
             bishops.attack();
         }
         for(;x<26;x++)
@@ -86,7 +86,7 @@ public class Logic_Management_Script : MonoBehaviour
             Queen_Script queens;
             queens = AllPieces[x].GetComponent<Queen_Script>();
    
-            if(!queens.Taken && !queens.Stuck)
+            if(!queens.Taken)
                 queens.attack();
         }
         for (; x < 30; x++)
@@ -94,7 +94,7 @@ public class Logic_Management_Script : MonoBehaviour
             Knight_Script knights;
             knights = AllPieces[x].GetComponent<Knight_Script>();
      
-            if (!knights.Taken && !knights.Stuck)
+            if (!knights.Taken)
                 knights.attack();
         }
 
