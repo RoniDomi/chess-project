@@ -38,6 +38,8 @@ public class Test_Tile : MonoBehaviour
     public bool Vertical_Edge_Down = false;
     public bool Horizontal_Edge_Left = false;
     public bool Horizontal_Edge_Right = false;
+    public bool Castle_Queen_Side;
+    public bool Castle_King_Side;
     public Rook_Script RookScript;
     public GameObject Logic;
     public Logic_Management_Script logic_Manager_;
@@ -169,6 +171,8 @@ public class Test_Tile : MonoBehaviour
                 Tiles_In_This_loop.Called = false;
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
+                Tiles_In_This_loop.Castle_King_Side = false;
+                Tiles_In_This_loop.Castle_Queen_Side = false;
 
                if (WhitePiece(Tiles_In_This_loop) && !En_passant_Active_White)
                     {
@@ -512,6 +516,7 @@ public class Test_Tile : MonoBehaviour
     }
     void RookMove(GameObject Piece)
     {
+        RookScript= Piece.GetComponent<Rook_Script>(); ;
         Piece.transform.position = new Vector3((float)(position_.position.x ), (float)(position_.position.y +0.3),0);
         RookScript.position_x = position_.position.x;
         RookScript.position_y = position_.position.y + 0.3;
@@ -534,6 +539,10 @@ public class Test_Tile : MonoBehaviour
             RookScript.Tile_Im_On.Occupy_White = false;
         }
         NrOfPawnThatCalledThisTile = RookScript.NrOfThisPiece;
+        if(RookScript.Castling)
+        {
+            RookScript.Castling = false;
+        }
 
     }
     void BishopMove(GameObject Piece)
@@ -641,6 +650,20 @@ public class Test_Tile : MonoBehaviour
         }
         KingScript.Tile_Im_On.king = false;
         NrOfPawnThatCalledThisTile = KingScript.NrOfThisPiece;
+        if(Castle_King_Side)
+        {
+            Test_Tile tile;
+            tile=KingScript.FindTile(-9).GetComponent<Test_Tile>();
+            tile.RookMove(KingScript.Rooks[0]);
+            Debug.Log("castle");
+        }
+        if (Castle_Queen_Side)
+        {
+            Test_Tile tile;
+            tile = KingScript.FindTile(7).GetComponent<Test_Tile>();
+            tile.RookMove(KingScript.Rooks[1]);
+            Debug.Log("castle");
+        }
     }
 
 

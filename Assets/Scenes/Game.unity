@@ -1427,6 +1427,7 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
 --- !u!1 &553741621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1704,10 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
+  Rooks:
+  - {fileID: 1790079612}
+  - {fileID: 668249956}
 --- !u!1 &627494847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +1970,7 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
 --- !u!1 &675616403
 GameObject:
   m_ObjectHideFlags: 0
@@ -4810,6 +4816,7 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
 --- !u!1 &1777939820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,6 +4976,7 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
 --- !u!1 &1795284378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,8 +5646,8 @@ MonoBehaviour:
   White_Pressed: 0
   Black_Pressed: 0
   NoHovering: 0
-  White_Turn: 0
-  Black_Turn: 0
+  White_Turn: 1
+  Black_Turn: 1
   check_white: 0
   check_black: 0
   AllPieces:
@@ -5962,6 +5970,10 @@ MonoBehaviour:
   position_y: 0
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
+  Castling: 0
+  Rooks:
+  - {fileID: 538432637}
+  - {fileID: 1772194617}
 --- !u!1 &1987451240
 GameObject:
   m_ObjectHideFlags: 0

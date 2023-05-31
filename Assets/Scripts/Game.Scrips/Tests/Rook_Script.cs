@@ -22,6 +22,7 @@ public class Rook_Script : MonoBehaviour
     public double position_y;
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
+    public bool Castling;
 
 
     void Awake()
@@ -40,6 +41,7 @@ public class Rook_Script : MonoBehaviour
         Stuck = false; 
         position_x = position_.position.x;
         position_y = position_.position.y;
+        Castling = true;
     }
 
 

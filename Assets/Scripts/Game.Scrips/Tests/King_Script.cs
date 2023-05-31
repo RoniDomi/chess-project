@@ -22,12 +22,15 @@ public class King_Script : MonoBehaviour
     public double position_y;
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
+    public bool Castling;
+    public GameObject[] Rooks;
+    
 
 
     void Awake()
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
-        
+         
 
     }
 
@@ -38,6 +41,7 @@ public class King_Script : MonoBehaviour
         Stuck = false;
         position_x = position_.position.x;
         position_y = position_.position.y;
+        Castling = true;
     }
 
     public void SetGame()
@@ -88,6 +92,29 @@ public class King_Script : MonoBehaviour
             if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
                 KingCallTiles(x);
 
+
+           
+            if(Castling && ((!logic_Manager_.check_white && white) || (!logic_Manager_.check_black && black)))
+            {
+                Rook_Script rooks;
+                Test_Tile tile = FindTile(7).GetComponent<Test_Tile>();
+                rooks =Rooks[0].GetComponent<Rook_Script>();
+                if (rooks.Castling && ((white && !(tile.Attacked_Black || tile.Occupy_White)) || (black && !(tile.Attacked_White || tile.Occupy_Black))))
+                {
+                    x = 15;
+                    KingCallTiles(x);
+                }
+                tile = FindTile(-9).GetComponent<Test_Tile>();
+                rooks = Rooks[1].GetComponent<Rook_Script>();
+                if (rooks.Castling && ((white && !(tile.Attacked_Black || tile.Occupy_White)) || (black && !(tile.Attacked_White || tile.Occupy_Black))))
+                {
+                    x = -17;
+                    KingCallTiles(x);
+                }
+               
+                
+            }
+
         }
         else if (Pressed && (logic_Manager_.White_Pressed || logic_Manager_.Black_Pressed))
         {
@@ -120,7 +147,20 @@ public class King_Script : MonoBehaviour
             TIle_Script.TestFunction();
             TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
             TIle_Script.Selected = false;
+              if(x == 15)
+               {
+                
+                if((white && !(TIle_Script.Attacked_Black)) || (black && !(TIle_Script.Attacked_White)))
+                  TIle_Script.Castle_King_Side = true;
+               }
+              if (x == -17)
+              {
+                if ((white && !(TIle_Script.Attacked_Black)) || (black && !(TIle_Script.Attacked_White)))
+                TIle_Script.Castle_Queen_Side = true;
+              }
+
         }
+        
 
             if (((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White)) && ((white && !TIle_Script.Attacked_Black) || (black && !TIle_Script.Attacked_White)))
             {
