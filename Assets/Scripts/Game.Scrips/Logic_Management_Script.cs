@@ -104,6 +104,10 @@ public class Logic_Management_Script : MonoBehaviour
             if (king.Tile_Im_On.Attacked_White) {
                 check_black = true;
                 Debug.Log("check black king"); }
+            else
+            {
+                check_black = false;
+            }
           White_Turn = false;
           Black_Turn = true;
         }
@@ -114,6 +118,10 @@ public class Logic_Management_Script : MonoBehaviour
             if (king.Tile_Im_On.Attacked_Black) {
                 check_white = true;
                 Debug.Log("check white king"); }
+            else
+            {
+                check_white = false;
+            }
             White_Turn = true;
           Black_Turn = false;
         }

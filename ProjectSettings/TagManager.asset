@@ -18,6 +18,8 @@ TagManager:
   - White_Knight
   - Black_Knight
   - Kings
+  - GameMusic
+  - MuteButton
   layers:
   - Default
   - TransparentFX

@@ -20,4 +20,10 @@ public class ScenesManager : MonoBehaviour
         Debug.Log("Went to the Customize scene");
         SceneManager.LoadScene("Customize");
     }
+
+    public void loadSettings()
+    {
+        Debug.Log("Went to the Settings scene");
+        SceneManager.LoadScene("Settings");
+    }
 }
