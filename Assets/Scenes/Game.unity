@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 211588020}
   - component: {fileID: 211588019}
   - component: {fileID: 211588018}
+  - component: {fileID: 211588021}
   m_Layer: 0
   m_Name: B-Knight
   m_TagString: Black_Knight
@@ -401,6 +402,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &211588021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211588016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 02b8a76d6fe68f846890e6f0f3f9d7fc, type: 2}
+  pieceSprite: {fileID: 211588020}
 --- !u!1 &238968218
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +428,7 @@ GameObject:
   - component: {fileID: 238968220}
   - component: {fileID: 238968222}
   - component: {fileID: 238968221}
+  - component: {fileID: 238968223}
   m_Layer: 0
   m_Name: C-Bishop
   m_TagString: White_Bishop
@@ -514,6 +530,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &238968222
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -530,6 +547,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.06}
   serializedVersion: 2
   m_Radius: 0.12
+--- !u!114 &238968223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238968218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: d73585161dced0646a09199f549db5dc, type: 2}
+  pieceSprite: {fileID: 238968220}
 --- !u!1 &254725629
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +882,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &273654150
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -969,6 +1001,7 @@ GameObject:
   - component: {fileID: 287261667}
   - component: {fileID: 287261666}
   - component: {fileID: 287261665}
+  - component: {fileID: 287261668}
   m_Layer: 0
   m_Name: H-Pawn
   m_TagString: BlackPawn
@@ -1024,6 +1057,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &287261666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1092,6 +1126,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &287261668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287261663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 287261667}
 --- !u!1 &354657611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1562,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &423660675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1829,6 +1878,7 @@ GameObject:
   - component: {fileID: 538432640}
   - component: {fileID: 538432639}
   - component: {fileID: 538432641}
+  - component: {fileID: 538432642}
   m_Layer: 0
   m_Name: H-Rook
   m_TagString: Black_Rook
@@ -1947,6 +1997,21 @@ MonoBehaviour:
   Tile_Im_On: {fileID: 0}
   Castling: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
+--- !u!114 &538432642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538432637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 092bc67f67fbb024c8ae365324ca1e98, type: 2}
+  pieceSprite: {fileID: 538432640}
 --- !u!1 &553741621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,6 +2024,7 @@ GameObject:
   - component: {fileID: 553741625}
   - component: {fileID: 553741624}
   - component: {fileID: 553741623}
+  - component: {fileID: 553741626}
   m_Layer: 0
   m_Name: 'G-Knight '
   m_TagString: Black_Knight
@@ -2086,6 +2152,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &553741626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553741621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 02b8a76d6fe68f846890e6f0f3f9d7fc, type: 2}
+  pieceSprite: {fileID: 553741625}
 --- !u!1 &563796120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2178,7 @@ GameObject:
   - component: {fileID: 563796122}
   - component: {fileID: 563796123}
   - component: {fileID: 563796124}
+  - component: {fileID: 563796125}
   m_Layer: 0
   m_Name: King
   m_TagString: Kings
@@ -2228,6 +2309,20 @@ MonoBehaviour:
   Rooks:
   - {fileID: 1790079612}
   - {fileID: 668249956}
+--- !u!114 &563796125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563796120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 4433b1a9ff952684d813a3d57642d0e6, type: 2}
+  pieceSprite: {fileID: 563796122}
 --- !u!1 &591932711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2415,7 @@ GameObject:
   - component: {fileID: 627494851}
   - component: {fileID: 627494850}
   - component: {fileID: 627494849}
+  - component: {fileID: 627494852}
   m_Layer: 0
   m_Name: G-Pawn
   m_TagString: BlackPawn
@@ -2375,6 +2471,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &627494850
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2443,6 +2540,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &627494852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627494847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 627494851}
 --- !u!1 &643853510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,6 +2749,7 @@ GameObject:
   - component: {fileID: 668249958}
   - component: {fileID: 668249959}
   - component: {fileID: 668249960}
+  - component: {fileID: 668249961}
   m_Layer: 0
   m_Name: A-Rook
   m_TagString: White_Rook
@@ -2756,6 +2868,21 @@ MonoBehaviour:
   Tile_Im_On: {fileID: 0}
   Castling: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
+--- !u!114 &668249961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668249956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 609af1362d1cd45498ff0c353f247f3c, type: 2}
+  pieceSprite: {fileID: 668249958}
 --- !u!1 &675616403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2768,6 +2895,7 @@ GameObject:
   - component: {fileID: 675616407}
   - component: {fileID: 675616406}
   - component: {fileID: 675616405}
+  - component: {fileID: 675616408}
   m_Layer: 0
   m_Name: 'F-Bishop '
   m_TagString: White_Bishop
@@ -2817,6 +2945,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &675616406
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2885,6 +3014,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &675616408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675616403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: d73585161dced0646a09199f549db5dc, type: 2}
+  pieceSprite: {fileID: 675616407}
 --- !u!1 &705289008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,6 +3152,7 @@ GameObject:
   - component: {fileID: 737568246}
   - component: {fileID: 737568245}
   - component: {fileID: 737568244}
+  - component: {fileID: 737568247}
   m_Layer: 0
   m_Name: 'C-Bishop '
   m_TagString: Black_Bishop
@@ -3058,6 +3202,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &737568245
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3126,6 +3271,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &737568247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737568242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 09522950fb9cec84c95f8ee59ddc3c9e, type: 2}
+  pieceSprite: {fileID: 737568246}
 --- !u!1 &755433090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,6 +3405,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &755433094
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3288,6 +3448,7 @@ GameObject:
   - component: {fileID: 762032790}
   - component: {fileID: 762032789}
   - component: {fileID: 762032788}
+  - component: {fileID: 762032791}
   m_Layer: 0
   m_Name: A-Pawn
   m_TagString: BlackPawn
@@ -3343,6 +3504,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &762032789
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3411,6 +3573,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &762032791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762032786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 762032790}
 --- !u!1 &780607875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,6 +3599,7 @@ GameObject:
   - component: {fileID: 780607879}
   - component: {fileID: 780607878}
   - component: {fileID: 780607877}
+  - component: {fileID: 780607880}
   m_Layer: 0
   m_Name: 'B-Pawn '
   m_TagString: BlackPawn
@@ -3478,6 +3655,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &780607878
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3546,6 +3724,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &780607880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780607875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 780607879}
 --- !u!1 &821136062
 GameObject:
   m_ObjectHideFlags: 0
@@ -3746,6 +3938,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &826690237
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3875,6 +4068,7 @@ GameObject:
   - component: {fileID: 853710786}
   - component: {fileID: 853710785}
   - component: {fileID: 853710784}
+  - component: {fileID: 853710787}
   m_Layer: 0
   m_Name: E-Pawn
   m_TagString: BlackPawn
@@ -3930,6 +4124,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &853710785
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3998,6 +4193,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &853710787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853710782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 853710786}
 --- !u!1 &864451042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,6 +4588,7 @@ GameObject:
   - component: {fileID: 882511679}
   - component: {fileID: 882511678}
   - component: {fileID: 882511677}
+  - component: {fileID: 882511680}
   m_Layer: 0
   m_Name: F-Pawn
   m_TagString: BlackPawn
@@ -4434,6 +4644,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &882511678
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4502,6 +4713,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &882511680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882511675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 882511679}
 --- !u!1 &907019239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5093,6 +5318,7 @@ GameObject:
   - component: {fileID: 1083584666}
   - component: {fileID: 1083584668}
   - component: {fileID: 1083584667}
+  - component: {fileID: 1083584669}
   m_Layer: 0
   m_Name: Queen
   m_TagString: White_Queen
@@ -5194,6 +5420,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!61 &1083584668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5220,6 +5447,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1083584669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083584664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: edf504c51e6288c44bfc90bba9ea57df, type: 2}
+  pieceSprite: {fileID: 1083584666}
 --- !u!1 &1130609518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5340,6 +5581,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1130609522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5762,6 +6004,7 @@ GameObject:
   - component: {fileID: 1241521203}
   - component: {fileID: 1241521202}
   - component: {fileID: 1241521201}
+  - component: {fileID: 1241521204}
   m_Layer: 0
   m_Name: 'C-Pawn '
   m_TagString: BlackPawn
@@ -5817,6 +6060,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1241521202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5885,6 +6129,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1241521204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241521199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 1241521203}
 --- !u!1 &1292551383
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,6 +6715,7 @@ GameObject:
   - component: {fileID: 1449664113}
   - component: {fileID: 1449664112}
   - component: {fileID: 1449664111}
+  - component: {fileID: 1449664114}
   m_Layer: 0
   m_Name: 'G-Knight '
   m_TagString: White_Knight
@@ -6584,6 +6843,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1449664114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449664109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 6fe11176bcc97c34d81fe505e2d23371, type: 2}
+  pieceSprite: {fileID: 1449664113}
 --- !u!1 &1458291310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,6 +6933,7 @@ GameObject:
   - component: {fileID: 1493711754}
   - component: {fileID: 1493711753}
   - component: {fileID: 1493711752}
+  - component: {fileID: 1493711755}
   m_Layer: 0
   m_Name: D-Pawn
   m_TagString: BlackPawn
@@ -6715,6 +6989,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1493711753
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6783,6 +7058,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1493711755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493711750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 58c05bcee6245e4428b9fa7447e30306, type: 2}
+  pieceSprite: {fileID: 1493711754}
 --- !u!1 &1510347713
 GameObject:
   m_ObjectHideFlags: 0
@@ -6827,6 +7116,7 @@ GameObject:
   - component: {fileID: 1523117182}
   - component: {fileID: 1523117181}
   - component: {fileID: 1523117180}
+  - component: {fileID: 1523117183}
   m_Layer: 0
   m_Name: 'F-Bishop  '
   m_TagString: Black_Bishop
@@ -6876,6 +7166,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1523117181
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6944,6 +7235,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1523117183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523117178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 09522950fb9cec84c95f8ee59ddc3c9e, type: 2}
+  pieceSprite: {fileID: 1523117182}
 --- !u!1 &1538576917
 GameObject:
   m_ObjectHideFlags: 0
@@ -7373,6 +7678,7 @@ GameObject:
   - component: {fileID: 1772194620}
   - component: {fileID: 1772194619}
   - component: {fileID: 1772194621}
+  - component: {fileID: 1772194622}
   m_Layer: 0
   m_Name: 'A-Rook '
   m_TagString: Black_Rook
@@ -7491,6 +7797,21 @@ MonoBehaviour:
   Tile_Im_On: {fileID: 0}
   Castling: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
+--- !u!114 &1772194622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772194617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 092bc67f67fbb024c8ae365324ca1e98, type: 2}
+  pieceSprite: {fileID: 1772194620}
 --- !u!1 &1777939820
 GameObject:
   m_ObjectHideFlags: 0
@@ -7617,6 +7938,7 @@ GameObject:
   - component: {fileID: 1790079615}
   - component: {fileID: 1790079614}
   - component: {fileID: 1790079616}
+  - component: {fileID: 1790079617}
   m_Layer: 0
   m_Name: H-Rook
   m_TagString: White_Rook
@@ -7735,6 +8057,21 @@ MonoBehaviour:
   Tile_Im_On: {fileID: 0}
   Castling: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
+--- !u!114 &1790079617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790079612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 609af1362d1cd45498ff0c353f247f3c, type: 2}
+  pieceSprite: {fileID: 1790079615}
 --- !u!1 &1795284378
 GameObject:
   m_ObjectHideFlags: 0
@@ -8024,6 +8361,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1830223336
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8174,6 +8512,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1854300545
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8510,6 +8849,7 @@ GameObject:
   - component: {fileID: 1903942343}
   - component: {fileID: 1903942342}
   - component: {fileID: 1903942341}
+  - component: {fileID: 1903942344}
   m_Layer: 0
   m_Name: 'Queen '
   m_TagString: Black_Queen
@@ -8559,6 +8899,7 @@ MonoBehaviour:
   Tile_To_Go_To: {fileID: 0}
   Tile_Im_On: {fileID: 0}
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!61 &1903942342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8637,6 +8978,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1903942344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903942339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 26482cd7a72e38f46ac58e14689c879c, type: 2}
+  pieceSprite: {fileID: 1903942343}
 --- !u!1 &1927895979
 GameObject:
   m_ObjectHideFlags: 0
@@ -8903,6 +9258,7 @@ MonoBehaviour:
   Take_Function_Called_Right: 0
   Taken: 0
   Pinned: 0
+  Pinned_By_Bishop: 0
 --- !u!58 &1953390789
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8945,6 +9301,7 @@ GameObject:
   - component: {fileID: 1957222497}
   - component: {fileID: 1957222496}
   - component: {fileID: 1957222498}
+  - component: {fileID: 1957222499}
   m_Layer: 0
   m_Name: King
   m_TagString: Kings
@@ -9075,6 +9432,20 @@ MonoBehaviour:
   Rooks:
   - {fileID: 538432637}
   - {fileID: 1772194617}
+--- !u!114 &1957222499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957222494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 4f357bacfcfeecf45b68199f89013a74, type: 2}
+  pieceSprite: {fileID: 1957222497}
 --- !u!1 &1987451240
 GameObject:
   m_ObjectHideFlags: 0
@@ -9230,6 +9601,7 @@ GameObject:
   - component: {fileID: 2091559252}
   - component: {fileID: 2091559251}
   - component: {fileID: 2091559250}
+  - component: {fileID: 2091559253}
   m_Layer: 0
   m_Name: B-Knight
   m_TagString: White_Knight
@@ -9357,6 +9729,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2091559253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091559248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db536b2460c8b4490321bef82aae82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 6fe11176bcc97c34d81fe505e2d23371, type: 2}
+  pieceSprite: {fileID: 2091559252}
 --- !u!1 &2115339324
 GameObject:
   m_ObjectHideFlags: 0

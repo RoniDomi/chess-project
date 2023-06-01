@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: King Database
   m_EditorClassIdentifier: 
   character:
-  - characterSprtie: {fileID: 0}
-  - characterSprtie: {fileID: 0}
-  - characterSprtie: {fileID: 0}
-  - characterSprtie: {fileID: 0}
+  - characterSprtie: {fileID: 21300000, guid: adc4ed934330d4d498b545c6c2e2428a, type: 3}
+  - characterSprtie: {fileID: -12946692, guid: 067cd757cca793d45805c98350ae7b2b, type: 3}
+  - characterSprtie: {fileID: 1222579784, guid: 55f0cf1d329e32e449b70ec6f37a5f4c, type: 3}

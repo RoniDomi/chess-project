@@ -192,10 +192,10 @@ TextureImporter:
       name: SingleFile_4
       rect:
         serializedVersion: 2
-        x: 83
+        x: 80
         y: 87
-        width: 10
-        height: 19
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: SingleFile_5
       rect:
         serializedVersion: 2
-        x: 99
+        x: 96
         y: 87
-        width: 10
-        height: 14
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: SingleFile_6
       rect:
         serializedVersion: 2
-        x: 115
+        x: 112
         y: 87
-        width: 10
-        height: 16
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +255,10 @@ TextureImporter:
       name: SingleFile_7
       rect:
         serializedVersion: 2
-        x: 131
+        x: 128
         y: 87
-        width: 11
-        height: 17
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,10 +276,10 @@ TextureImporter:
       name: SingleFile_8
       rect:
         serializedVersion: 2
-        x: 147
+        x: 144
         y: 87
-        width: 10
-        height: 20
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +297,10 @@ TextureImporter:
       name: SingleFile_9
       rect:
         serializedVersion: 2
-        x: 163
+        x: 160
         y: 87
-        width: 10
-        height: 23
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,10 +318,10 @@ TextureImporter:
       name: SingleFile_10
       rect:
         serializedVersion: 2
-        x: 83
+        x: 80
         y: 55
-        width: 10
-        height: 19
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,10 +360,10 @@ TextureImporter:
       name: SingleFile_12
       rect:
         serializedVersion: 2
-        x: 115
+        x: 112
         y: 55
-        width: 10
-        height: 16
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,10 +381,10 @@ TextureImporter:
       name: SingleFile_13
       rect:
         serializedVersion: 2
-        x: 131
+        x: 128
         y: 55
-        width: 11
-        height: 17
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,10 +402,10 @@ TextureImporter:
       name: SingleFile_14
       rect:
         serializedVersion: 2
-        x: 147
+        x: 144
         y: 55
-        width: 10
-        height: 20
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,10 +423,10 @@ TextureImporter:
       name: SingleFile_15
       rect:
         serializedVersion: 2
-        x: 163
+        x: 160
         y: 55
-        width: 10
-        height: 23
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1432,6 +1432,7 @@ TextureImporter:
       SingleFile_58: 1379395796
       SingleFile_59: -600311019
       SingleFile_6: -1971180766
+      SingleFile_60: -2039026293
       SingleFile_7: -1249278515
       SingleFile_8: 1333095644
       SingleFile_9: -1333886322
