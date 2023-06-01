@@ -22,6 +22,7 @@ public class Knight_Script : MonoBehaviour
     public double position_y;
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
+    public bool Pinned;
 
 
     void Awake()
@@ -57,35 +58,119 @@ public class Knight_Script : MonoBehaviour
         CheckIfStuck();
         if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck && ((white && logic_Manager_.White_Turn) || (black && logic_Manager_.Black_Turn)))
         {
+            int x = 0;
+            
+            GameObject xTile;
+            Test_Tile TIle_Script;
             Pressed = true;
             if (white)
                 logic_Manager_.White_Pressed = true;
             else
                 logic_Manager_.Black_Pressed = true;
-            int x = 9;
+            x = 9;
             if(((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 &&  Tile_Im_On.position_.position.y<= 1.5 && Tile_Im_On.position_.position.x <= 2.5 )
-            KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = -7;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x >= -2.5)
-                KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = 14;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -2.5 && Tile_Im_On.position_.position.x <= 1.5)
-             KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = 16;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 2.5 && Tile_Im_On.position_.position.x <= 1.5)
-              KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = -16;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 2.5 && Tile_Im_On.position_.position.x >= -1.5)
-                KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = -18;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -2.5 && Tile_Im_On.position_.position.x >= -1.5)
-                KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = 5;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -1.5 && Tile_Im_On.position_.position.x <= 2.5)
-              KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
             x = -11;
             if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -1.5 && Tile_Im_On.position_.position.x >= -2.5)
-              KnightCallTiles(x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        KnightCallTiles(x);
+                }
+                else
+                    KnightCallTiles(x);
+            }
 
         }
         else if (Pressed && (logic_Manager_.White_Pressed || logic_Manager_.Black_Pressed))
@@ -137,6 +222,17 @@ public class Knight_Script : MonoBehaviour
         int conditions = 0;
 
         FindTileImOn();
+
+        if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
+        {
+            Pinned = true;
+            Stuck = true;
+            return;
+        }
+        else
+        {
+            Pinned = false;
+        }
 
         int x = 9;
         if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) < 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) > 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x <= 2.5)

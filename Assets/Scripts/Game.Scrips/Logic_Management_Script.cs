@@ -94,8 +94,22 @@ public class Logic_Management_Script : MonoBehaviour
         for(; x < 32; x++)
         {
             king = AllPieces[x].GetComponent<King_Script>();
+            if (king.white)
+            {
+                king.FindTileImOn();
+                if (king.Tile_Im_On.Attacked_Black_Secondary)
+                    king.PinPiece();
+            }
+            else
+            {
+                king.FindTileImOn();
+                if (king.Tile_Im_On.Attacked_White_Secondary)
+                    king.PinPiece();
+            }
 
         }
+        check_black = false;
+        check_white = false;
 
           if (White_Turn)
         {
@@ -103,11 +117,7 @@ public class Logic_Management_Script : MonoBehaviour
                 king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_White) {
                 check_black = true;
-                Debug.Log("check black king"); }
-            else
-            {
-                check_black = false;
-            }
+                Debug.Log("check black king"); }         
           White_Turn = false;
           Black_Turn = true;
         }
@@ -118,10 +128,6 @@ public class Logic_Management_Script : MonoBehaviour
             if (king.Tile_Im_On.Attacked_Black) {
                 check_white = true;
                 Debug.Log("check white king"); }
-            else
-            {
-                check_white = false;
-            }
             White_Turn = true;
           Black_Turn = false;
         }

@@ -23,6 +23,7 @@ public class Rook_Script : MonoBehaviour
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
     public bool Castling;
+    public bool Pinned;
 
 
     void Awake()
@@ -59,6 +60,9 @@ public class Rook_Script : MonoBehaviour
         CheckIfStuck();
         if (((!logic_Manager_.White_Pressed && white) || (!logic_Manager_.Black_Pressed && black)) && !Taken && !Pressed && !Stuck && ((white && logic_Manager_.White_Turn) || (black && logic_Manager_.Black_Turn)))
         {
+            GameObject xTile;
+            Test_Tile TIle_Script;
+            int y = 1;
             Pressed = true;
             if (white)
             logic_Manager_.White_Pressed = true;
@@ -66,17 +70,60 @@ public class Rook_Script : MonoBehaviour
                 logic_Manager_.Black_Pressed = true;
             int x = 0;
             if (!(Tile_Im_On.Vertical_Edge_Up))
-                RookCallTiles(1,x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
             x = -2;
+            y = -1;
             if (!(Tile_Im_On.Vertical_Edge_Down))
-                RookCallTiles(-1, x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
             x = 7;
+            y = 8;
             if (!(Tile_Im_On.Horizontal_Edge_Right))
-                RookCallTiles(8, x);
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
             x = -9;
+            y = -8;
             if (!(Tile_Im_On.Horizontal_Edge_Left))
-                RookCallTiles(-8, x);
-            
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
+
         }
         else if(Pressed && (logic_Manager_.White_Pressed  || logic_Manager_.Black_Pressed))
         {
@@ -151,6 +198,15 @@ public class Rook_Script : MonoBehaviour
         
         FindTileImOn();
 
+        if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
+        {
+            Pinned = true;
+        }
+        else
+        {
+            Pinned = false;
+        }
+
         if (Tile_Im_On.position_.position.y < 3.5)
         {
             Tile_To_Go_To = FindTile(0);
@@ -212,9 +268,15 @@ public class Rook_Script : MonoBehaviour
                 if (secondary)
                 {
                     if (white)
+                    {
                         TIle_Script.Attacked_White_Secondary = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black_Secondary = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
                         break;
@@ -224,9 +286,15 @@ public class Rook_Script : MonoBehaviour
                 {
 
                     if (white)
+                    {
                         TIle_Script.Attacked_White = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                 {
@@ -251,9 +319,15 @@ public class Rook_Script : MonoBehaviour
                 if (secondary)
                 {
                     if (white)
+                    {
                         TIle_Script.Attacked_White_Secondary = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black_Secondary = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
                         break;
@@ -261,11 +335,16 @@ public class Rook_Script : MonoBehaviour
                 }
                 else
                 {
-
                     if (white)
+                    {
                         TIle_Script.Attacked_White = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                 {
@@ -290,9 +369,15 @@ public class Rook_Script : MonoBehaviour
                 if (secondary)
                 {
                     if (white)
+                    {
                         TIle_Script.Attacked_White_Secondary = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black_Secondary = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
                         break;
@@ -302,9 +387,15 @@ public class Rook_Script : MonoBehaviour
                 {
 
                     if (white)
+                    {
                         TIle_Script.Attacked_White = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                 {
@@ -329,9 +420,15 @@ public class Rook_Script : MonoBehaviour
                 if (secondary)
                 {
                     if (white)
+                    {
                         TIle_Script.Attacked_White_Secondary = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black_Secondary = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
                         break;
@@ -341,9 +438,15 @@ public class Rook_Script : MonoBehaviour
                 {
 
                     if (white)
+                    {
                         TIle_Script.Attacked_White = true;
+                        TIle_Script.canbepinned_white = true;
+                    }
                     else
+                    {
                         TIle_Script.Attacked_Black = true;
+                        TIle_Script.canbepinned_black = true;
+                    }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
                 {
@@ -372,6 +475,10 @@ public class Rook_Script : MonoBehaviour
 
         Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
 
+        if (white)
+            Tile_Im_On.canbepinned_white = true;
+        else
+            Tile_Im_On.canbepinned_black = true;
 
 
     }

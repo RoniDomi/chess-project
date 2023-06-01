@@ -416,6 +416,203 @@ public class King_Script : MonoBehaviour
     
     }
 
+    public void PinPiece()
+    {
+        int x = 0;
+        if (!(Tile_Im_On.Vertical_Edge_Up))
+            RookCallTiles(1, x);
+        x = -2;
+        if (!(Tile_Im_On.Vertical_Edge_Down))
+            RookCallTiles(-1, x);
+        x = 7;
+        if (!(Tile_Im_On.Horizontal_Edge_Right))
+            RookCallTiles(8, x);
+        x = -9;
+        if (!(Tile_Im_On.Horizontal_Edge_Left))
+            RookCallTiles(-8, x);
+        x = 8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+            BishopCallTiles(9, x);
+        x = -8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+            BishopCallTiles(-7, x);
+        x = 6;
+        if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+            BishopCallTiles(7, x);
+        x = -10;
+        if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+            BishopCallTiles(-9, x);
+    }
+
+    public void BishopCallTiles(int i, int j)
+    {
+        bool found=false;
+        Test_Tile TIle_Script;
+        GameObject xTile = FindTile(j);
+        TIle_Script = xTile.GetComponent<Test_Tile>();
+        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && !TIle_Script.canbepinned_black) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && !TIle_Script.canbepinned_white))
+            return;
+        int x = j;
+        int cnt = 0;
+        while (true)
+        {
+            xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if ((black && TIle_Script.Occupy_Black) || (white && TIle_Script.Occupy_White))
+                cnt++;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if ((white && TIle_Script.Occupy_Black && TIle_Script.canbepinned_black) || (black && TIle_Script.Occupy_White && TIle_Script.canbepinned_white))
+                    found = true;
+
+                break;
+
+            }
+            if (i == 9)
+            {
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else if (i == -7)
+            {
+
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            else if (i == 7)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            j += i;
+
+
+        }
+
+        if (cnt > 1 || cnt == 0)
+        {
+            return;
+        }
+       
+        if (found)
+        {
+            while (true)
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (white)
+                {
+                    TIle_Script.pinnedTile_White = true;
+                }
+                else
+                {
+                    TIle_Script.pinnedTile_Black = true;
+                }
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    break;
+
+                }
+                x += i;
+            }
+        }
+
+    }
+
+    public void RookCallTiles(int i, int j)
+    {
+        bool found = false;
+        Test_Tile TIle_Script;
+        GameObject xTile = FindTile(j);
+        TIle_Script = xTile.GetComponent<Test_Tile>();
+        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && !TIle_Script.canbepinned_black) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && !TIle_Script.canbepinned_white))
+            return;
+        int x = j;
+        int cnt = 0;
+        while (true)
+        {
+            xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if ((black && TIle_Script.Occupy_Black) || (white && TIle_Script.Occupy_White))
+                cnt++;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White)) 
+            { 
+                if ((white && TIle_Script.Occupy_Black && TIle_Script.canbepinned_black) || (black && TIle_Script.Occupy_White && TIle_Script.canbepinned_white))
+                 found = true;
+                break;
+
+            }
+            if (i == 1)
+            {
+                if (TIle_Script.Vertical_Edge_Up)
+                    break;
+            }
+            else if (i == -1)
+            {
+
+                if (TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else if (i == 8)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            j += i;
+
+
+
+        }
+
+    
+
+        if (cnt > 1 || cnt == 0)
+        {
+            return;
+        }
+        if (found) 
+        { 
+            while (true)
+            {
+                 xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if(white)
+                {
+                    TIle_Script.pinnedTile_White = true;
+                }
+                else
+                {
+                    TIle_Script.pinnedTile_Black = true;
+                }
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    break;
+
+                }
+                x += i;
+            }
+        }
+
+    }
+
+     
+
     void attack()
     {
 

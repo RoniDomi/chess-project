@@ -43,6 +43,11 @@ public class Test_Tile : MonoBehaviour
     public Rook_Script RookScript;
     public GameObject Logic;
     public Logic_Management_Script logic_Manager_;
+    public bool PiecePinned;
+    public bool pinnedTile_White;
+    public bool pinnedTile_Black;
+    public bool canbepinned_white;
+    public bool canbepinned_black;
 
     bool WhitePiece(Test_Tile tile)
     {
@@ -152,6 +157,10 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop.Attacked_Black = false;
             Tiles_In_This_loop.Attacked_White_Secondary = false;
             Tiles_In_This_loop.Attacked_Black_Secondary = false;
+            Tiles_In_This_loop.pinnedTile_White = false;
+            Tiles_In_This_loop.pinnedTile_Black = false;
+            Tiles_In_This_loop.canbepinned_white = false;
+            Tiles_In_This_loop.canbepinned_black = false;
             Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
         }
 
@@ -664,6 +673,7 @@ public class Test_Tile : MonoBehaviour
             tile.RookMove(KingScript.Rooks[1]);
             Debug.Log("castle");
         }
+        KingScript.Castling = false;
     }
 
 
@@ -705,21 +715,21 @@ public class Test_Tile : MonoBehaviour
 
     void Update()
     {
-       // if(Attacked_Black && !logic_Manager_.NoHovering)
-        //{
-          //  if(_renderer.color==_offsetColor)
-            //{
-              //  _renderer.color = _TakeColorDark;
-            //}else if (_renderer.color==_baseColor)
-            //{
-              //  _renderer.color = _TakeColorLight;
-            //}
+        if((pinnedTile_Black || pinnedTile_White) && !logic_Manager_.NoHovering)
+       {
+         if(_renderer.color==_offsetColor)
+       {
+         _renderer.color = _TakeColorDark;
+       }else if (_renderer.color==_baseColor)
+       {
+         _renderer.color = _TakeColorLight;
+       }
                
-        //}
-        //else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
-        //{
-            //_renderer.color = _SavedColor;
-        //}
+       }
+       else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
+       {
+       _renderer.color = _SavedColor;
+       }
     }
 
 }
