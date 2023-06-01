@@ -42,6 +42,7 @@ public class Black_Pawn_Movement : MonoBehaviour
     public bool Take_Function_Called_Right = false;
     public bool Taken = false;
     public bool Pinned;
+    public bool Pinned_By_Bishop = false;
 
     public void Start()
     {   
@@ -63,15 +64,22 @@ public class Black_Pawn_Movement : MonoBehaviour
         if (Tile_Im_On.pinnedTile_Black)
         {
             Pinned = true;
+            Pinned_By_Bishop = false;
+        }
+        else if (Tile_Im_On.pinnedTile_Black_Bishop)
+        {
+            Pinned = false;
+            Pinned_By_Bishop = true;
         }
         else
         {
             Pinned = false;
+            Pinned_By_Bishop = false;
         }
 
         tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-        if (tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_Black))
+        if (tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
         {
             Stuck = true;
             conditions++;
@@ -86,7 +94,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black))
+            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
                 conditions++;
         }
         else
@@ -96,7 +104,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(-10);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black))
+            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
                 conditions++;
         }
         else
@@ -301,6 +309,21 @@ public class Black_Pawn_Movement : MonoBehaviour
                             tile_to_go_to.TestFunction();
                     }
                 }
+                else if (Pinned_By_Bishop)
+                {
+                    if (tile_to_go_to.pinnedTile_Black_Bishop)
+                    {
+                        tile_to_go_to.Selected = false;
+
+                        Take_Function_Called_Left = true;
+                        tile_to_go_to.Called = true;
+                        tile_to_go_to.Occupy_White = false;
+                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                        if (!tile_to_go_to.Occupy_Black)
+                            tile_to_go_to.TestFunction();
+                    }
+                }
                 else
                 {
                     tile_to_go_to.Selected = false;
@@ -343,7 +366,22 @@ public class Black_Pawn_Movement : MonoBehaviour
                                 tile_to_go_to.TestFunction();
                         }
                     }
-                    else
+                else if (Pinned_By_Bishop)
+                {
+                    if (tile_to_go_to.pinnedTile_Black_Bishop)
+                    {
+                        tile_to_go_to.Selected = false;
+
+                        Take_Function_Called_Left = true;
+                        tile_to_go_to.Called = true;
+                        tile_to_go_to.Occupy_White = false;
+                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                        if (!tile_to_go_to.Occupy_Black)
+                            tile_to_go_to.TestFunction();
+                    }
+                }
+                else
                     {
                         tile_to_go_to.Selected = false;
 

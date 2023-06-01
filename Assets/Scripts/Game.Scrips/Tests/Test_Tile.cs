@@ -46,8 +46,12 @@ public class Test_Tile : MonoBehaviour
     public bool PiecePinned;
     public bool pinnedTile_White;
     public bool pinnedTile_Black;
+    public bool pinnedTile_White_Bishop;
+    public bool pinnedTile_Black_Bishop;
     public bool canbepinned_white;
     public bool canbepinned_black;
+    public bool canbepinned_white_Bishop;
+    public bool canbepinned_black_Bishop;
 
     bool WhitePiece(Test_Tile tile)
     {
@@ -159,9 +163,18 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop.Attacked_Black_Secondary = false;
             Tiles_In_This_loop.pinnedTile_White = false;
             Tiles_In_This_loop.pinnedTile_Black = false;
+            Tiles_In_This_loop.pinnedTile_White_Bishop = false;
+            Tiles_In_This_loop.pinnedTile_Black_Bishop = false;
             Tiles_In_This_loop.canbepinned_white = false;
             Tiles_In_This_loop.canbepinned_black = false;
+            Tiles_In_This_loop.canbepinned_white_Bishop = false;
+            Tiles_In_This_loop.canbepinned_black_Bishop = false;
             Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
+            if (Tiles_In_This_loop.NrOfPieceThatsOnMe == 100)
+            {
+                Tiles_In_This_loop.Occupy_Black = false;
+                Tiles_In_This_loop.Occupy_White = false;
+            }
         }
 
     }
@@ -175,6 +188,8 @@ public class Test_Tile : MonoBehaviour
         {
             
             Tiles_In_This_loop = AllTiles[x].GetComponent<Test_Tile>();
+
+            
             if (Tiles_In_This_loop.Called)
             {
                 Tiles_In_This_loop.Called = false;
@@ -715,7 +730,7 @@ public class Test_Tile : MonoBehaviour
 
     void Update()
     {
-        if((pinnedTile_Black || pinnedTile_White) && !logic_Manager_.NoHovering)
+        if((pinnedTile_Black_Bishop || pinnedTile_White_Bishop || pinnedTile_Black || pinnedTile_White) && !logic_Manager_.NoHovering)
        {
          if(_renderer.color==_offsetColor)
        {

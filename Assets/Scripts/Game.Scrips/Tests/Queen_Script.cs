@@ -23,6 +23,7 @@ public class Queen_Script : MonoBehaviour
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
     public bool Pinned=false;
+    public bool Pinned_By_Bishop = false;
 
 
     void Awake()
@@ -62,9 +63,16 @@ public class Queen_Script : MonoBehaviour
         if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
         {
             Pinned = true;
+            Pinned_By_Bishop = false; 
+        }
+        else if ((white && Tile_Im_On.pinnedTile_White_Bishop) || (black && Tile_Im_On.pinnedTile_Black_Bishop))
+        {
+            Pinned_By_Bishop = true;
+            Pinned = false;
         }
         else
         {
+            Pinned_By_Bishop = false;
             Pinned = false;
         }
 
@@ -776,12 +784,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White_Secondary = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black_Secondary = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
@@ -794,11 +802,11 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else {
                         TIle_Script.Attacked_Black = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                     
                 }
@@ -828,12 +836,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White_Secondary = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black_Secondary = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
@@ -846,12 +854,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
@@ -879,12 +887,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White_Secondary = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black_Secondary = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
@@ -897,12 +905,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
@@ -931,12 +939,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White_Secondary = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black_Secondary = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                     if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                     {
@@ -949,12 +957,12 @@ public class Queen_Script : MonoBehaviour
                     if (white)
                     {
                         TIle_Script.Attacked_White = true;
-                        TIle_Script.canbepinned_white = true;
+                        TIle_Script.canbepinned_white_Bishop = true;
                     }
                     else
                     {
                         TIle_Script.Attacked_Black = true;
-                        TIle_Script.canbepinned_black = true;
+                        TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
                 if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)

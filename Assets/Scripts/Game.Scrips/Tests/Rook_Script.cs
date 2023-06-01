@@ -24,6 +24,7 @@ public class Rook_Script : MonoBehaviour
     public Test_Tile Tile_Im_On;
     public bool Castling;
     public bool Pinned;
+    public bool Pinned_By_Bishop = false;
 
 
     void Awake()
@@ -78,6 +79,11 @@ public class Rook_Script : MonoBehaviour
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
                         RookCallTiles(y, x);
                 }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
                 else
                     RookCallTiles(y, x);
             }
@@ -90,6 +96,11 @@ public class Rook_Script : MonoBehaviour
                 if (Pinned)
                 {
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
                         RookCallTiles(y, x);
                 }
                 else
@@ -106,6 +117,11 @@ public class Rook_Script : MonoBehaviour
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
                         RookCallTiles(y, x);
                 }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
                 else
                     RookCallTiles(y, x);
             }
@@ -118,6 +134,11 @@ public class Rook_Script : MonoBehaviour
                 if (Pinned)
                 {
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
                         RookCallTiles(y, x);
                 }
                 else
@@ -195,15 +216,22 @@ public class Rook_Script : MonoBehaviour
         public void CheckIfStuck()
     {
         int conditions = 0;
-        
+
         FindTileImOn();
 
         if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
         {
             Pinned = true;
+            Pinned_By_Bishop = false;
+        }
+        else if ((white && Tile_Im_On.pinnedTile_White_Bishop) || (black && Tile_Im_On.pinnedTile_Black_Bishop))
+        {
+            Pinned_By_Bishop = true;
+            Pinned = false;
         }
         else
         {
+            Pinned_By_Bishop = false;
             Pinned = false;
         }
 

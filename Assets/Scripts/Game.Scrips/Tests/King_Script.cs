@@ -450,7 +450,7 @@ public class King_Script : MonoBehaviour
         Test_Tile TIle_Script;
         GameObject xTile = FindTile(j);
         TIle_Script = xTile.GetComponent<Test_Tile>();
-        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && !TIle_Script.canbepinned_black) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && !TIle_Script.canbepinned_white))
+        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && (!TIle_Script.canbepinned_black && !TIle_Script.canbepinned_black_Bishop)) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && (!TIle_Script.canbepinned_white && !TIle_Script.canbepinned_white_Bishop)))
             return;
         int x = j;
         int cnt = 0;
@@ -463,7 +463,7 @@ public class King_Script : MonoBehaviour
 
             if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
             {
-                if ((white && TIle_Script.Occupy_Black && TIle_Script.canbepinned_black) || (black && TIle_Script.Occupy_White && TIle_Script.canbepinned_white))
+                if ((white && TIle_Script.Occupy_Black && (TIle_Script.canbepinned_black || TIle_Script.canbepinned_black_Bishop)) || (black && TIle_Script.Occupy_White && (TIle_Script.canbepinned_white || TIle_Script.canbepinned_white_Bishop)))
                     found = true;
 
                 break;
@@ -510,11 +510,17 @@ public class King_Script : MonoBehaviour
                 TIle_Script = xTile.GetComponent<Test_Tile>();
                 if (white)
                 {
-                    TIle_Script.pinnedTile_White = true;
+                    if (TIle_Script.canbepinned_black_Bishop)
+                        TIle_Script.pinnedTile_White_Bishop = true;
+                    else if (TIle_Script.canbepinned_black)
+                        TIle_Script.pinnedTile_White = true;
                 }
                 else
                 {
-                    TIle_Script.pinnedTile_Black = true;
+                    if (TIle_Script.canbepinned_white_Bishop)
+                        TIle_Script.pinnedTile_Black_Bishop = true;
+                    else if (TIle_Script.canbepinned_white)
+                        TIle_Script.pinnedTile_Black = true;
                 }
                 if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
                 {
@@ -533,7 +539,7 @@ public class King_Script : MonoBehaviour
         Test_Tile TIle_Script;
         GameObject xTile = FindTile(j);
         TIle_Script = xTile.GetComponent<Test_Tile>();
-        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && !TIle_Script.canbepinned_black) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && !TIle_Script.canbepinned_white))
+        if ((white && (!TIle_Script.Attacked_Black || !TIle_Script.Attacked_Black_Secondary) && (!TIle_Script.canbepinned_black && !TIle_Script.canbepinned_black_Bishop)) || (black && (!TIle_Script.Attacked_White || !TIle_Script.Attacked_White_Secondary) && (!TIle_Script.canbepinned_white && !TIle_Script.canbepinned_white_Bishop)))
             return;
         int x = j;
         int cnt = 0;
@@ -546,7 +552,7 @@ public class King_Script : MonoBehaviour
 
             if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White)) 
             { 
-                if ((white && TIle_Script.Occupy_Black && TIle_Script.canbepinned_black) || (black && TIle_Script.Occupy_White && TIle_Script.canbepinned_white))
+                if ((white && TIle_Script.Occupy_Black && (TIle_Script.canbepinned_black || TIle_Script.canbepinned_black_Bishop)) || (black && TIle_Script.Occupy_White && (TIle_Script.canbepinned_white || TIle_Script.canbepinned_white_Bishop)))
                  found = true;
                 break;
 
@@ -592,13 +598,19 @@ public class King_Script : MonoBehaviour
             {
                  xTile = FindTile(x);
                 TIle_Script = xTile.GetComponent<Test_Tile>();
-                if(white)
+                if (white)
                 {
-                    TIle_Script.pinnedTile_White = true;
+                    if (TIle_Script.canbepinned_black_Bishop)
+                        TIle_Script.pinnedTile_White_Bishop = true;
+                    else if (TIle_Script.canbepinned_black)
+                        TIle_Script.pinnedTile_White = true;
                 }
                 else
                 {
-                    TIle_Script.pinnedTile_Black = true;
+                    if (TIle_Script.canbepinned_white_Bishop)
+                        TIle_Script.pinnedTile_Black_Bishop = true;
+                    else if (TIle_Script.canbepinned_white)
+                        TIle_Script.pinnedTile_Black = true;
                 }
                 if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
                 {
