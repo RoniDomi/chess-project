@@ -14,7 +14,8 @@ public class Logic_Management_Script : MonoBehaviour
     public bool check_black;
     public bool double_check_white;
     public bool double_check_black;
-
+    public int whitedouble = 0;
+    public int blackdouble = 0;
 
     public GameObject[] AllPieces;
 
@@ -30,29 +31,29 @@ public class Logic_Management_Script : MonoBehaviour
     public void Check_For_Double_Check()
     {
         int x = 0;
-        int whitedouble = 0;
-        int blackdouble = 0;
+        whitedouble = 0;
+        blackdouble = 0;
 
         for (; x < 8; x++)
         {
             Testing_Movement whitepawns;
             whitepawns = AllPieces[x].GetComponent<Testing_Movement>();
             whitepawns.FindTileImOn();
-            if (whitepawns.Tile_Im_On.Checked_Black)
-                whitedouble++;
 
+            if (whitepawns.Tile_Im_On.Checked_Black && !whitepawns.Taken)
+                whitedouble++;
+            
 
         }
-
+        Debug.Log(whitedouble);
         for (; x < 16; x++)
         {
             Black_Pawn_Movement blackpawns;
 
             blackpawns = AllPieces[x].GetComponent<Black_Pawn_Movement>();
             blackpawns.FindTileImOn();
-            if (blackpawns.Tile_Im_On.Checked_White)
+            if (blackpawns.Tile_Im_On.Checked_White && !blackpawns.Taken)
                 blackdouble++;
-
 
         }
 
@@ -64,16 +65,19 @@ public class Logic_Management_Script : MonoBehaviour
 
             if (rooks.white)
             {
-                if (rooks.Tile_Im_On.Checked_Black)
+                if (rooks.Tile_Im_On.Checked_Black && rooks.Taken)
                     whitedouble++;
             }
             else
             {
-                if (rooks.Tile_Im_On.Checked_White)
+                if (rooks.Tile_Im_On.Checked_White && !rooks.Taken)
                     blackdouble++;
             }
 
+           
+
         }
+         Debug.Log(whitedouble);
         for (; x < 24; x++)
         {
             Bishop_Script bishops;
@@ -82,15 +86,18 @@ public class Logic_Management_Script : MonoBehaviour
 
             if (bishops.white)
             {
-                if (bishops.Tile_Im_On.Checked_Black)
+                if (bishops.Tile_Im_On.Checked_Black && !bishops.Taken) 
                     whitedouble++;
             }
             else
             {
-                if (bishops.Tile_Im_On.Checked_White)
+                if (bishops.Tile_Im_On.Checked_White && !bishops.Taken)
                     blackdouble++;
             }
+
+            
         }
+         Debug.Log(whitedouble);
         for (; x < 26; x++)
         {
             Queen_Script queens;
@@ -99,15 +106,17 @@ public class Logic_Management_Script : MonoBehaviour
 
             if (queens.white)
             {
-                if (queens.Tile_Im_On.Checked_Black)
+                if (queens.Tile_Im_On.Checked_Black && !queens.Taken)
                     whitedouble++;
             }
             else
             {
-                if (queens.Tile_Im_On.Checked_White)
+                if (queens.Tile_Im_On.Checked_White && !queens.Taken)
                     blackdouble++;
             }
+            
         }
+         Debug.Log(whitedouble);
         for (; x < 30; x++)
         {
             Knight_Script knights;
@@ -116,24 +125,29 @@ public class Logic_Management_Script : MonoBehaviour
 
             if (knights.white)
             {
-                if (knights.Tile_Im_On.Checked_Black)
+                if (knights.Tile_Im_On.Checked_Black && !knights.Taken)
                     whitedouble++;
             }
             else
             {
-                if (knights.Tile_Im_On.Checked_White)
+                if (knights.Tile_Im_On.Checked_White && !knights.Taken)
                     blackdouble++;
             }
-
+           
         }
-        if(whitedouble>=2)
+       Debug.Log(whitedouble);
+        if(whitedouble == 2)
         {
             double_check_black = true;
         }
-       if(blackdouble>=2)
+        else
+            double_check_black = false;
+        if (blackdouble == 2)
         {
             double_check_white = true;
         }
+        else
+            double_check_white = false;
 
     }
 
@@ -224,13 +238,13 @@ public class Logic_Management_Script : MonoBehaviour
                 king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_White) {
                 check_black = true;
-                Debug.Log("check black king"); }
+               }
             king = AllPieces[30].GetComponent<King_Script>();
             king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_Black)
             {
                 check_white = true;
-                Debug.Log("check white king");
+                
             }
             White_Turn = false;
           Black_Turn = true;
@@ -241,13 +255,13 @@ public class Logic_Management_Script : MonoBehaviour
                 king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_Black) {
                 check_white = true;
-                Debug.Log("check white king"); }
+                }
             king = AllPieces[31].GetComponent<King_Script>();
             king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_White)
             {
                 check_black = true;
-                Debug.Log("check black king");
+                
             }
             White_Turn = true;
           Black_Turn = false;
