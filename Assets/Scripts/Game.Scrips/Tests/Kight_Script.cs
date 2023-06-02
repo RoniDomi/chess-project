@@ -246,10 +246,10 @@ public class Knight_Script : MonoBehaviour
         FindTileImOn();
 
       
-        if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
+        if (((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black)) || ((white && Tile_Im_On.pinnedTile_White_Bishop) || (black && Tile_Im_On.pinnedTile_Black_Bishop)))
         {
             Pinned = true;
-            Stuck = true;
+            Stuck = true; 
             return;
         }
         else
