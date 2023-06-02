@@ -58,6 +58,8 @@ public class Black_Pawn_Movement : MonoBehaviour
     {
         FindTileImOn();
 
+        
+
         int conditions = 0;
         Tile_To_Go_To = FindTile(-2);
 
@@ -79,7 +81,9 @@ public class Black_Pawn_Movement : MonoBehaviour
 
         tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-        if (tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+        Test_Tile tile2 = FindTile(-3).GetComponent<Test_Tile>();
+
+        if (tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop) || (logic_Manager_.check_black && !(tile_to_go_to.Checked_Black || (tile2.Checked_Black && !tile2.Occupy_White))))
         {
             Stuck = true;
             conditions++;
@@ -94,7 +98,7 @@ public class Black_Pawn_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+            if ((!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop)) || (logic_Manager_.check_black && !(tile_to_go_to.Checked_Black)))
                 conditions++;
         }
         else
@@ -104,11 +108,18 @@ public class Black_Pawn_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(-10);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+            if ((!tile_to_go_to.Occupy_White || (Pinned && !tile_to_go_to.pinnedTile_Black) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop)) || (logic_Manager_.check_black && !(tile_to_go_to.Checked_Black)))
                 conditions++;
         }
         else
             conditions++;
+
+        if (logic_Manager_.double_check_black) 
+        {
+            Stuck = true;
+            Stuck_For_Real = true;
+            return true;
+        }
         if (conditions == 3)
         {
             Stuck_For_Real = true;
@@ -119,6 +130,8 @@ public class Black_Pawn_Movement : MonoBehaviour
             Stuck_For_Real = false;
             return false;
         }
+
+        
     }
         
 
@@ -172,25 +185,69 @@ public class Black_Pawn_Movement : MonoBehaviour
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
 
-               
-                    tile_to_go_to.Selected = false;
-             
-                tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
 
-                tile_to_go_to.TestFunction();
+                if (logic_Manager_.check_black)
+                {
+                    if (tile_to_go_to.Checked_Black && !tile_to_go_to.Occupy_White)
+                    {
+                        if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                        {
+
+                            tile_to_go_to.Selected = false;
+
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            tile_to_go_to.TestFunction();
+                        }
+                    }
+                }
+                else
+                {
+                    if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                    {
+
+                        tile_to_go_to.Selected = false;
+
+                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                        tile_to_go_to.TestFunction();
+                    }
+                }
 
 
                 if (FirstMove)
                 {
+
                     Tile_To_Go_To = FindTile(-3);
                     tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                    if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black)){
-                      
+
+                    if (logic_Manager_.check_black)
+                    {
+                        if (tile_to_go_to.Checked_Black && !tile_to_go_to.Occupy_White)
+                        {
+                            if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                            {
+
+                                tile_to_go_to.Selected = false;
+
+                                tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                                tile_to_go_to.TestFunction();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                        {
+
                             tile_to_go_to.Selected = false;
 
-                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
 
-                        tile_to_go_to.TestFunction(); }
+                            tile_to_go_to.TestFunction();
+                        }
+                    }
 
 
                 }

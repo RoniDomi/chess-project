@@ -132,7 +132,24 @@ public class King_Script : MonoBehaviour
     }
 
 
-   
+    void KingCallTiles2(int x)
+    {
+        Test_Tile TIle_Script;
+
+
+
+        GameObject xTile = FindTile(x);
+        TIle_Script = xTile.GetComponent<Test_Tile>();
+        
+
+            if (white)
+                TIle_Script.Attacked_White = true;
+            else
+                TIle_Script.Attacked_Black = true;
+
+        
+
+    }
 
     public void KingCallTiles(int x)
     {
@@ -194,17 +211,17 @@ public class King_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(7);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
                 Tile_To_Go_To = FindTile(-2);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
                 Tile_To_Go_To = FindTile(6);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
             }
             else if (Tile_Im_On.Horizontal_Edge_Right)
@@ -213,15 +230,15 @@ public class King_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(-9);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-2);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-10);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
             }
             else
@@ -229,25 +246,25 @@ public class King_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(-9);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-10);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(7);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
                 Tile_To_Go_To = FindTile(-2);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
                 Tile_To_Go_To = FindTile(6);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
             }
 
@@ -262,16 +279,16 @@ public class King_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(0);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(7);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
                 Tile_To_Go_To = FindTile(8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
 
             }
@@ -280,15 +297,15 @@ public class King_Script : MonoBehaviour
                 conditions += 2;
                 Tile_To_Go_To = FindTile(-8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(0);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-9);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
             }
             else
@@ -296,23 +313,23 @@ public class King_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(7);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(-9);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
                 Tile_To_Go_To = FindTile(0);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                     conditions++;
             }
 
@@ -324,23 +341,23 @@ public class King_Script : MonoBehaviour
             conditions += 3;
             Tile_To_Go_To = FindTile(-8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-10);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(0);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-2);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-9);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
 
         }
@@ -349,60 +366,60 @@ public class King_Script : MonoBehaviour
             conditions += 3;
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
 
             Tile_To_Go_To = FindTile(8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(0);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-2);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(7);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
         }
         else
         {
             Tile_To_Go_To = FindTile(-9);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
 
             Tile_To_Go_To = FindTile(8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(0);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-2);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(7);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-10);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
             Tile_To_Go_To = FindTile(-8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || tile_to_go_to.Attacked_Black) && white) || ((tile_to_go_to.Occupy_Black || tile_to_go_to.Attacked_White) && black))
                 conditions++;
         }
 
@@ -623,11 +640,272 @@ public class King_Script : MonoBehaviour
 
     }
 
-     
-
-    void attack()
+    public void BishopCheckTIles(int i, int j)
     {
+        Test_Tile TIle_Script;
+        GameObject xTile;
+        bool found_piece = false;
+        bool found_smth = false;
+        int x = j;
+        while (true)
+        {
+            xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if ((black && TIle_Script.Occupy_Black) || (white && TIle_Script.Occupy_White))
+                return;
 
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 26)
+                    found_piece = true;
+                else
+                    found_smth = true;
+                break;
+
+            }
+            if (i == 9)
+            {
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else if (i == -7)
+            {
+
+                if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            else if (i == 7)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+
+            j += i;
+
+
+
+        }
+
+        if (found_piece)
+        {
+            while (true)
+            {
+
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                    break;
+
+                if (white)
+                    TIle_Script.Checked_White = true;
+                else
+                    TIle_Script.Checked_Black = true; ;
+
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    if (white)
+                        TIle_Script.Checked_White = true;
+                    else
+                        TIle_Script.Checked_Black = true;
+                    break;
+
+                }
+              x += i;
+            }
+            return;
+        }
+        if(found_smth)
+        {
+            xTile = FindTile(x);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                return;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (white)
+                    TIle_Script.Checked_White = true;
+                else
+                    TIle_Script.Checked_Black = true;
+                return;
+
+            }
+        }
+    }
+
+    public void RookCheckTiles(int i, int j)
+    {
+        Test_Tile TIle_Script;
+        GameObject xTile;
+        bool found_piece = false;
+        bool found_smth = false;
+        int x = j;
+        while (true)
+        {
+            xTile = FindTile(j);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if ((black && TIle_Script.Occupy_Black) || (white && TIle_Script.Occupy_White))
+                return;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 26)
+                    found_piece = true;
+                else
+                    found_smth = true;
+                break;
+
+            }
+            if (i == 1)
+            {
+                if (TIle_Script.Vertical_Edge_Up)
+                    break;
+            }
+            else if (i == -1)
+            {
+
+                if (TIle_Script.Vertical_Edge_Down)
+                    break;
+            }
+            else if (i == 8)
+            {
+
+                if (TIle_Script.Horizontal_Edge_Right)
+                    break;
+            }
+            else
+            {
+
+                if (TIle_Script.Horizontal_Edge_Left)
+                    break;
+            }
+            j += i;
+
+
+
+        }
+
+        if (found_piece) {
+            while (true)
+            {
+
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                    break;
+
+                if (white)
+                    TIle_Script.Checked_White = true;
+                else
+                    TIle_Script.Checked_Black = true; ;
+
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    if (white)
+                        TIle_Script.Checked_White = true;
+                    else
+                        TIle_Script.Checked_Black = true;
+                    break;
+
+                }
+               
+                x += i;
+
+            }
+            return;
+        }
+        if (found_smth)
+        {
+            xTile = FindTile(x);
+            TIle_Script = xTile.GetComponent<Test_Tile>();
+            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
+                return;
+
+            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            {
+                if (white)
+                    TIle_Script.Checked_White = true;
+                else
+                    TIle_Script.Checked_Black = true;
+                return;
+
+            }
+        }
+
+    }
+
+    public void attack()
+    {
+        FindTileImOn();
+
+        if (white)
+        {
+            Tile_Im_On.king_white = true;
+        }
+        else
+            Tile_Im_On.king_black = true;
+
+        int x = 0;
+        if (!(Tile_Im_On.Vertical_Edge_Up))
+            KingCallTiles2(x);
+        x = -2;
+        if (!(Tile_Im_On.Vertical_Edge_Down))
+            KingCallTiles2(x);
+        x = 7;
+        if (!(Tile_Im_On.Horizontal_Edge_Right))
+            KingCallTiles2(x);
+        x = -9;
+        if (!(Tile_Im_On.Horizontal_Edge_Left))
+            KingCallTiles2(x);
+        x = 8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+            KingCallTiles2(x);
+        x = -8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+            KingCallTiles2(x);
+        x = 6;
+        if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+            KingCallTiles2(x);
+        x = -10;
+        if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+            KingCallTiles2(x);
+    }
+
+    public void FindCheckedTiles()
+    {
+        int x = 0;
+        if (!(Tile_Im_On.Vertical_Edge_Up))
+            RookCheckTiles(1, x);
+        x = -2;
+        if (!(Tile_Im_On.Vertical_Edge_Down))
+            RookCheckTiles(-1, x);
+        x = 7;
+        if (!(Tile_Im_On.Horizontal_Edge_Right))
+            RookCheckTiles(8, x);
+        x = -9;
+        if (!(Tile_Im_On.Horizontal_Edge_Left))
+            RookCheckTiles(-8, x);
+        x = 8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+            BishopCheckTIles(9, x);
+        x = -8;
+        if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+            BishopCheckTIles(-7, x);
+        x = 6;
+        if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+            BishopCheckTIles(7, x);
+        x = -10;
+        if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+            BishopCheckTIles(-9, x);
     }
 
     public GameObject FindTile(int x)

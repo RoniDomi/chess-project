@@ -9090,6 +9090,8 @@ MonoBehaviour:
   Black_Turn: 1
   check_white: 0
   check_black: 0
+  double_check_white: 0
+  double_check_black: 0
   AllPieces:
   - {fileID: 1130609518}
   - {fileID: 423660671}

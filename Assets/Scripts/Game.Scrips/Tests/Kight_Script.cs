@@ -198,16 +198,38 @@ public class Knight_Script : MonoBehaviour
 
         if (!((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
         {
-            TIle_Script.TestFunction();
-            TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-            TIle_Script.Selected = false;
 
-            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
             {
-                if (white)
-                    TIle_Script.Occupy_Black = false;
-                else
-                    TIle_Script.Occupy_White = false;
+                if ((white && TIle_Script.Checked_White) || (black && TIle_Script.Checked_Black))
+                {
+                    TIle_Script.TestFunction();
+                    TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                    TIle_Script.Selected = false;
+
+                    if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                    {
+                        if (white)
+                            TIle_Script.Occupy_Black = false;
+                        else
+                            TIle_Script.Occupy_White = false;
+                    }
+                }
+            }
+            else
+            {
+
+                TIle_Script.TestFunction();
+                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                TIle_Script.Selected = false;
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    if (white)
+                        TIle_Script.Occupy_Black = false;
+                    else
+                        TIle_Script.Occupy_White = false;
+                }
             }
         }
 
@@ -223,6 +245,7 @@ public class Knight_Script : MonoBehaviour
 
         FindTileImOn();
 
+      
         if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
         {
             Pinned = true;
@@ -235,17 +258,29 @@ public class Knight_Script : MonoBehaviour
         }
 
         int x = 9;
-        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) < 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) > 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x <= 2.5)
+        if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x <= 2.5)
         {
             GameObject xTile = FindTile(x);
             tile = xTile.GetComponent<Test_Tile>();
 
-            if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
-                conditions++;
-
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+                    
+                        conditions++;
+                }
+            }
+            else
+            {
+                if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
+                    conditions++;
+            }
         }
         else
+        {
             conditions++;
+        }
 
         x = -7;
         if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x >= -2.5)
@@ -254,9 +289,20 @@ public class Knight_Script : MonoBehaviour
             GameObject xTile = FindTile(x);
             tile = xTile.GetComponent<Test_Tile>();
 
-            if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
-                    conditions++;
 
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+                   
+                        conditions++;
+                }
+            }
+            else
+            {
+                if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
+                    conditions++;
+            }
         }
         else
             conditions++;
@@ -269,10 +315,21 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+        }
             else
                 conditions++;
 
@@ -284,10 +341,20 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+        }
             else
                 conditions++;
 
@@ -299,10 +366,21 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+        }
             else
                 conditions++;
 
@@ -315,10 +393,22 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+
+        }
             else
                 conditions++;
 
@@ -329,10 +419,21 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+        }
             else
                 conditions++;
 
@@ -345,10 +446,22 @@ public class Knight_Script : MonoBehaviour
                 GameObject xTile = FindTile(x);
                 tile = xTile.GetComponent<Test_Tile>();
 
+
+            if ((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black))
+            {
+                if ((white && !tile.Checked_White) || (black && !tile.Checked_Black))
+                {
+
+                    conditions++;
+                }
+            }
+            else
+            {
                 if ((white && tile.Occupy_White) || (black && tile.Occupy_Black))
                     conditions++;
-
             }
+
+        }
             else
                 conditions++;
 
@@ -357,14 +470,17 @@ public class Knight_Script : MonoBehaviour
         else
             Stuck = false;
 
+        if (white && logic_Manager_.double_check_white || black && logic_Manager_.double_check_black)
+            Stuck = true;
 
-           
 
-        
+
     }
     public void attack()
     {
         Test_Tile Tile_Script;
+
+        FindTileImOn();
 
         int x = 9;
         if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y <= 1.5 && Tile_Im_On.position_.position.x <= 2.5)
@@ -374,12 +490,25 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
-            if (!((white && Tile_Script.Occupy_White) || (black && Tile_Script.Occupy_Black)))
+
+            if (white)
             {
-                if (white)
-                    Tile_Script.Attacked_White = true;
-                else
-                    Tile_Script.Attacked_Black = true;
+                if (Tile_Script.NrOfPieceThatsOnMe==31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
+                Tile_Script.Attacked_White = true;
+            }
+            else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
+                Tile_Script.Attacked_Black = true;
             }
 
         }
@@ -391,12 +520,28 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
-          
-                if (white)
-                    Tile_Script.Attacked_White = true;
-                else
-                    Tile_Script.Attacked_Black = true;
-            
+
+            if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
+                Tile_Script.Attacked_White = true;
+            }
+            else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
+                Tile_Script.Attacked_Black = true;
+            }
+
+
 
         }
         x = 14;
@@ -407,10 +552,26 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
+
             if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
                 Tile_Script.Attacked_White = true;
+            }
             else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
                 Tile_Script.Attacked_Black = true;
+            }
 
         }
         x = 16;
@@ -421,12 +582,27 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
-           
-                if (white)
-                    Tile_Script.Attacked_White = true;
-                else
-                    Tile_Script.Attacked_Black = true;
-           
+
+            if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
+                Tile_Script.Attacked_White = true;
+            }
+            else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
+                Tile_Script.Attacked_Black = true;
+            }
+
 
         }
         x = -16;
@@ -438,9 +614,25 @@ public class Knight_Script : MonoBehaviour
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
             if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
                 Tile_Script.Attacked_White = true;
+            }
             else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
                 Tile_Script.Attacked_Black = true;
+            }
+
         }
         x = -18;
         if (((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) >= 0 && ((int)(position_y + 4.2 + 0.15f + ((position_x + 5.2f) * 8) - 13) + x) <= 64 && Tile_Im_On.position_.position.y >= -2.5 && Tile_Im_On.position_.position.x >= -1.5)
@@ -450,10 +642,26 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
+
             if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
                 Tile_Script.Attacked_White = true;
+            }
             else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
                 Tile_Script.Attacked_Black = true;
+            }
 
         }
         x = 5;
@@ -464,10 +672,26 @@ public class Knight_Script : MonoBehaviour
 
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
+
             if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
                 Tile_Script.Attacked_White = true;
+            }
             else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
                 Tile_Script.Attacked_Black = true;
+            }
 
         }
         x = -11;
@@ -479,9 +703,25 @@ public class Knight_Script : MonoBehaviour
             Tile_Script = xTile.GetComponent<Test_Tile>();
 
             if (white)
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 31)
+                {
+                    Tile_Im_On.Checked_Black = true;
+                    Debug.Log("done");
+                }
+
                 Tile_Script.Attacked_White = true;
+            }
             else
+            {
+                if (Tile_Script.NrOfPieceThatsOnMe == 30)
+                {
+                    Tile_Im_On.Checked_White = true;
+                    Debug.Log("done");
+                }
                 Tile_Script.Attacked_Black = true;
+            }
+
         }
 
     }

@@ -80,6 +80,11 @@ public class Bishop_Script : MonoBehaviour
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
                         BishopCallTiles(y, x);
                 }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
                 else
                     BishopCallTiles(y, x);
             }
@@ -92,6 +97,11 @@ public class Bishop_Script : MonoBehaviour
                 if (Pinned)
                 {
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
                         BishopCallTiles(y, x);
                 }
                 else
@@ -108,6 +118,11 @@ public class Bishop_Script : MonoBehaviour
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
                         BishopCallTiles(y, x);
                 }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
                 else
                     BishopCallTiles(y, x);
             }
@@ -120,6 +135,11 @@ public class Bishop_Script : MonoBehaviour
                 if (Pinned)
                 {
                     if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
                         BishopCallTiles(y, x);
                 }
                 else
@@ -152,17 +172,44 @@ public class Bishop_Script : MonoBehaviour
             TIle_Script = xTile.GetComponent<Test_Tile>();
             if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
                 break;
-            TIle_Script.TestFunction();
-            TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-            TIle_Script.Selected = false;
-
-            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            if (logic_Manager_.check_white && white || logic_Manager_.check_black && black)
             {
-                if (white)
-                    TIle_Script.Occupy_Black = false;
-                else
-                    TIle_Script.Occupy_White = false;
-                break;
+                if ((TIle_Script.Checked_White && white) || (TIle_Script.Checked_Black && black))
+                {
+
+                    TIle_Script.TestFunction();
+                    TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                    TIle_Script.Selected = false;
+                    Stuck = false;
+
+
+                    if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                    {
+                        if (white)
+                            TIle_Script.Occupy_Black = false;
+                        else
+                            TIle_Script.Occupy_White = false;
+                        break;
+
+                    }
+                }
+            }
+            else if (!Taken)
+            {
+                TIle_Script.TestFunction();
+                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                TIle_Script.Selected = false;
+
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    if (white)
+                        TIle_Script.Occupy_Black = false;
+                    else
+                        TIle_Script.Occupy_White = false;
+                    break;
+
+                }
 
             }
             if (i == 9)
@@ -200,7 +247,6 @@ public class Bishop_Script : MonoBehaviour
 
         FindTileImOn();
 
-
         if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
         {
             Pinned = true;
@@ -228,7 +274,7 @@ public class Bishop_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(6);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
             else if (Tile_Im_On.Horizontal_Edge_Right)
@@ -236,7 +282,7 @@ public class Bishop_Script : MonoBehaviour
                 conditions++;
                 Tile_To_Go_To = FindTile(-10);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
             else
@@ -244,16 +290,17 @@ public class Bishop_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(6);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
                 Tile_To_Go_To = FindTile(-10);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
 
         }
 
+        
         if (Tile_Im_On.Vertical_Edge_Down)
         {
             conditions += 2;
@@ -263,7 +310,7 @@ public class Bishop_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
             else if (Tile_Im_On.Horizontal_Edge_Right)
@@ -271,7 +318,7 @@ public class Bishop_Script : MonoBehaviour
                 conditions++;
                 Tile_To_Go_To = FindTile(-8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
             else
@@ -279,11 +326,11 @@ public class Bishop_Script : MonoBehaviour
 
                 Tile_To_Go_To = FindTile(8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
                 Tile_To_Go_To = FindTile(-8);
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+                if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                     conditions++;
             }
 
@@ -295,34 +342,69 @@ public class Bishop_Script : MonoBehaviour
             conditions += 2;
             Tile_To_Go_To = FindTile(-8);
            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                 conditions++;
             Tile_To_Go_To = FindTile(-10);
            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                 conditions++;
 
         }
+
         if (Tile_Im_On.Horizontal_Edge_Left)
         {
             conditions += 2;
             Tile_To_Go_To = FindTile(6);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                 conditions++;
 
             Tile_To_Go_To = FindTile(8);
               tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
                 conditions++;
         }
-        
-        if (conditions == 4)
+
+        if(!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Vertical_Edge_Down))
+        {
+            Tile_To_Go_To = FindTile(6);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
+                conditions++;
+
+            Tile_To_Go_To = FindTile(8);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
+                conditions++;
+
+            Tile_To_Go_To = FindTile(-8);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
+                conditions++;
+            Tile_To_Go_To = FindTile(-10);
+            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned)
+                conditions++;
+
+        }
+            
+       
+
+
+        if (conditions >= 4)
         {
             Stuck = true;
         }
         else
             Stuck = false;
+
+     
+
+       if(white && !logic_Manager_.double_check_white || black && !logic_Manager_.double_check_black)
+        undostuck();
+
+        if (white && logic_Manager_.double_check_white || black && logic_Manager_.double_check_black)
+            Stuck = true;
     }
    public void attack()
     {
@@ -370,11 +452,11 @@ public class Bishop_Script : MonoBehaviour
                         TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
-                if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black) && !TIle_Script.king)
+                if ((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black))
                 {
                     secondary = true;
                 }
-                if (white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White || black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Right)
                     break;
@@ -421,11 +503,11 @@ public class Bishop_Script : MonoBehaviour
                         TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) )
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) ||(black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if ((((white && TIle_Script.Occupy_White) ||(black && TIle_Script.Occupy_Black))) )
                     break;
                 if (TIle_Script.Vertical_Edge_Up || TIle_Script.Horizontal_Edge_Left)
                     break;
@@ -472,11 +554,11 @@ public class Bishop_Script : MonoBehaviour
                         TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Horizontal_Edge_Right || TIle_Script.Vertical_Edge_Down)
                     break;
@@ -523,15 +605,104 @@ public class Bishop_Script : MonoBehaviour
                         TIle_Script.canbepinned_black_Bishop = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Horizontal_Edge_Left || TIle_Script.Vertical_Edge_Down)
                     break;
                 x += -9;
+            }
+        }
+    }
+
+    void undostuck()
+    {
+        int x = 0;
+        int y = 1;
+        GameObject xTile;
+        Test_Tile TIle_Script;
+        if (((white && logic_Manager_.check_white) || (black && logic_Manager_.check_black)) && !Taken)
+        {
+            
+            x = 8;
+            y = 9;
+            if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
+                else
+                    BishopCallTiles(y, x);
+            }
+            x = -8;
+            y = -7;
+            if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Left))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
+                else
+                    BishopCallTiles(y, x);
+            }
+            x = 6;
+            y = 7;
+            if (!(Tile_Im_On.Horizontal_Edge_Right || Tile_Im_On.Vertical_Edge_Down))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
+                else
+                    BishopCallTiles(y, x);
+            }
+
+            x = -10;
+            y = -9;
+            if (!(Tile_Im_On.Horizontal_Edge_Left || Tile_Im_On.Vertical_Edge_Down))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        BishopCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        BishopCallTiles(y, x);
+                }
+                else
+                    BishopCallTiles(y, x);
             }
         }
     }

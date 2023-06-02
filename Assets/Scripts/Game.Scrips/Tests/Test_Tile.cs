@@ -30,7 +30,8 @@ public class Test_Tile : MonoBehaviour
     public bool Attacked_Black_Secondary = false;
     public bool Occupy_White=false;
     public bool Occupy_Black=false;
-    public bool king=false;
+    public bool king_white =false;
+    public bool king_black = false;
     public int NrOfPieceThatsOnMe;
     public bool En_passant_Active_White = false;
     public bool En_passant_Active_Black = false;
@@ -52,17 +53,21 @@ public class Test_Tile : MonoBehaviour
     public bool canbepinned_black;
     public bool canbepinned_white_Bishop;
     public bool canbepinned_black_Bishop;
+    public bool Checked_White;
+    public bool Checked_Black;
+    public bool canbetaken_white;
+    public bool canbetaken_black;
 
     bool WhitePiece(Test_Tile tile)
     {
-        if (tile.NrOfPieceThatsOnMe < 8 || tile.NrOfPieceThatsOnMe == 16 || tile.NrOfPieceThatsOnMe == 17 || tile.NrOfPieceThatsOnMe == 20 || tile.NrOfPieceThatsOnMe == 21 || tile.NrOfPieceThatsOnMe == 24 || tile.NrOfPieceThatsOnMe == 26 || tile.NrOfPieceThatsOnMe == 27)
+        if (tile.NrOfPieceThatsOnMe < 8 || tile.NrOfPieceThatsOnMe == 16 || tile.NrOfPieceThatsOnMe == 17 || tile.NrOfPieceThatsOnMe == 20 || tile.NrOfPieceThatsOnMe == 21 || tile.NrOfPieceThatsOnMe == 24 || tile.NrOfPieceThatsOnMe == 26 || tile.NrOfPieceThatsOnMe == 27 || tile.NrOfPieceThatsOnMe == 30)
             return true;
         return false;
     }
     bool BlackPiece(Test_Tile tile)
     {
         {
-            if ((tile.NrOfPieceThatsOnMe >= 8 && tile.NrOfPieceThatsOnMe < 16) || tile.NrOfPieceThatsOnMe == 18 || tile.NrOfPieceThatsOnMe == 19 || tile.NrOfPieceThatsOnMe == 22 || tile.NrOfPieceThatsOnMe == 23 || tile.NrOfPieceThatsOnMe == 25 || tile.NrOfPieceThatsOnMe == 28 || tile.NrOfPieceThatsOnMe == 29)
+            if ((tile.NrOfPieceThatsOnMe >= 8 && tile.NrOfPieceThatsOnMe < 16) || tile.NrOfPieceThatsOnMe == 18 || tile.NrOfPieceThatsOnMe == 19 || tile.NrOfPieceThatsOnMe == 22 || tile.NrOfPieceThatsOnMe == 23 || tile.NrOfPieceThatsOnMe == 25 || tile.NrOfPieceThatsOnMe == 28 || tile.NrOfPieceThatsOnMe == 29 || tile.NrOfPieceThatsOnMe == 31)
                 return true;
             return false;
         }
@@ -169,6 +174,12 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop.canbepinned_black = false;
             Tiles_In_This_loop.canbepinned_white_Bishop = false;
             Tiles_In_This_loop.canbepinned_black_Bishop = false;
+            Tiles_In_This_loop.Checked_White = false;
+            Tiles_In_This_loop.Checked_Black = false;
+            Tiles_In_This_loop.canbetaken_black = false;
+            Tiles_In_This_loop.canbetaken_white = false;
+            Tiles_In_This_loop.king_white = false;
+            Tiles_In_This_loop.king_black = false;
             Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
             if (Tiles_In_This_loop.NrOfPieceThatsOnMe == 100)
             {
@@ -192,7 +203,6 @@ public class Test_Tile : MonoBehaviour
             
             if (Tiles_In_This_loop.Called)
             {
-                Tiles_In_This_loop.Called = false;
                 Tiles_In_This_loop.Selected = true;
                 Tiles_In_This_loop._renderer.color = Tiles_In_This_loop._SavedColor;
                 Tiles_In_This_loop.Castle_King_Side = false;
@@ -219,6 +229,7 @@ public class Test_Tile : MonoBehaviour
 
                
             }
+            Tiles_In_This_loop.Called = false;
         }
     }
 
@@ -300,6 +311,14 @@ public class Test_Tile : MonoBehaviour
             if (!knights.Taken)
                 knights.SetGame();
         }
+        for (; x < 32; x++)
+        {
+            King_Script kings;
+            kings = AllPieces[x].GetComponent<King_Script>();
+            kings.CheckIfStuck();
+
+        }
+
 
 
 
@@ -454,12 +473,16 @@ public class Test_Tile : MonoBehaviour
 
             
 
-            UncallTiles();
+            
 
-        
-            
-            
+            logic_Manager_.check_white = false;
+            logic_Manager_.check_black = false;
+
+           
+
             Check_Which_Pieces_Are_Stuck();
+
+            UncallTiles();
 
             NrOfPieceThatsOnMe = NrOfPawnThatCalledThisTile;
             
@@ -467,6 +490,8 @@ public class Test_Tile : MonoBehaviour
             undoattacks();
 
             logic_Manager_.TurnChange();
+            logic_Manager_.Check_For_Double_Check();
+           
 
         }
 
@@ -656,7 +681,10 @@ public class Test_Tile : MonoBehaviour
         KingScript.Tile_Im_On.Occupied = false;
         KingScript.Tile_Im_On.NrOfPieceThatsOnMe = 100;
         Occupied = true;
-        king = true;
+        if (KingScript.white)
+            king_white = true;
+        else
+            king_black = true;
         if (KingScript.black)
         {
             Occupy_Black = true;
@@ -672,7 +700,11 @@ public class Test_Tile : MonoBehaviour
             logic_Manager_.White_Pressed = false;
             KingScript.Tile_Im_On.Occupy_White = false;
         }
-        KingScript.Tile_Im_On.king = false;
+        if (KingScript.white)
+            KingScript.Tile_Im_On.king_white = false;
+        else
+            KingScript.Tile_Im_On.king_black = false;
+     
         NrOfPawnThatCalledThisTile = KingScript.NrOfThisPiece;
         if(Castle_King_Side)
         {
@@ -730,7 +762,7 @@ public class Test_Tile : MonoBehaviour
 
     void Update()
     {
-        if((pinnedTile_Black_Bishop || pinnedTile_White_Bishop || pinnedTile_Black || pinnedTile_White) && !logic_Manager_.NoHovering)
+        if((Checked_Black || Checked_White) && !logic_Manager_.NoHovering)
        {
          if(_renderer.color==_offsetColor)
        {

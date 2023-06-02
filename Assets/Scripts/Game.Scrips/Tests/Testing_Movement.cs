@@ -63,7 +63,9 @@ public class Testing_Movement : MonoBehaviour
     public bool CheckIfStuckForReal()
     {
         FindTileImOn();
-        if(Tile_Im_On.pinnedTile_White)
+
+        
+        if (Tile_Im_On.pinnedTile_White)
         {
             Pinned = true;
             Pinned_By_Bishop = false;
@@ -79,13 +81,14 @@ public class Testing_Movement : MonoBehaviour
             Pinned_By_Bishop = false;
         }
 
-        int conditions = 0;
+        int conditions = 0; 
         Tile_To_Go_To = FindTile(0);
-
+         
+        Test_Tile tile2 = FindTile(1).GetComponent<Test_Tile>();
 
         tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-        if ((tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black) || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+        if ((tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black) || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop) || (logic_Manager_.check_white && !(tile_to_go_to.Checked_White || (tile2.Checked_White && !tile2.Occupy_Black))))
         {
             Stuck = true;
             conditions++;
@@ -100,7 +103,7 @@ public class Testing_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+            if (!tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop) || (logic_Manager_.check_white && !(tile_to_go_to.Checked_White)))
                 conditions++;
         }
         else
@@ -110,12 +113,18 @@ public class Testing_Movement : MonoBehaviour
             Tile_To_Go_To = FindTile(-8);
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
-            if (!tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop))
+            if (!tile_to_go_to.Occupy_Black || (Pinned && !tile_to_go_to.pinnedTile_White) || (Pinned_By_Bishop && !tile_to_go_to.pinnedTile_Black_Bishop) || (logic_Manager_.check_white && !(tile_to_go_to.Checked_White)))
                 conditions++;
         }
         else
             conditions++;
 
+        if (logic_Manager_.double_check_white)
+        {
+            Stuck = true;
+            Stuck_For_Real = true;
+            return true;
+        }
         if (conditions == 3)
         {
             Stuck_For_Real = true;
@@ -182,32 +191,73 @@ public class Testing_Movement : MonoBehaviour
 
             if (!Stuck)
             {
-
                 Tile_To_Go_To = FindTile(0);
 
 
                 tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
 
+                if (logic_Manager_.check_white)
+                {
+                    if (tile_to_go_to.Checked_White && !tile_to_go_to.Occupy_Black)
+                    {
+                        if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                        {
 
-           
-                    tile_to_go_to.Selected = false;
+                            tile_to_go_to.Selected = false;
 
-                tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
 
-                tile_to_go_to.TestFunction();
+                            tile_to_go_to.TestFunction();
+                        }
+                    }
+                }
+                else
+                {
+                    if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                    {
+
+                        tile_to_go_to.Selected = false;
+
+                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                        tile_to_go_to.TestFunction();
+                    }
+                }
 
 
                 if (FirstMove)
                 {
+
                     Tile_To_Go_To = FindTile(1);
                     tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-                    if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black)){
-                       
-                            tile_to_go_to.Selected = false;
-                        
-                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
 
-                        tile_to_go_to.TestFunction(); }
+                    if (logic_Manager_.check_white)
+                    {
+                        if (tile_to_go_to.Checked_White && !tile_to_go_to.Occupy_Black)
+                        {
+                            if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                            {
+
+                                tile_to_go_to.Selected = false;
+
+                                tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                                tile_to_go_to.TestFunction();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!(tile_to_go_to.Occupy_White || tile_to_go_to.Occupy_Black))
+                        {
+
+                            tile_to_go_to.Selected = false;
+
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            tile_to_go_to.TestFunction();
+                        }
+                    }
 
 
                 }
@@ -276,6 +326,7 @@ public class Testing_Movement : MonoBehaviour
             GameObject xTile = FindTile(8);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_White = true;
+            
 
         }
         if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 8) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 8) <= 64)

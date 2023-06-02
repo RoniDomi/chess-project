@@ -172,19 +172,48 @@ public class Rook_Script : MonoBehaviour
             TIle_Script = xTile.GetComponent<Test_Tile>();
             if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
                 break;
-            TIle_Script.TestFunction();
-            TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
-            TIle_Script.Selected = false;
 
-            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+            if ((logic_Manager_.check_white && white || logic_Manager_.check_black && black) && !Taken)
             {
-                if (white)
-                    TIle_Script.Occupy_Black = false;
-                else
-                    TIle_Script.Occupy_White = false;
-                break;
+                if ((TIle_Script.Checked_White && white) || (TIle_Script.Checked_Black && black))
+                {
+
+                    TIle_Script.TestFunction();
+                    TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                    TIle_Script.Selected = false;
+                    Stuck = false;
+
+                    if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                    {
+                        if (white)
+                            TIle_Script.Occupy_Black = false;
+                        else
+                            TIle_Script.Occupy_White = false;
+                        break;
+
+                    }
+                }
+            }
+            else if (!Taken)
+            {
+                TIle_Script.TestFunction();
+                TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
+                TIle_Script.Selected = false;
+
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    if (white)
+                        TIle_Script.Occupy_Black = false;
+                    else
+                        TIle_Script.Occupy_White = false;
+                    break;
+
+                }
 
             }
+
+
             if (i == 1)
             {
                 if (TIle_Script.Vertical_Edge_Up)
@@ -213,12 +242,13 @@ public class Rook_Script : MonoBehaviour
         }
     }
 
-        public void CheckIfStuck()
+    public void CheckIfStuck()
     {
         int conditions = 0;
 
         FindTileImOn();
 
+       
         if ((white && Tile_Im_On.pinnedTile_White) || (black && Tile_Im_On.pinnedTile_Black))
         {
             Pinned = true;
@@ -239,7 +269,7 @@ public class Rook_Script : MonoBehaviour
         {
             Tile_To_Go_To = FindTile(0);
             Test_Tile tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned_By_Bishop)
                 conditions++;
         }
         else
@@ -248,7 +278,7 @@ public class Rook_Script : MonoBehaviour
         {
             Tile_To_Go_To = FindTile(-2);
             Test_Tile tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned_By_Bishop)
                 conditions++;
         }
         else
@@ -257,7 +287,7 @@ public class Rook_Script : MonoBehaviour
         {
             Tile_To_Go_To = FindTile(7);
             Test_Tile tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned_By_Bishop)
                 conditions++;
         }
         else
@@ -266,7 +296,7 @@ public class Rook_Script : MonoBehaviour
         {
             Tile_To_Go_To = FindTile(-9);
             Test_Tile tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            if ((tile_to_go_to.Occupy_White && white) || tile_to_go_to.Occupy_Black && black)
+            if (((tile_to_go_to.Occupy_White || (logic_Manager_.check_white && !tile_to_go_to.Checked_White)) && white) || (tile_to_go_to.Occupy_Black || ((logic_Manager_.check_black && !tile_to_go_to.Checked_Black)) && black) || Pinned_By_Bishop)
                 conditions++;
         }
         else
@@ -277,7 +307,12 @@ public class Rook_Script : MonoBehaviour
         }
         else
             Stuck = false;
+        if (white && !logic_Manager_.double_check_white || black && !logic_Manager_.double_check_black)
+            undostuck();
+        if (white && logic_Manager_.double_check_white || black && logic_Manager_.double_check_black)
+            Stuck = true;
     }
+
     public void attack()
     {
         Test_Tile TIle_Script;
@@ -324,11 +359,11 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) )
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Vertical_Edge_Up)
                     break;
@@ -374,11 +409,11 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Vertical_Edge_Down)
                     break;
@@ -425,11 +460,11 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Horizontal_Edge_Right)
                     break;
@@ -476,11 +511,11 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
                 {
                     secondary = true;
                 }
-                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)) && !TIle_Script.king)
+                if (((white && TIle_Script.Occupy_White) || (black && TIle_Script.Occupy_Black)))
                     break;
                 if (TIle_Script.Horizontal_Edge_Left)
                     break;
@@ -488,7 +523,96 @@ public class Rook_Script : MonoBehaviour
             }
         }
     }
-        public GameObject FindTile(int x)
+
+    void undostuck()
+    {
+        int x = 0;
+        int y = 1;
+        GameObject xTile;
+        Test_Tile TIle_Script;
+        if ((white && logic_Manager_.check_white || black && logic_Manager_.check_black) && !Taken)
+        {
+            if (!(Tile_Im_On.Vertical_Edge_Up))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
+
+                else
+                    RookCallTiles(y, x);
+            }
+            x = -2;
+            y = -1;
+            if (!(Tile_Im_On.Vertical_Edge_Down))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
+            x = 7;
+            y = 8;
+            if (!(Tile_Im_On.Horizontal_Edge_Right))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
+            x = -9;
+            y = -8;
+            if (!(Tile_Im_On.Horizontal_Edge_Left))
+            {
+                xTile = FindTile(x);
+                TIle_Script = xTile.GetComponent<Test_Tile>();
+                if (Pinned)
+                {
+                    if (TIle_Script.pinnedTile_White && white || black && TIle_Script.pinnedTile_Black)
+                        RookCallTiles(y, x);
+                }
+                else if (Pinned_By_Bishop)
+                {
+                    if (TIle_Script.pinnedTile_White_Bishop && white || black && TIle_Script.pinnedTile_Black_Bishop)
+                        RookCallTiles(y, x);
+                }
+                else
+                    RookCallTiles(y, x);
+            }
+            
+        }
+    }
+    
+
+    public GameObject FindTile(int x)
     {
 
         GameObject[] Tiles_To_Be_Selected;
