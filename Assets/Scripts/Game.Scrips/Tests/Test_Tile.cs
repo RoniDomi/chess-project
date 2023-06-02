@@ -180,6 +180,7 @@ public class Test_Tile : MonoBehaviour
             Tiles_In_This_loop.canbetaken_white = false;
             Tiles_In_This_loop.king_white = false;
             Tiles_In_This_loop.king_black = false;
+            Tiles_In_This_loop.Called = false;
             Tiles_In_This_loop.NrOfPawnThatCalledThisTile = 100;
             if (Tiles_In_This_loop.NrOfPieceThatsOnMe == 100)
             {
@@ -508,7 +509,8 @@ public class Test_Tile : MonoBehaviour
             logic_Manager_.TurnChange();
             logic_Manager_.Check_For_Double_Check();
 
-            
+            logic_Manager_.checkstuck();
+            UncallTiles();
         }
 
 

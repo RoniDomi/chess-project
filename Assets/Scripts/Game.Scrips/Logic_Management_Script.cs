@@ -387,7 +387,7 @@ public class Logic_Management_Script : MonoBehaviour
 
     }
 
-    void Update()
+    public void checkstuck()
     {
         int x = 0;
         stalemate_black = 0;
