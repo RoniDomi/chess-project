@@ -4,36 +4,36 @@ ScriptsOnlyBuild:
     - AudioManager
     - Bishop_Script
     - Black_Pawn_Movement
+    - CharacterDatabase
+    - CharacterManager
+    - Game_Won_or_Draw
     - Go_To_MainMenu
     - King_Script
     - Knight_Script
     - Logic_Management_Script
     - NewBehaviourScript
+    - PauseMenu
     - Queen_Script
     - Rook_Script
     - ScenesManager
     - Test_GridManage
     - Test_Tile
     - Testing_Movement
+    - button
+    - dontDestroyOnLoad
+    - muteButton
+    - setttings
+    - spriteManager
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
     Unity.2D.Tilemap.Editor.dll:
-    - UnityEditor.Tilemaps.GridBrush
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
-    - UnityEditor.Tilemaps.TilemapEditorToolPreferences
     - UnityEditor.Tilemaps.TilemapPrefabStageHelper
-    Unity.2D.Tilemap.Extras.Editor.dll:
-    - UnityEditor.Tilemaps.GameObjectBrush
-    - UnityEditor.Tilemaps.GroupBrush
-    - UnityEditor.Tilemaps.LineBrush
-    - UnityEditor.Tilemaps.RandomBrush
     Unity.PlasticSCM.Editor.dll:
     - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
@@ -44,37 +44,243 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   serializedClasses:
     Assembly-CSharp:
+    - Character
     - Sound
     UnityEngine.CoreModule:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
     UnityEngine.UI:
+    - UnityEngine.EventSystems.EventTrigger/Entry
+    - UnityEngine.EventSystems.EventTrigger/TriggerEvent
     - UnityEngine.UI.AnimationTriggers
     - UnityEngine.UI.Button/ButtonClickedEvent
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.FontData
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: ScenesManager
     methodName: Gamestart
   - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: ScenesManager
+    methodName: loadSettings
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
     fullTypeName: ScenesManager
     methodName: loadCustomize
   - assembly: Assembly-CSharp
-    fullTypeName: Go_To_MainMenu
-    methodName: GoMainMenu
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: muteButton
+    methodName: MuteButton
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: Game_Won_or_Draw
+    methodName: PlayAgain
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: Pause
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: setttings
+    methodName: ChangeVolume
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: Game_Won_or_Draw
+    methodName: PlayAgain
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: UnloadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: Resume
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: UnloadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: Game_Won_or_Draw
+    methodName: PlayAgain
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: LoadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: CharacterManager
+    methodName: backOption
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: ScenesManager
+    methodName: Menu
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: CharacterManager
+    methodName: nextOption
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: setttings
+    methodName: ChangeVolume
+  - assembly: Assembly-CSharp
+    fullTypeName: setttings
+    methodName: fullScreenToggle
   - assembly: Assembly-CSharp
     fullTypeName: ScenesManager
     methodName: Menu
@@ -92,28 +298,48 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 2746}
+      Script: {instanceID: 1986}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 2748}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 5944}
+      Script: {instanceID: 3314}
     - Class: 114
-      Script: {instanceID: 6298}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 6874}
+      Script: {instanceID: 5182}
     - Class: 114
-      Script: {instanceID: 7524}
+      Script: {instanceID: 5474}
     - Class: 114
-      Script: {instanceID: 8490}
+      Script: {instanceID: 5962}
+    - Class: 114
+      Script: {instanceID: 6316}
+    - Class: 114
+      Script: {instanceID: 6894}
+    - Class: 114
+      Script: {instanceID: 7544}
+    - Class: 114
+      Script: {instanceID: 7748}
+    - Class: 114
+      Script: {instanceID: 8512}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -121,6 +347,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -153,6 +381,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -160,39 +390,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 2540}
+      Script: {instanceID: 1986}
     - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2542}
     - Class: 114
-      Script: {instanceID: 2746}
+      Script: {instanceID: 2588}
     - Class: 114
-      Script: {instanceID: 2858}
+      Script: {instanceID: 2748}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 2860}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 3344}
+      Script: {instanceID: 3314}
     - Class: 114
-      Script: {instanceID: 4966}
+      Script: {instanceID: 3346}
     - Class: 114
-      Script: {instanceID: 5288}
+      Script: {instanceID: 3452}
     - Class: 114
-      Script: {instanceID: 5460}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 5722}
+      Script: {instanceID: 4974}
     - Class: 114
-      Script: {instanceID: 5944}
+      Script: {instanceID: 5298}
     - Class: 114
-      Script: {instanceID: 6298}
+      Script: {instanceID: 5302}
     - Class: 114
-      Script: {instanceID: 6874}
+      Script: {instanceID: 5474}
     - Class: 114
-      Script: {instanceID: 6920}
+      Script: {instanceID: 5478}
     - Class: 114
-      Script: {instanceID: 8018}
+      Script: {instanceID: 5506}
     - Class: 114
-      Script: {instanceID: 8056}
+      Script: {instanceID: 5562}
+    - Class: 114
+      Script: {instanceID: 5962}
+    - Class: 114
+      Script: {instanceID: 6316}
+    - Class: 114
+      Script: {instanceID: 6604}
+    - Class: 114
+      Script: {instanceID: 6894}
+    - Class: 114
+      Script: {instanceID: 6940}
+    - Class: 114
+      Script: {instanceID: 7544}
+    - Class: 114
+      Script: {instanceID: 7748}
+    - Class: 114
+      Script: {instanceID: 8038}
+    - Class: 114
+      Script: {instanceID: 8048}
+    - Class: 114
+      Script: {instanceID: 8078}
+    - Class: 114
+      Script: {instanceID: 8512}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -224,28 +476,48 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 2746}
+      Script: {instanceID: 2748}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 3312}
+      Script: {instanceID: 3314}
     - Class: 114
-      Script: {instanceID: 5944}
+      Script: {instanceID: 3628}
     - Class: 114
-      Script: {instanceID: 6298}
+      Script: {instanceID: 5070}
     - Class: 114
-      Script: {instanceID: 6874}
+      Script: {instanceID: 5506}
     - Class: 114
-      Script: {instanceID: 7524}
+      Script: {instanceID: 5636}
     - Class: 114
-      Script: {instanceID: 8490}
+      Script: {instanceID: 5962}
+    - Class: 114
+      Script: {instanceID: 6316}
+    - Class: 114
+      Script: {instanceID: 6894}
+    - Class: 114
+      Script: {instanceID: 7544}
+    - Class: 114
+      Script: {instanceID: 7748}
+    - Class: 114
+      Script: {instanceID: 8512}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -253,6 +525,79 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Settings.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1584}
+    - Class: 114
+      Script: {instanceID: 2748}
+    - Class: 114
+      Script: {instanceID: 2980}
+    - Class: 114
+      Script: {instanceID: 3314}
+    - Class: 114
+      Script: {instanceID: 3628}
+    - Class: 114
+      Script: {instanceID: 5298}
+    - Class: 114
+      Script: {instanceID: 5506}
+    - Class: 114
+      Script: {instanceID: 5562}
+    - Class: 114
+      Script: {instanceID: 5962}
+    - Class: 114
+      Script: {instanceID: 6316}
+    - Class: 114
+      Script: {instanceID: 6894}
+    - Class: 114
+      Script: {instanceID: 7544}
+    - Class: 114
+      Script: {instanceID: 7748}
+    - Class: 114
+      Script: {instanceID: 8512}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -331,6 +676,12 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 6fbdb4c1b62d407c61291370835dfcbb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CharacterManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -391,7 +742,7 @@ ScriptsOnlyBuild:
     className: SkeletonAsset
   - hash:
       serializedVersion: 2
-      Hash: b041ec0d5e3d530d08e278a06b9e3fb5
+      Hash: 3cb01e9e89571b7b5ac6530b9c10fcb3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Black_Pawn_Movement
@@ -541,7 +892,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+      Hash: b6acb4a9e337b1f4cc8880f6cd0c750b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bishop_Script
@@ -563,6 +914,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: b388973787666e51acf01324552de284
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: King_Script
+  - hash:
+      serializedVersion: 2
+      Hash: 079472cdb221b2a9c812c957215c2e4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: White_Wins
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -587,6 +950,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Flow.dll
     namespaceName: Unity.VisualScripting
     className: ScriptMachine
+  - hash:
+      serializedVersion: 2
+      Hash: ca0833f988334cbc045c880b0423427b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: button
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -751,7 +1120,7 @@ ScriptsOnlyBuild:
     className: AnimatedTile
   - hash:
       serializedVersion: 2
-      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+      Hash: d310ff412d56b88866588e594cfd7e41
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Knight_Script
@@ -764,9 +1133,21 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: dontDestroyOnLoad
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: BufferManager
+  - hash:
+      serializedVersion: 2
+      Hash: 78287c4d39dafc987a744f8838318107
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: spriteManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -793,7 +1174,13 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 22298ac5789b0ed585221fa8614702c5
+      Hash: 0ed342c18455892f41ddfab0adf9e97e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: setttings
+  - hash:
+      serializedVersion: 2
+      Hash: f9019f418fb6db736189c912daa477b1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Test_Tile
@@ -823,7 +1210,13 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: f3e1dde9044ab302ae613f6391696b78
+      Hash: fd66ba4f8a635d454dab155e1ced5758
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CharacterDatabase
+  - hash:
+      serializedVersion: 2
+      Hash: 5ebf7fc4bc12a9266bd1a7aca3fc08ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Testing_Movement
@@ -871,16 +1264,16 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionEnter2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: muteButton
+  - hash:
+      serializedVersion: 2
       Hash: e78765d93b37fe61ed100bbbc2be3ac6
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: King_Script
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -955,6 +1348,12 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
+      Hash: 079472cdb221b2a9c812c957215c2e4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Game_Won_or_Draw
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -985,7 +1384,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+      Hash: b6acb4a9e337b1f4cc8880f6cd0c750b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Queen_Script
@@ -1153,13 +1552,19 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 7bc7f1bf8eaaf2f13496d54dabe92c31
+      Hash: 09ed4288f6fcbd8787e7309151726ec4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Rook_Script
   - hash:
       serializedVersion: 2
-      Hash: 997f88b5308dd32c9fe985255cb3e5cb
+      Hash: a4c0006c591b0af29b4660cb7816546f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 014955fcc1f6b1b68cc5796a8c01d08c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Logic_Management_Script
@@ -1282,4 +1687,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Main Menu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Customize.unity
+  - Assets/Scenes/Settings.unity
   playerPath: C:/Users/Perdorues/Desktop/chess test/Chess.exe

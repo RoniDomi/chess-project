@@ -255,6 +255,7 @@ public class Knight_Script : MonoBehaviour
         else
         {
             Pinned = false;
+            Stuck = false;
         }
 
         int x = 9;
