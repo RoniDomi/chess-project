@@ -414,7 +414,7 @@ public class Black_Pawn_Movement : MonoBehaviour
                         {
                             tile_to_go_to.Selected = false;
 
-                            Take_Function_Called_Left = true;
+                            Take_Function_Called_Right = true;
                             tile_to_go_to.Called = true;
                             tile_to_go_to.Occupy_White = false;
                             tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
@@ -429,7 +429,7 @@ public class Black_Pawn_Movement : MonoBehaviour
                     {
                         tile_to_go_to.Selected = false;
 
-                        Take_Function_Called_Left = true;
+                        Take_Function_Called_Right = true;
                         tile_to_go_to.Called = true;
                         tile_to_go_to.Occupy_White = false;
                         tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
@@ -442,7 +442,7 @@ public class Black_Pawn_Movement : MonoBehaviour
                     {
                         tile_to_go_to.Selected = false;
 
-                        Take_Function_Called_Left = true;
+                        Take_Function_Called_Right = true;
                         tile_to_go_to.Called = true;
                         tile_to_go_to.Occupy_White = false;
                         tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;

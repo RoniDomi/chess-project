@@ -289,10 +289,10 @@ public class Testing_Movement : MonoBehaviour
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
             tile_to_go_to.Selected = true;
             tile_to_go_to.Called = false;
-            if (Take_Function_Called_Left)
+            if (Take_Function_Called_Right)
             {
 
-                Take_Function_Called_Left = false;
+                Take_Function_Called_Right = false;
                 tile_to_go_to.Occupy_Black = true;
 
             }
@@ -305,9 +305,9 @@ public class Testing_Movement : MonoBehaviour
             tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
             tile_to_go_to.Selected = true;
             tile_to_go_to.Called = false;
-            if (Take_Function_Called_Right)
+            if (Take_Function_Called_Left)
             {
-                Take_Function_Called_Right = false;
+                Take_Function_Called_Left = false;
                 tile_to_go_to.Occupy_Black = true;
             }
 
@@ -370,7 +370,7 @@ public class Testing_Movement : MonoBehaviour
                     {
                         tile_to_go_to.Selected = false;
 
-                        Take_Function_Called_Left = true;
+                        Take_Function_Called_Right = true;
                         tile_to_go_to.Called = true;
                         tile_to_go_to.Occupy_Black = false;
                         tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
@@ -385,7 +385,7 @@ public class Testing_Movement : MonoBehaviour
                     {
                         tile_to_go_to.Selected = false;
 
-                        Take_Function_Called_Left = true;
+                        Take_Function_Called_Right = true;
                         tile_to_go_to.Called = true;
                         tile_to_go_to.Occupy_White = false;
                         tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
@@ -398,7 +398,7 @@ public class Testing_Movement : MonoBehaviour
                 {
                     tile_to_go_to.Selected = false;
 
-                    Take_Function_Called_Left = true;
+                    Take_Function_Called_Right = true;
                     tile_to_go_to.Called = true;
                     tile_to_go_to.Occupy_Black = false;
                     tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;

@@ -236,7 +236,8 @@ public class Logic_Management_Script : MonoBehaviour
          {
             king = AllPieces[31].GetComponent<King_Script>();
                 king.FindTileImOn();
-            if (king.Tile_Im_On.Attacked_White) {
+            if (king.Tile_Im_On.Attacked_White)
+               {
                 check_black = true;
                }
             king = AllPieces[30].GetComponent<King_Script>();
