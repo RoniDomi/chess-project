@@ -143,7 +143,7 @@ public class Black_Pawn_Movement : MonoBehaviour
 
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         FindTileImOn();
 

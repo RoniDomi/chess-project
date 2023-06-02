@@ -16,6 +16,11 @@ public class Logic_Management_Script : MonoBehaviour
     public bool double_check_black;
     public int whitedouble = 0;
     public int blackdouble = 0;
+    public bool White_Wins;
+    public bool Black_Wins;
+    public bool StaleMate;
+    public int stalemate_white=0;
+    public int stalemate_black=0;
 
     public GameObject[] AllPieces;
 
@@ -38,14 +43,13 @@ public class Logic_Management_Script : MonoBehaviour
         {
             Testing_Movement whitepawns;
             whitepawns = AllPieces[x].GetComponent<Testing_Movement>();
-            whitepawns.FindTileImOn();
+           
 
             if (whitepawns.Tile_Im_On.Checked_Black && !whitepawns.Taken)
                 whitedouble++;
             
 
         }
-        Debug.Log(whitedouble);
         for (; x < 16; x++)
         {
             Black_Pawn_Movement blackpawns;
@@ -77,12 +81,11 @@ public class Logic_Management_Script : MonoBehaviour
            
 
         }
-         Debug.Log(whitedouble);
+
         for (; x < 24; x++)
         {
             Bishop_Script bishops;
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
-            bishops.FindTileImOn();
 
             if (bishops.white)
             {
@@ -97,12 +100,12 @@ public class Logic_Management_Script : MonoBehaviour
 
             
         }
-         Debug.Log(whitedouble);
+
         for (; x < 26; x++)
         {
             Queen_Script queens;
             queens = AllPieces[x].GetComponent<Queen_Script>();
-            queens.FindTileImOn();
+
 
             if (queens.white)
             {
@@ -116,12 +119,11 @@ public class Logic_Management_Script : MonoBehaviour
             }
             
         }
-         Debug.Log(whitedouble);
+
         for (; x < 30; x++)
         {
             Knight_Script knights;
             knights = AllPieces[x].GetComponent<Knight_Script>();
-            knights.FindTileImOn();
 
             if (knights.white)
             {
@@ -135,7 +137,7 @@ public class Logic_Management_Script : MonoBehaviour
             }
            
         }
-       Debug.Log(whitedouble);
+
         if(whitedouble == 2)
         {
             double_check_black = true;
@@ -157,6 +159,8 @@ public class Logic_Management_Script : MonoBehaviour
         King_Script king;
         
         int x = 0;
+        stalemate_black = 0;
+        stalemate_white = 0;
 
         for (; x < 8; x++)
         {
@@ -166,69 +170,150 @@ public class Logic_Management_Script : MonoBehaviour
             if (!whitepawns.Taken)
             {
                 whitepawns.attack();
+                
             }
+            if(whitepawns.Taken || whitepawns.Stuck_For_Real)
+                {
+                stalemate_white++;
+                }
 
         }
 
-        for(; x < 16; x++)
+        for (; x < 16; x++)
         {
             Black_Pawn_Movement blackpawns;
 
-            blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
+            blackpawns = AllPieces[x].GetComponent<Black_Pawn_Movement>();
 
-      
-            if(!blackpawns.Taken)
-            blackpawns.attack();
+
+            if (!blackpawns.Taken) { 
+                blackpawns.attack();
+            }
+
+            if (blackpawns.Taken || blackpawns.Stuck_For_Real)
+            {
+                stalemate_black++;
+            }
         }
 
         for(; x<20; x++)
         {
             Rook_Script rooks;
             rooks = AllPieces[x].GetComponent<Rook_Script>();
-            
-            if(!rooks.Taken)
-            rooks.attack();
+
+            if (!rooks.Taken)
+            {
+                rooks.attack();
+
+            }
+            if(rooks.white)
+            {
+                if ((rooks.Taken || rooks.Stuck))
+                    stalemate_white++;
+            }    
+            else
+            {
+                if ((rooks.Taken || rooks.Stuck))
+                    stalemate_black++;
+
+            }
+
         }
         for(;x<24; x++)
         {
             Bishop_Script bishops;
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
 
-            if(!bishops.Taken)
-            bishops.attack();
+            if (!bishops.Taken)
+            {
+                bishops.attack();
+             
+            }
+                if (bishops.white)
+            {
+                if ((bishops.Taken || bishops.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((bishops.Taken || bishops.Stuck))
+                    stalemate_black++;
+
+            }
         }
         for(;x<26;x++)
         {
             Queen_Script queens;
             queens = AllPieces[x].GetComponent<Queen_Script>();
-   
-            if(!queens.Taken)
+
+            if (!queens.Taken)
+            {
                 queens.attack();
+
+            }
+            if (queens.white)
+            {
+                if ((queens.Taken || queens.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((queens.Taken || queens.Stuck))
+                    stalemate_black++;
+
+            }
         }
         for (; x < 30; x++)
         {
             Knight_Script knights;
             knights = AllPieces[x].GetComponent<Knight_Script>();
-     
+
             if (!knights.Taken)
+            {
                 knights.attack();
+
+            }
+            if (knights.white)
+            {
+                if ((knights.Taken || knights.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((knights.Taken || knights.Stuck))
+                    stalemate_black++;
+
+            }
         }
         for(; x < 32; x++)
         {
             king = AllPieces[x].GetComponent<King_Script>();
             if (king.white)
             {
-                king.FindTileImOn();
+                
                 if (king.Tile_Im_On.Attacked_Black_Secondary)
                     king.PinPiece();
             }
             else
             {
-                king.FindTileImOn();
+                
                 if (king.Tile_Im_On.Attacked_White_Secondary)
                     king.PinPiece();
             }
             king.attack();
+
+
+            if (king.white)
+            {
+                if ((king.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((king.Stuck))
+                    stalemate_black++;
+
+            }
 
         }
         
@@ -239,7 +324,18 @@ public class Logic_Management_Script : MonoBehaviour
             if (king.Tile_Im_On.Attacked_White)
                {
                 check_black = true;
-               }
+            
+            }
+
+            if (stalemate_black == 16 && check_black)
+            {
+                White_Wins = true;
+            }
+            else if (stalemate_black == 16)
+            {
+                StaleMate = true;
+            }
+
             king = AllPieces[30].GetComponent<King_Script>();
             king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_Black)
@@ -257,6 +353,7 @@ public class Logic_Management_Script : MonoBehaviour
             if (king.Tile_Im_On.Attacked_Black) {
                 check_white = true;
                 }
+
             king = AllPieces[31].GetComponent<King_Script>();
             king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_White)
@@ -264,7 +361,15 @@ public class Logic_Management_Script : MonoBehaviour
                 check_black = true;
                 
             }
-            White_Turn = true;
+            if (stalemate_white == 16 && check_white)
+            {
+                Black_Wins = true;
+            }
+            else if (stalemate_white == 16)
+            {
+                StaleMate = true;
+            }
+          White_Turn = true;
           Black_Turn = false;
         }
         if (check_white)
@@ -279,10 +384,205 @@ public class Logic_Management_Script : MonoBehaviour
         }
 
 
-        White_Turn = true;
-        Black_Turn = true;
-    }
-
 
     }
+
+    void Update()
+    {
+        int x = 0;
+        stalemate_black = 0;
+        stalemate_white = 0;
+
+        King_Script king;
+
+        for (; x < 8; x++)
+        {
+            Testing_Movement whitepawns;
+            whitepawns = AllPieces[x].GetComponent<Testing_Movement>();
+
+            if (!whitepawns.Taken)
+            {
+                whitepawns.attack();
+                whitepawns.CheckIfStuckForReal();
+            }
+            if (whitepawns.Taken || whitepawns.Stuck_For_Real)
+            {
+                stalemate_white++;
+            }
+
+        }
+
+        for (; x < 16; x++)
+        {
+            Black_Pawn_Movement blackpawns;
+
+            blackpawns = AllPieces[x].GetComponent<Black_Pawn_Movement>();
+
+
+            if (!blackpawns.Taken)
+            {
+                blackpawns.attack();
+                blackpawns.CheckIfStuckForReal();
+            }
+
+            if (blackpawns.Taken || blackpawns.Stuck_For_Real)
+            {
+                stalemate_black++;
+            }
+        }
+
+        for (; x < 20; x++)
+        {
+            Rook_Script rooks;
+            rooks = AllPieces[x].GetComponent<Rook_Script>();
+
+            if (!rooks.Taken)
+            {
+                rooks.attack();
+                rooks.CheckIfStuck();
+            }
+            if (rooks.white)
+            {
+                if ((rooks.Taken || rooks.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((rooks.Taken || rooks.Stuck))
+                    stalemate_black++;
+
+            }
+
+        }
+        for (; x < 24; x++)
+        {
+            Bishop_Script bishops;
+            bishops = AllPieces[x].GetComponent<Bishop_Script>();
+
+            if (!bishops.Taken)
+            {
+                bishops.attack();
+                bishops.CheckIfStuck();
+            }
+            if (bishops.white)
+            {
+                if ((bishops.Taken || bishops.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((bishops.Taken || bishops.Stuck))
+                    stalemate_black++;
+
+            }
+        }
+        for (; x < 26; x++)
+        {
+            Queen_Script queens;
+            queens = AllPieces[x].GetComponent<Queen_Script>();
+
+            if (!queens.Taken)
+            {
+                queens.attack();
+                queens.CheckIfStuck();
+            }
+            if (queens.white)
+            {
+                if ((queens.Taken || queens.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((queens.Taken || queens.Stuck))
+                    stalemate_black++;
+
+            }
+        }
+        for (; x < 30; x++)
+        {
+            Knight_Script knights;
+            knights = AllPieces[x].GetComponent<Knight_Script>();
+
+            if (!knights.Taken)
+            {
+                knights.attack();
+                knights.CheckIfStuck();
+
+            }
+            if (knights.white)
+            {
+                if ((knights.Taken || knights.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((knights.Taken || knights.Stuck))
+                    stalemate_black++;
+
+            }
+        }
+        for (; x < 32; x++)
+        {
+            king = AllPieces[x].GetComponent<King_Script>();
+            king.CheckIfStuck();
+            if (king.white)
+            {
+
+                if (king.Tile_Im_On.Attacked_Black_Secondary)
+                    king.PinPiece();
+            }
+            else
+            {
+
+                if (king.Tile_Im_On.Attacked_White_Secondary)
+                    king.PinPiece();
+            }
+            king.attack();
+
+
+            if (king.white)
+            {
+                if ((king.Stuck))
+                    stalemate_white++;
+            }
+            else
+            {
+                if ((king.Stuck))
+                    stalemate_black++;
+
+            }
+
+        }
+
+        if (Black_Turn)
+        {
+    
+            if (stalemate_black == 16 && check_black)
+            {
+                White_Wins = true;
+            }
+            else if (stalemate_black == 16)
+            {
+                StaleMate = true;
+            }
+
+        }
+        else
+        {
+
+            if (stalemate_white == 16 && check_white)
+            {
+                Black_Wins = true;
+            }
+            else if (stalemate_white == 16)
+            {
+                StaleMate = true;
+            }
+           
+        }
+        
+
+    }
+
+}
 

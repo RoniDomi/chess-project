@@ -260,9 +260,10 @@ public class Test_Tile : MonoBehaviour
         {
             Testing_Movement whitepawns;
             whitepawns= AllPieces[x].GetComponent<Testing_Movement>();
-            whitepawns.CheckIfStuckForReal();
+            
             if (!whitepawns.Taken)
             {
+                whitepawns.CheckIfStuckForReal();
                 whitepawns.SetGame();
             }
 
@@ -274,42 +275,57 @@ public class Test_Tile : MonoBehaviour
 
             blackpawns= AllPieces[x].GetComponent<Black_Pawn_Movement>();
 
-            blackpawns.CheckIfStuckForReal();
-            if(!blackpawns.Taken)
-            blackpawns.SetGame();
+
+            if (!blackpawns.Taken)
+            {
+                blackpawns.CheckIfStuckForReal();
+                blackpawns.SetGame();
+            }
         }
 
         for(; x<20; x++)
         {
             Rook_Script rooks;
             rooks = AllPieces[x].GetComponent<Rook_Script>();
-            rooks.CheckIfStuck();
-            if(!rooks.Taken)
-            rooks.SetGame();
+
+            if (!rooks.Taken)
+            {
+                rooks.CheckIfStuck();
+                rooks.SetGame();
+            }
         }
         for(;x<24; x++)
         {
             Bishop_Script bishops;
             bishops = AllPieces[x].GetComponent<Bishop_Script>();
-            bishops.CheckIfStuck();
-            if(!bishops.Taken)
-            bishops.SetGame();
+
+            if (!bishops.Taken)
+            {
+                bishops.CheckIfStuck();
+                bishops.SetGame();
+            }
         }
         for(;x<26;x++)
         {
             Queen_Script queens;
             queens = AllPieces[x].GetComponent<Queen_Script>();
-            queens.CheckIfStuck();
-            if(!queens.Taken)
+
+            if (!queens.Taken)
+            {
+                queens.CheckIfStuck();
                 queens.SetGame();
+            }
         }
         for (; x < 30; x++)
         {
             Knight_Script knights;
             knights = AllPieces[x].GetComponent<Knight_Script>();
-            knights.CheckIfStuck();
+
             if (!knights.Taken)
+            {
+                knights.CheckIfStuck();
                 knights.SetGame();
+            }
         }
         for (; x < 32; x++)
         {
@@ -491,8 +507,8 @@ public class Test_Tile : MonoBehaviour
 
             logic_Manager_.TurnChange();
             logic_Manager_.Check_For_Double_Check();
-           
 
+            
         }
 
 
