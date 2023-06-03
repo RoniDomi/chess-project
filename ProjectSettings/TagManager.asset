@@ -20,6 +20,7 @@ TagManager:
   - Kings
   - GameMusic
   - MuteButton
+  - timelogic
   layers:
   - Default
   - TransparentFX

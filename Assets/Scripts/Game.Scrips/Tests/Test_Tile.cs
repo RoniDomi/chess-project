@@ -57,6 +57,8 @@ public class Test_Tile : MonoBehaviour
     public bool Checked_Black;
     public bool canbetaken_white;
     public bool canbetaken_black;
+    public GameObject timecontrol;
+    public TIme_Control_Script time;
 
     bool WhitePiece(Test_Tile tile)
     {
@@ -73,11 +75,20 @@ public class Test_Tile : MonoBehaviour
         }
     }
 
+    public void Awake()
+    {
+       timecontrol = GameObject.FindGameObjectWithTag("timelogic");
+
+        time = timecontrol.GetComponent<TIme_Control_Script>();
+    }
+
     public void Start()
     {
         Logic= GameObject.FindGameObjectWithTag("Logic_Manager");
 
         logic_Manager_ = Logic.GetComponent<Logic_Management_Script>();
+
+       
 
         NrOfPieceThatsOnMe = 100;
 
@@ -511,6 +522,8 @@ public class Test_Tile : MonoBehaviour
 
             logic_Manager_.checkstuck();
             UncallTiles();
+
+            time.timestart = true;
         }
 
 

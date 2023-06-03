@@ -12,6 +12,7 @@ public class Game_Won_or_Draw : MonoBehaviour
     public GameObject whitewins;
     public GameObject blackwins;
     public GameObject stalemate;
+    public GameObject time;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,14 +39,17 @@ public class Game_Won_or_Draw : MonoBehaviour
         if (logic_manager.White_Wins)
         {
             whitewins.SetActive(true);
+            time.SetActive(false);
         }
         if (logic_manager.Black_Wins)
         {
             blackwins.SetActive(true);
+            time.SetActive(false);
         }
         if (logic_manager.StaleMate)
         {
             stalemate.SetActive(true);
+            time.SetActive(false);
         }
 
 

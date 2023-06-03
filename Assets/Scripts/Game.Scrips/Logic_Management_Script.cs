@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
+
 
 public class Logic_Management_Script : MonoBehaviour
 {
@@ -21,6 +23,9 @@ public class Logic_Management_Script : MonoBehaviour
     public bool StaleMate;
     public int stalemate_white=0;
     public int stalemate_black=0;
+    public GameObject timecontrol;
+    public TIme_Control_Script time;
+
 
     public GameObject[] AllPieces;
 
@@ -30,6 +35,10 @@ public class Logic_Management_Script : MonoBehaviour
         White_Pressed=false;
         Black_Pressed=false;
         White_Turn = true;
+
+         timecontrol = GameObject.FindGameObjectWithTag("timelogic");
+
+        time = timecontrol.GetComponent<TIme_Control_Script>();
 
     }
 
@@ -319,6 +328,18 @@ public class Logic_Management_Script : MonoBehaviour
         
           if (White_Turn)
          {
+            White_Turn = false;
+            Black_Turn = true;
+            if (time.increment_by_2 && time.timestart)
+            {
+                time.clock += 2;
+                time.displaytime();
+            }
+           if(time.increment_by_1 && time.timestart)
+            {
+                time.clock++;
+                time.displaytime();
+            }
             king = AllPieces[31].GetComponent<King_Script>();
                 king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_White)
@@ -343,11 +364,20 @@ public class Logic_Management_Script : MonoBehaviour
                 check_white = true;
                 
             }
-            White_Turn = false;
-          Black_Turn = true;
+         
         }
         else
         {
+            if (time.increment_by_2)
+            {
+                time.clock_black += 2;
+                time.displaytime();
+            }
+            if (time.increment_by_1)
+            {
+                time.clock_black++;
+                time.displaytime();
+            }
             king = AllPieces[30].GetComponent<King_Script>();
                 king.FindTileImOn();
             if (king.Tile_Im_On.Attacked_Black) {
@@ -356,6 +386,7 @@ public class Logic_Management_Script : MonoBehaviour
 
             king = AllPieces[31].GetComponent<King_Script>();
             king.FindTileImOn();
+            
             if (king.Tile_Im_On.Attacked_White)
             {
                 check_black = true;
@@ -383,8 +414,8 @@ public class Logic_Management_Script : MonoBehaviour
             king.FindCheckedTiles();
         }
 
-        White_Turn = true;
-        Black_Turn = true;
+        //White_Turn = true;
+        //Black_Turn = true;
 
     }
 
@@ -583,6 +614,18 @@ public class Logic_Management_Script : MonoBehaviour
         }
         
 
+    }
+
+    void Update()
+    {
+        if (White_Turn && (time.zero <=0 && time.zero2 <= 0 && time.zero3 <=0 && time.clock == 0) && time.timestart)
+        {
+            Black_Wins = true;
+        }
+        if (Black_Turn && (time.zero_black <= 0 && time.zero2_black <= 0 && time.zero3_black == 0 && time.clock_black <= 0) && time.timestart)
+        {
+            White_Wins = true;
+        }
     }
 
 }
