@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - Queen_Script
     - Rook_Script
     - ScenesManager
+    - TIme_Control_Script
     - Test_GridManage
     - Test_Tile
     - Testing_Movement
@@ -30,6 +31,8 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManager
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -135,6 +138,33 @@ ScriptsOnlyBuild:
     fullTypeName: button
     methodName: onClick
   - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: three
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: play
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: fifteen
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
     fullTypeName: setttings
     methodName: ChangeVolume
   - assembly: Assembly-CSharp
@@ -156,8 +186,32 @@ ScriptsOnlyBuild:
     fullTypeName: button
     methodName: onClick
   - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: five_inc_2
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: LoadMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: three_inc_one
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
   - assembly: Assembly-CSharp
     fullTypeName: Game_Won_or_Draw
     methodName: PlayAgain
@@ -168,8 +222,23 @@ ScriptsOnlyBuild:
     fullTypeName: button
     methodName: onClick
   - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: five
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: UnloadExitWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
   - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: LoadExitWarning
@@ -207,6 +276,15 @@ ScriptsOnlyBuild:
     fullTypeName: button
     methodName: onClick
   - assembly: Assembly-CSharp
+    fullTypeName: TIme_Control_Script
+    methodName: ten
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
+  - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: LoadExitWarning
   - assembly: Assembly-CSharp
@@ -218,6 +296,12 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: UnloadMenuWarning
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
   - assembly: Assembly-CSharp
     fullTypeName: Game_Won_or_Draw
     methodName: PlayAgain
@@ -248,6 +332,12 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onHover
+  - assembly: Assembly-CSharp
+    fullTypeName: button
+    methodName: onClick
   - assembly: Assembly-CSharp
     fullTypeName: CharacterManager
     methodName: backOption
@@ -315,31 +405,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 1986}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3314}
+      Script: {instanceID: 3316}
     - Class: 114
-      Script: {instanceID: 3628}
+      Script: {instanceID: 3630}
     - Class: 114
-      Script: {instanceID: 5182}
+      Script: {instanceID: 5184}
     - Class: 114
-      Script: {instanceID: 5474}
+      Script: {instanceID: 5476}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 5964}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6896}
     - Class: 114
-      Script: {instanceID: 7544}
+      Script: {instanceID: 7546}
     - Class: 114
-      Script: {instanceID: 7748}
+      Script: {instanceID: 7750}
     - Class: 114
-      Script: {instanceID: 8512}
+      Script: {instanceID: 8514}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -375,11 +465,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
@@ -390,61 +484,63 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1620}
     - Class: 114
-      Script: {instanceID: 1986}
+      Script: {instanceID: 1926}
     - Class: 114
-      Script: {instanceID: 2542}
+      Script: {instanceID: 1988}
     - Class: 114
-      Script: {instanceID: 2588}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2860}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 2862}
     - Class: 114
-      Script: {instanceID: 3314}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3346}
+      Script: {instanceID: 3316}
     - Class: 114
-      Script: {instanceID: 3452}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3628}
+      Script: {instanceID: 3454}
     - Class: 114
-      Script: {instanceID: 4974}
+      Script: {instanceID: 3630}
     - Class: 114
-      Script: {instanceID: 5298}
+      Script: {instanceID: 4976}
     - Class: 114
-      Script: {instanceID: 5302}
+      Script: {instanceID: 5300}
     - Class: 114
-      Script: {instanceID: 5474}
+      Script: {instanceID: 5304}
     - Class: 114
-      Script: {instanceID: 5478}
+      Script: {instanceID: 5476}
     - Class: 114
-      Script: {instanceID: 5506}
+      Script: {instanceID: 5480}
     - Class: 114
-      Script: {instanceID: 5562}
+      Script: {instanceID: 5508}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 5564}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 5964}
     - Class: 114
-      Script: {instanceID: 6604}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6606}
     - Class: 114
-      Script: {instanceID: 6940}
+      Script: {instanceID: 6896}
     - Class: 114
-      Script: {instanceID: 7544}
+      Script: {instanceID: 6942}
     - Class: 114
-      Script: {instanceID: 7748}
+      Script: {instanceID: 7546}
     - Class: 114
-      Script: {instanceID: 8038}
+      Script: {instanceID: 7750}
     - Class: 114
-      Script: {instanceID: 8048}
+      Script: {instanceID: 8040}
     - Class: 114
-      Script: {instanceID: 8078}
+      Script: {instanceID: 8050}
     - Class: 114
-      Script: {instanceID: 8512}
+      Script: {instanceID: 8080}
+    - Class: 114
+      Script: {instanceID: 8514}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -493,31 +589,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3314}
+      Script: {instanceID: 3316}
     - Class: 114
-      Script: {instanceID: 3628}
+      Script: {instanceID: 3630}
     - Class: 114
-      Script: {instanceID: 5070}
+      Script: {instanceID: 5072}
     - Class: 114
-      Script: {instanceID: 5506}
+      Script: {instanceID: 5508}
     - Class: 114
-      Script: {instanceID: 5636}
+      Script: {instanceID: 5638}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 5964}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6896}
     - Class: 114
-      Script: {instanceID: 7544}
+      Script: {instanceID: 7546}
     - Class: 114
-      Script: {instanceID: 7748}
+      Script: {instanceID: 7750}
     - Class: 114
-      Script: {instanceID: 8512}
+      Script: {instanceID: 8514}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -564,31 +660,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2980}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3314}
+      Script: {instanceID: 3316}
     - Class: 114
-      Script: {instanceID: 3628}
+      Script: {instanceID: 3630}
     - Class: 114
-      Script: {instanceID: 5298}
+      Script: {instanceID: 5300}
     - Class: 114
-      Script: {instanceID: 5506}
+      Script: {instanceID: 5508}
     - Class: 114
-      Script: {instanceID: 5562}
+      Script: {instanceID: 5564}
     - Class: 114
-      Script: {instanceID: 5962}
+      Script: {instanceID: 5964}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6896}
     - Class: 114
-      Script: {instanceID: 7544}
+      Script: {instanceID: 7546}
     - Class: 114
-      Script: {instanceID: 7748}
+      Script: {instanceID: 7750}
     - Class: 114
-      Script: {instanceID: 8512}
+      Script: {instanceID: 8514}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -676,6 +772,12 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: d3e33e559dac614965ff7770efff0954
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TIme_Control_Script
+  - hash:
+      serializedVersion: 2
       Hash: 6fbdb4c1b62d407c61291370835dfcbb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -742,7 +844,7 @@ ScriptsOnlyBuild:
     className: SkeletonAsset
   - hash:
       serializedVersion: 2
-      Hash: 3cb01e9e89571b7b5ac6530b9c10fcb3
+      Hash: 0d6db43ab87bcee5ea749a6e799b10d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Black_Pawn_Movement
@@ -1180,7 +1282,7 @@ ScriptsOnlyBuild:
     className: setttings
   - hash:
       serializedVersion: 2
-      Hash: f9019f418fb6db736189c912daa477b1
+      Hash: 4db75f9426ee90bbefb18a697d762dc8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Test_Tile
@@ -1216,7 +1318,7 @@ ScriptsOnlyBuild:
     className: CharacterDatabase
   - hash:
       serializedVersion: 2
-      Hash: 5ebf7fc4bc12a9266bd1a7aca3fc08ab
+      Hash: 65b0f4cbd83f0526c4a27e9322dd4cef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Testing_Movement
@@ -1348,7 +1450,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 079472cdb221b2a9c812c957215c2e4a
+      Hash: 23436f576850ccb94e034ed5450dc0b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Game_Won_or_Draw
@@ -1564,7 +1666,7 @@ ScriptsOnlyBuild:
     className: PauseMenu
   - hash:
       serializedVersion: 2
-      Hash: 014955fcc1f6b1b68cc5796a8c01d08c
+      Hash: aad7a892d306b681aeb6b3f83b6d30af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Logic_Management_Script

@@ -43,6 +43,10 @@ public class Black_Pawn_Movement : MonoBehaviour
     public bool Taken = false;
     public bool Pinned;
     public bool Pinned_By_Bishop = false;
+    public bool knight;
+    public bool rook;
+    public bool bishop;
+    public bool queen;
 
     public void Start()
     {   
@@ -325,12 +329,20 @@ public class Black_Pawn_Movement : MonoBehaviour
             GameObject xTile = FindTile(6);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_Black = true;
+            if (TIle_Script.king_white)
+            {
+                Tile_Im_On.Checked_White = true;
+            }
         }
         if (((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) + - 10 ) >= 0 && ((int)(position_.position.y + 4.2 + ((position_.position.x + 5.2f) * 8) - 13) - 10) <= 64)
         {
             GameObject xTile = FindTile(-10);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_Black = true;
+            if (TIle_Script.king_white)
+            {
+                Tile_Im_On.Checked_White = true;
+            }
         }
     }
 

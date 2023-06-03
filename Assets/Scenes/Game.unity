@@ -2464,6 +2464,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &273654150
@@ -2721,6 +2731,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &287261666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3464,6 +3478,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &423660675
@@ -6086,6 +6110,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &627494850
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7252,6 +7280,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &755433094
@@ -7353,6 +7391,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &762032789
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7584,6 +7626,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &780607878
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7941,6 +7987,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &826690237
@@ -8552,6 +8608,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &853710785
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9759,6 +9819,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &882511678
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11973,7 +12037,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130609518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32190c28cff2f5e4cb5c689afd97879e, type: 3}
   m_Name: 
@@ -11998,6 +12062,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 1
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &1130609522
@@ -13695,6 +13769,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &1241521202
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15483,6 +15561,10 @@ MonoBehaviour:
   Taken: 0
   Pinned: 0
   Pinned_By_Bishop: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
 --- !u!58 &1493711753
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18607,6 +18689,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &1830223336
@@ -18918,6 +19010,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &1854300545
@@ -20328,6 +20430,16 @@ MonoBehaviour:
   Take_Function_Called_Left: 0
   Take_Function_Called_Right: 0
   Taken: 0
+  knight: 0
+  rook: 0
+  bishop: 0
+  queen: 0
+  black: 0
+  white: 0
+  NrOfThisPiece: 0
+  Tiles_To_Be_Selected: []
+  position_x: 0
+  position_y: 0
   Pinned: 0
   Pinned_By_Bishop: 0
 --- !u!58 &1953390789

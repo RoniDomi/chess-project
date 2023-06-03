@@ -20,16 +20,15 @@ public class Queen_Script : MonoBehaviour
 
     public double position_x;
     public double position_y;
+
     public GameObject Tile_To_Go_To;
     public Test_Tile Tile_Im_On;
     public bool Pinned=false;
     public bool Pinned_By_Bishop = false;
 
-
     void Awake()
     {
         logic_Manager_ = Logic_Manager.GetComponent<Logic_Management_Script>();
-
     }
 
 
@@ -271,12 +270,19 @@ public class Queen_Script : MonoBehaviour
 
             if (logic_Manager_.check_white && white || logic_Manager_.check_black && black)
             {
-                if ((TIle_Script.Checked_White && white) || (TIle_Script.Checked_Black && black))
+               
+
+                        if ((TIle_Script.Checked_White && white) || (TIle_Script.Checked_Black && black))
+
+
+
+
                 {
 
                     TIle_Script.TestFunction();
                     TIle_Script.NrOfPawnThatCalledThisTile = NrOfThisPiece;
                     TIle_Script.Selected = false;
+
                     Stuck = false;
 
                     if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
@@ -289,6 +295,11 @@ public class Queen_Script : MonoBehaviour
 
                     }
                 }
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    break;
+                }
+
             }
             else if(!Taken)
             {
@@ -369,6 +380,11 @@ public class Queen_Script : MonoBehaviour
 
                     }
                 }
+
+                if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
+                {
+                    break;
+                }
             }
             else if(!Taken)
             {
@@ -429,10 +445,6 @@ public class Queen_Script : MonoBehaviour
 
         Test_Tile tile_to_go_to;
 
-
-                
-
-        
 
         if (Tile_Im_On.Vertical_Edge_Up)
         {
@@ -1278,11 +1290,7 @@ public class Queen_Script : MonoBehaviour
 
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+  
 }
 
 

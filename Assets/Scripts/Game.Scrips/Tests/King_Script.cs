@@ -645,7 +645,7 @@ public class King_Script : MonoBehaviour
         Test_Tile TIle_Script;
         GameObject xTile;
         bool found_piece = false;
-        bool found_smth = false;
+
         int x = j;
         while (true)
         {
@@ -658,8 +658,6 @@ public class King_Script : MonoBehaviour
             {
                 if (TIle_Script.NrOfPieceThatsOnMe >= 20 && TIle_Script.NrOfPieceThatsOnMe < 26)
                     found_piece = true;
-                else
-                    found_smth = true;
                 break;
 
             }
@@ -722,23 +720,7 @@ public class King_Script : MonoBehaviour
             }
             return;
         }
-        if(found_smth)
-        {
-            xTile = FindTile(x);
-            TIle_Script = xTile.GetComponent<Test_Tile>();
-            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                return;
-
-            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-            {
-                if (white)
-                    TIle_Script.Checked_White = true;
-                else
-                    TIle_Script.Checked_Black = true;
-                return;
-
-            }
-        }
+       
     }
 
     public void RookCheckTiles(int i, int j)
@@ -746,7 +728,7 @@ public class King_Script : MonoBehaviour
         Test_Tile TIle_Script;
         GameObject xTile;
         bool found_piece = false;
-        bool found_smth = false;
+
         int x = j;
         while (true)
         {
@@ -759,8 +741,7 @@ public class King_Script : MonoBehaviour
             {
                 if ((TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 20 )|| TIle_Script.NrOfPieceThatsOnMe == 24 || TIle_Script.NrOfPieceThatsOnMe == 25)
                     found_piece = true;
-                else
-                    found_smth = true;
+                
                 break;
 
             }
@@ -823,24 +804,7 @@ public class King_Script : MonoBehaviour
             }
             return;
         }
-        if (found_smth)
-        {
-            xTile = FindTile(x);
-            TIle_Script = xTile.GetComponent<Test_Tile>();
-            if (black && TIle_Script.Occupy_Black || white && TIle_Script.Occupy_White)
-                return;
-
-            if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
-            {
-                if (white)
-                    TIle_Script.Checked_White = true;
-                else
-                    TIle_Script.Checked_Black = true;
-                return;
-
-            }
-        }
-
+       
     }
 
     public void attack()

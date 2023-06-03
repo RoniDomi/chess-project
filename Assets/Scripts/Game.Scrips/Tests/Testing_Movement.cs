@@ -40,10 +40,30 @@ public class Testing_Movement : MonoBehaviour
     public bool Take_Function_Called_Left = false;
     public bool Take_Function_Called_Right = false;
     public bool Taken = false;
-    public bool Pinned;
+
+
+    public bool knight;
+    public bool rook;
+    public bool bishop;
+    public bool queen;
+
+    public bool black;
+    public bool white;
+    
+    public int NrOfThisPiece;
+
+
+    public GameObject[] Tiles_To_Be_Selected;
+
+
+
+    public double position_x;
+    public double position_y;
+
+
+
+    public bool Pinned = false;
     public bool Pinned_By_Bishop = false;
-
-
 
     public void Start()
     {
@@ -62,6 +82,7 @@ public class Testing_Movement : MonoBehaviour
 
     public bool CheckIfStuckForReal()
     {
+
         FindTileImOn();
 
         
@@ -150,6 +171,8 @@ public class Testing_Movement : MonoBehaviour
 
     public void FindTileImOn()
     {
+
+
         Tile_To_Go_To = FindTile(-1);
 
         Tile_Im_On = Tile_To_Go_To.GetComponent<Test_Tile>();
@@ -158,6 +181,7 @@ public class Testing_Movement : MonoBehaviour
 
     void OnMouseDown()
     {
+
         FindTileImOn();
 
         if (Tile_Im_On.Called)
@@ -275,48 +299,52 @@ public class Testing_Movement : MonoBehaviour
 
     public void IfNotOnlyPressed()
     {
-        logic_Manager_.White_Pressed = false;
-        logic_Manager_.NoHovering = false;
+            logic_Manager_.White_Pressed = false;
+            logic_Manager_.NoHovering = false;
 
-        Tile_Im_On.UncallTiles();
-        
+            Tile_Im_On.UncallTiles();
 
 
-        Pressed = false;
-        if (Tile_Im_On.position_.position.x < 3.5 && !logic_Manager_.White_Pressed)
-        {
-            Tile_To_Go_To = FindTile(8);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            if (Take_Function_Called_Right)
+
+            Pressed = false;
+            if (Tile_Im_On.position_.position.x < 3.5 && !logic_Manager_.White_Pressed)
             {
+                Tile_To_Go_To = FindTile(8);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                tile_to_go_to.Selected = true;
+                tile_to_go_to.Called = false;
+                if (Take_Function_Called_Right)
+                {
 
-                Take_Function_Called_Right = false;
-                tile_to_go_to.Occupy_Black = true;
+                    Take_Function_Called_Right = false;
+                    tile_to_go_to.Occupy_Black = true;
 
+                }
+
+                tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
             }
-
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
-        }
-        if (Tile_Im_On.position_.position.x > -3.5 && !logic_Manager_.White_Pressed)
-        {
-            Tile_To_Go_To = FindTile(-8);
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-            tile_to_go_to.Selected = true;
-            tile_to_go_to.Called = false;
-            if (Take_Function_Called_Left)
+            if (Tile_Im_On.position_.position.x > -3.5 && !logic_Manager_.White_Pressed)
             {
-                Take_Function_Called_Left = false;
-                tile_to_go_to.Occupy_Black = true;
-            }
+                Tile_To_Go_To = FindTile(-8);
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+                tile_to_go_to.Selected = true;
+                tile_to_go_to.Called = false;
+                if (Take_Function_Called_Left)
+                {
+                    Take_Function_Called_Left = false;
+                    tile_to_go_to.Occupy_Black = true;
+                }
 
-            tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
+                tile_to_go_to._renderer.color = tile_to_go_to._SavedColor;
+            }
         }
-    }
+    
 
     public void attack()
     {
+ 
+
+
         Test_Tile TIle_Script;
 
         FindTileImOn();
@@ -326,6 +354,10 @@ public class Testing_Movement : MonoBehaviour
             GameObject xTile = FindTile(8);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_White = true;
+            if(TIle_Script.king_black)
+            {
+                Tile_Im_On.Checked_Black = true;
+            }
             
 
         }
@@ -334,11 +366,17 @@ public class Testing_Movement : MonoBehaviour
             GameObject xTile = FindTile(-8);
             TIle_Script = xTile.GetComponent<Test_Tile>();
             TIle_Script.Attacked_White = true;
+            if (TIle_Script.king_black)
+            {
+                Tile_Im_On.Checked_Black = true;
+            }
+
         }
     }
 
     public GameObject FindTile(int x)
     {
+    
 
         GameObject[] Tiles_To_Be_Selected;
         Tiles_To_Be_Selected = GameObject.FindGameObjectsWithTag("Tag_Tile");
@@ -346,27 +384,53 @@ public class Testing_Movement : MonoBehaviour
         return Tiles_To_Be_Selected[(int)(position_.position.y+4.2 + ((position_.position.x + 5.2f)*8)-13)+x];
     }
 
-
-
     void CheckIfCanTake()
     {
+        
 
+            FindTileImOn();
 
-        FindTileImOn();
-
-        if (Tile_Im_On.position_.position.x < 3.5)
-        {
-
-            Tile_To_Go_To = FindTile(8);
-
-
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-
-            if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)
+            if (Tile_Im_On.position_.position.x < 3.5)
             {
-                if (Pinned)
+
+                Tile_To_Go_To = FindTile(8);
+
+
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+                if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)
                 {
-                    if (tile_to_go_to.pinnedTile_White)
+                    if (Pinned)
+                    {
+                        if (tile_to_go_to.pinnedTile_White)
+                        {
+                            tile_to_go_to.Selected = false;
+
+                            Take_Function_Called_Right = true;
+                            tile_to_go_to.Called = true;
+                            tile_to_go_to.Occupy_Black = false;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            if (!tile_to_go_to.Occupy_White)
+                                tile_to_go_to.TestFunction();
+                        }
+                    }
+                    else if (Pinned_By_Bishop)
+                    {
+                        if (tile_to_go_to.pinnedTile_White_Bishop)
+                        {
+                            tile_to_go_to.Selected = false;
+
+                            Take_Function_Called_Right = true;
+                            tile_to_go_to.Called = true;
+                            tile_to_go_to.Occupy_White = false;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            if (!tile_to_go_to.Occupy_Black)
+                                tile_to_go_to.TestFunction();
+                        }
+                    }
+                    else
                     {
                         tile_to_go_to.Selected = false;
 
@@ -379,53 +443,54 @@ public class Testing_Movement : MonoBehaviour
                             tile_to_go_to.TestFunction();
                     }
                 }
-                else if (Pinned_By_Bishop)
-                {
-                    if (tile_to_go_to.pinnedTile_White_Bishop)
-                    {
-                        tile_to_go_to.Selected = false;
-
-                        Take_Function_Called_Right = true;
-                        tile_to_go_to.Called = true;
-                        tile_to_go_to.Occupy_White = false;
-                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
-
-                        if (!tile_to_go_to.Occupy_Black)
-                            tile_to_go_to.TestFunction();
-                    }
-                }
-                else
-                {
-                    tile_to_go_to.Selected = false;
-
-                    Take_Function_Called_Right = true;
-                    tile_to_go_to.Called = true;
-                    tile_to_go_to.Occupy_Black = false;
-                    tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
-
-                    if (!tile_to_go_to.Occupy_White)
-                        tile_to_go_to.TestFunction();
-                }
             }
-        }
 
 
-        if (Tile_Im_On.position_.position.x > -3.5)
-        {
-            Tile_To_Go_To = FindTile(-8);
-
-
-            tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
-
-
-
-            if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)
+            if (Tile_Im_On.position_.position.x > -3.5)
             {
+                Tile_To_Go_To = FindTile(-8);
 
 
-                if (Pinned)
+                tile_to_go_to = Tile_To_Go_To.GetComponent<Test_Tile>();
+
+
+
+                if (tile_to_go_to.Occupy_Black || tile_to_go_to.En_passant_Active_Black)
                 {
-                    if (tile_to_go_to.pinnedTile_White)
+
+
+                    if (Pinned)
+                    {
+                        if (tile_to_go_to.pinnedTile_White)
+                        {
+                            tile_to_go_to.Selected = false;
+
+                            Take_Function_Called_Left = true;
+                            tile_to_go_to.Called = true;
+                            tile_to_go_to.Occupy_Black = false;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            if (!tile_to_go_to.Occupy_White)
+                                tile_to_go_to.TestFunction();
+                        }
+                    }
+
+                    else if (Pinned_By_Bishop)
+                    {
+                        if (tile_to_go_to.pinnedTile_White_Bishop)
+                        {
+                            tile_to_go_to.Selected = false;
+
+                            Take_Function_Called_Left = true;
+                            tile_to_go_to.Called = true;
+                            tile_to_go_to.Occupy_White = false;
+                            tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
+
+                            if (!tile_to_go_to.Occupy_Black)
+                                tile_to_go_to.TestFunction();
+                        }
+                    }
+                    else
                     {
                         tile_to_go_to.Selected = false;
 
@@ -437,40 +502,11 @@ public class Testing_Movement : MonoBehaviour
                         if (!tile_to_go_to.Occupy_White)
                             tile_to_go_to.TestFunction();
                     }
-                }
 
-                else if (Pinned_By_Bishop)
-                {
-                    if (tile_to_go_to.pinnedTile_White_Bishop)
-                    {
-                        tile_to_go_to.Selected = false;
-
-                        Take_Function_Called_Left = true;
-                        tile_to_go_to.Called = true;
-                        tile_to_go_to.Occupy_White = false;
-                        tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
-
-                        if (!tile_to_go_to.Occupy_Black)
-                            tile_to_go_to.TestFunction();
-                    }
-                }
-                else
-                {
-                    tile_to_go_to.Selected = false;
-
-                    Take_Function_Called_Left = true;
-                    tile_to_go_to.Called = true;
-                    tile_to_go_to.Occupy_Black = false;
-                    tile_to_go_to.NrOfPawnThatCalledThisTile = NrOfThisPawn;
-
-                    if (!tile_to_go_to.Occupy_White)
-                        tile_to_go_to.TestFunction();
                 }
 
             }
-
         }
     }
-    
-   
-}
+
+
