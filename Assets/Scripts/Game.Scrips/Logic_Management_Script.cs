@@ -414,8 +414,8 @@ public class Logic_Management_Script : MonoBehaviour
             king.FindCheckedTiles();
         }
 
-        //White_Turn = true;
-        //Black_Turn = true;
+       White_Turn = true;
+       Black_Turn = true;
 
     }
 

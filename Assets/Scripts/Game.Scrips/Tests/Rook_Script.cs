@@ -359,7 +359,7 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)) )
+                if (((black && TIle_Script.Occupy_White && !TIle_Script.king_white) || (white && TIle_Script.Occupy_Black && !TIle_Script.king_black)))
                 {
                     secondary = true;
                 }
@@ -409,7 +409,7 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
+                if (((black && TIle_Script.Occupy_White && !TIle_Script.king_white) || (white && TIle_Script.Occupy_Black && !TIle_Script.king_black)))
                 {
                     secondary = true;
                 }
@@ -460,7 +460,7 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
+                if (((black && TIle_Script.Occupy_White && !TIle_Script.king_white) || (white && TIle_Script.Occupy_Black && !TIle_Script.king_black)))
                 {
                     secondary = true;
                 }
@@ -511,7 +511,7 @@ public class Rook_Script : MonoBehaviour
                         TIle_Script.canbepinned_black = true;
                     }
                 }
-                if (((black && TIle_Script.Occupy_White) || (white && TIle_Script.Occupy_Black)))
+                if (((black && TIle_Script.Occupy_White && !TIle_Script.king_white) || (white && TIle_Script.Occupy_Black && !TIle_Script.king_black)))
                 {
                     secondary = true;
                 }

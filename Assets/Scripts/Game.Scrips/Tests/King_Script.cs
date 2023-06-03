@@ -656,7 +656,7 @@ public class King_Script : MonoBehaviour
 
             if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
             {
-                if (TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 26)
+                if (TIle_Script.NrOfPieceThatsOnMe >= 20 && TIle_Script.NrOfPieceThatsOnMe < 26)
                     found_piece = true;
                 else
                     found_smth = true;
@@ -757,7 +757,7 @@ public class King_Script : MonoBehaviour
 
             if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
             {
-                if (TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 26)
+                if ((TIle_Script.NrOfPieceThatsOnMe >= 16 && TIle_Script.NrOfPieceThatsOnMe < 20 )|| TIle_Script.NrOfPieceThatsOnMe == 24 || TIle_Script.NrOfPieceThatsOnMe == 25)
                     found_piece = true;
                 else
                     found_smth = true;
