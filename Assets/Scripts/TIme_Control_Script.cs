@@ -10,6 +10,7 @@ public class TIme_Control_Script : MonoBehaviour
 
     public GameObject timecontrolpanel;
     public GameObject time;
+    public GameObject playButton;
     public Text White_Time;
     public Text Black_Time;
     public float zero = 0;
@@ -32,7 +33,7 @@ public class TIme_Control_Script : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Awake()
@@ -62,6 +63,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero_black = 1;
         zero2_black = 5;
         zero3_black = 0;
+        playButton.SetActive(true);
         displaytime();
     }
 
@@ -74,6 +76,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero_black = 1;
         zero2_black = 0;
         zero3_black = 0;
+        playButton.SetActive(true);
         displaytime();
     }
 
@@ -86,6 +89,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero_black = 0;
         zero2_black = 5;
         zero3_black = 0;
+        playButton.SetActive(true);
         displaytime();
     }
 
@@ -99,6 +103,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero2_black = 5;
         zero3_black = 0;
         increment_by_2 = true;
+        playButton.SetActive(true);
         displaytime();
     }
 
@@ -111,6 +116,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero_black = 0;
         zero2_black = 3;
         zero3_black = 0;
+        playButton.SetActive(true);
         displaytime();
     }
 
@@ -124,6 +130,7 @@ public class TIme_Control_Script : MonoBehaviour
         zero2_black = 3;
         zero3_black = 0;
         increment_by_1 = true;
+        playButton.SetActive(true);
         displaytime();
     }
 
