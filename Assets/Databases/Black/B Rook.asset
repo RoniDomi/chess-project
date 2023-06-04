@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86902c49b103f454d9a40dcdbdf1ea4e, type: 3}
+  m_Name: B Rook
+  m_EditorClassIdentifier: 
+  character:
+  - characterSprtie: {fileID: 21300000, guid: cab767633c6ab8e469a3506ccd40011e, type: 3}
+  - characterSprtie: {fileID: -1971180766, guid: 067cd757cca793d45805c98350ae7b2b, type: 3}
+  - characterSprtie: {fileID: 1869046187, guid: 55f0cf1d329e32e449b70ec6f37a5f4c, type: 3}

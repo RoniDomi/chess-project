@@ -3,12 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tag_Tile
+  - Pawns
+  - WhitePawns
+  - BlackPawn
+  - White_Rook
+  - Black_Rook
+  - Logic_Manager
+  - White_Bishop
+  - Black_Bishop
+  - White_Queen
+  - Black_Queen
+  - White_Knight
+  - Black_Knight
+  - Kings
+  - GameMusic
+  - MuteButton
+  - timelogic
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pawn
   - Water
   - UI
   - 

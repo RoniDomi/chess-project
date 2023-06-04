@@ -10,16 +10,25 @@ public class ScenesManager : MonoBehaviour
         Debug.Log("Went to the Game");
         SceneManager.LoadScene("Game");
     }
-
-    public void Customize()
+    public void Menu()
     {
-        Debug.Log("Went to customize scene");
+        Debug.Log("Went to the Menu scene");
+        SceneManager.LoadScene("Main Menu");
+    }
+    public void loadCustomize()
+    {
+        Debug.Log("Went to the Customize scene");
         SceneManager.LoadScene("Customize");
     }
 
-    public void Menu()
+    public void loadSettings()
     {
-        Debug.Log("Went to menu");
-        SceneManager.LoadScene("Main Menu");
+        Debug.Log("Went to the Settings scene");
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void quit()
+    {
+        Application.Quit();
     }
 }
