@@ -26,4 +26,9 @@ public class ScenesManager : MonoBehaviour
         Debug.Log("Went to the Settings scene");
         SceneManager.LoadScene("Settings");
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
 }

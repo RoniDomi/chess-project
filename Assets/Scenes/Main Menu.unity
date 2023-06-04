@@ -2410,7 +2410,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 607321819}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: exitGame
+        m_MethodName: quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

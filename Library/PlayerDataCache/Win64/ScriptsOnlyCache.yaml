@@ -31,8 +31,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManager
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -1660,7 +1658,7 @@ ScriptsOnlyBuild:
     className: Rook_Script
   - hash:
       serializedVersion: 2
-      Hash: a4c0006c591b0af29b4660cb7816546f
+      Hash: f20ac0a62cf871fd703b0fffbf1149b1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PauseMenu
