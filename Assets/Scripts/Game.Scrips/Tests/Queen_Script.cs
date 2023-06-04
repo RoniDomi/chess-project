@@ -260,7 +260,7 @@ public class Queen_Script : MonoBehaviour
     public void BishopCallTiles(int i, int j)
     {
         Test_Tile TIle_Script;
-
+       
         while (true)
         {
             GameObject xTile = FindTile(j);
@@ -351,6 +351,8 @@ public class Queen_Script : MonoBehaviour
     public void RookCallTiles(int i, int j)
     {
         Test_Tile TIle_Script;
+
+        
 
         while (true)
         {
@@ -855,8 +857,18 @@ public class Queen_Script : MonoBehaviour
         int x;
 
         FindTileImOn();
+        if (white)
+        {
+            Tile_Im_On.canbepinned_white_Bishop = true;
+            Tile_Im_On.canbepinned_white = true;
+        }
+        else
+        {
+            Tile_Im_On.canbepinned_black_Bishop = true;
+            Tile_Im_On.canbepinned_black = true;
+        }
 
-        if (!(Tile_Im_On.Vertical_Edge_Up))
+            if (!(Tile_Im_On.Vertical_Edge_Up))
         {
             x = 0;
             while (true)

@@ -561,6 +561,8 @@ public class Test_Tile : MonoBehaviour
         PawnScript.Take_Function_Called_Right = false;
         NrOfPawnThatCalledThisTile = PawnScript.NrOfThisPawn;
 
+      
+
     }
 
     void BlackPawnMove(GameObject Pawn)

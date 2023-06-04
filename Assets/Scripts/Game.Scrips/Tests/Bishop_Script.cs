@@ -413,6 +413,10 @@ public class Bishop_Script : MonoBehaviour
         bool secondary = false;
 
         FindTileImOn();
+        if (white)
+            Tile_Im_On.canbepinned_white_Bishop = true;
+        else
+            Tile_Im_On.canbepinned_black_Bishop = true;
         x = 8;
         if (!(Tile_Im_On.Vertical_Edge_Up || Tile_Im_On.Horizontal_Edge_Right))
         {

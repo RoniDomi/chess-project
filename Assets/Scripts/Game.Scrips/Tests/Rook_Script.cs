@@ -321,6 +321,11 @@ public class Rook_Script : MonoBehaviour
 
         FindTileImOn();
 
+        if (white)
+            Tile_Im_On.canbepinned_white = true;
+        else
+            Tile_Im_On.canbepinned_black = true;
+
         if (!(Tile_Im_On.Vertical_Edge_Up))
         {
             x = 0;

@@ -541,6 +541,20 @@ public class King_Script : MonoBehaviour
                 }
                 if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
                 {
+                    if (white)
+                    {
+                        if (TIle_Script.canbepinned_black_Bishop)
+                            TIle_Script.pinnedTile_White_Bishop = true;
+                        else if (TIle_Script.canbepinned_black)
+                            TIle_Script.pinnedTile_White = true;
+                    }
+                    else
+                    {
+                        if (TIle_Script.canbepinned_white_Bishop)
+                            TIle_Script.pinnedTile_Black_Bishop = true;
+                        else if (TIle_Script.canbepinned_white)
+                            TIle_Script.pinnedTile_Black = true;
+                    }
                     break;
 
                 }
@@ -631,6 +645,20 @@ public class King_Script : MonoBehaviour
                 }
                 if ((white && TIle_Script.Occupy_Black) || (black && TIle_Script.Occupy_White))
                 {
+                    if (white)
+                    {
+                        if (TIle_Script.canbepinned_black_Bishop)
+                            TIle_Script.pinnedTile_White_Bishop = true;
+                        else if (TIle_Script.canbepinned_black)
+                            TIle_Script.pinnedTile_White = true;
+                    }
+                    else
+                    {
+                        if (TIle_Script.canbepinned_white_Bishop)
+                            TIle_Script.pinnedTile_Black_Bishop = true;
+                        else if (TIle_Script.canbepinned_white)
+                            TIle_Script.pinnedTile_Black = true;
+                    }
                     break;
 
                 }
