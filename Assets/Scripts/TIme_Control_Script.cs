@@ -136,7 +136,9 @@ public class TIme_Control_Script : MonoBehaviour
 
     public void time_spent()
     {
-           if (clock <= 0)
+
+      
+            if (clock < 0)
             {
                 zero3 -= 1;
                 clock = 9.99f;
@@ -146,17 +148,17 @@ public class TIme_Control_Script : MonoBehaviour
                 zero2 -= 1;
                 zero3 = 5;
             }
-            if(clock >= 10f)
+            if (clock >= 10f)
             {
                 clock = clock - 10;
                 zero3 += 1;
             }
-            if(zero3>=6)
+            if (zero3 >= 6)
             {
                 zero3 = 0;
                 zero2 += 1;
             }
-            if(zero2 >=10)
+            if (zero2 >= 10)
             {
                 zero2 = 0;
                 zero++;
@@ -166,8 +168,8 @@ public class TIme_Control_Script : MonoBehaviour
                 zero -= 1;
                 zero2 = 9;
             }
-            
-            if (clock_black <= 0)
+        
+            if (clock_black < 0)
             {
                 zero3_black -= 1;
                 clock_black = 9.99f;
@@ -197,7 +199,7 @@ public class TIme_Control_Script : MonoBehaviour
                 zero_black -= 1;
                 zero2_black = 9;
             }
-            //displaytime();
+        displaytime();
 
         if (logic_manager.White_Turn)
         {

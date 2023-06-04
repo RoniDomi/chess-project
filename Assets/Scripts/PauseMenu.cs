@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,16 +12,28 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject warningMenu;
     public GameObject warningExit;
+    public Text blacktime;
+    public Text whitetime;
+    public GameObject logic;
+    public GameObject timepanel;
+    public TIme_Control_Script time;
+
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        timepanel.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     public void Pause()
     {
+        time = logic.GetComponent<TIme_Control_Script>();
         pauseMenuUI.SetActive(true);
+        timepanel.SetActive(false);
+        blacktime.text = time.Black_Time.text;
+        whitetime.text = time.White_Time.text;
+
         Time.timeScale = 0f;
         GameIsPaused = true;
     }

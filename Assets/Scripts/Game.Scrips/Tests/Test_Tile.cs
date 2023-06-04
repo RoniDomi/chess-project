@@ -523,7 +523,10 @@ public class Test_Tile : MonoBehaviour
             logic_Manager_.checkstuck();
             UncallTiles();
 
-            time.timestart = true;
+            if (!time.timestart)
+            {
+                time.timestart = true;
+            }
         }
 
 
@@ -789,25 +792,6 @@ public class Test_Tile : MonoBehaviour
                 _renderer.color = _LightCalledColor;
             logic_Manager_.NoHovering = true;
         }
-    }
-
-    void Update()
-    {
-        if((Checked_Black || Checked_White) && !logic_Manager_.NoHovering)
-       {
-         if(_renderer.color==_offsetColor)
-       {
-         _renderer.color = _TakeColorDark;
-       }else if (_renderer.color==_baseColor)
-       {
-         _renderer.color = _TakeColorLight;
-       }
-               
-       }
-       else if((_renderer.color == _TakeColorDark || _renderer.color == _TakeColorLight) && !logic_Manager_.NoHovering)
-       {
-       _renderer.color = _SavedColor;
-       }
     }
 
 }

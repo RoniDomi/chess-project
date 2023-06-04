@@ -333,12 +333,12 @@ public class Logic_Management_Script : MonoBehaviour
             if (time.increment_by_2 && time.timestart)
             {
                 time.clock += 2;
-                time.displaytime();
+             
             }
            if(time.increment_by_1 && time.timestart)
             {
                 time.clock++;
-                time.displaytime();
+             
             }
             king = AllPieces[31].GetComponent<King_Script>();
                 king.FindTileImOn();
@@ -367,16 +367,18 @@ public class Logic_Management_Script : MonoBehaviour
          
         }
         else
-        {
+        {White_Turn = true;
+          Black_Turn = false;
+
             if (time.increment_by_2)
             {
                 time.clock_black += 2;
-                time.displaytime();
+              
             }
             if (time.increment_by_1)
             {
                 time.clock_black++;
-                time.displaytime();
+               
             }
             king = AllPieces[30].GetComponent<King_Script>();
                 king.FindTileImOn();
@@ -400,8 +402,7 @@ public class Logic_Management_Script : MonoBehaviour
             {
                 StaleMate = true;
             }
-          White_Turn = true;
-          Black_Turn = false;
+          
         }
         if (check_white)
         {
@@ -414,8 +415,7 @@ public class Logic_Management_Script : MonoBehaviour
             king.FindCheckedTiles();
         }
 
-       White_Turn = true;
-       Black_Turn = true;
+      
 
     }
 
